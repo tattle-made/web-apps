@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tattle/config": "1.0.0",
     "aws-sdk": "^2.513.0",
     "crypto": "^1.0.1",
     "dotenv": "^8.1.0",
