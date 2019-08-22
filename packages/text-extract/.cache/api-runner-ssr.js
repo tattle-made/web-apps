@@ -1,18 +1,18 @@
 var plugins = [{
-      plugin: require('/Users/dennygeorge/Documents/Tattle/services-ui/packages/text-extract/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
+      plugin: require('/Users/dennygeorge/Documents/Tattle/web-apps/packages/text-extract/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/Users/dennygeorge/Documents/Tattle/services-ui/packages/text-extract/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
+      plugin: require('/Users/dennygeorge/Documents/Tattle/web-apps/packages/text-extract/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
       options: {"plugins":[],"name":"gatsby-starter-default","short_name":"starter","start_url":"/","background_color":"#663399","theme_color":"#663399","display":"minimal-ui","icon":"src/images/tattle-icon.png"},
     },{
-      plugin: require('/Users/dennygeorge/Documents/Tattle/services-ui/packages/text-extract/node_modules/gatsby-plugin-theme-ui/gatsby-ssr'),
+      plugin: require('/Users/dennygeorge/Documents/Tattle/web-apps/packages/text-extract/node_modules/gatsby-plugin-theme-ui/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/Users/dennygeorge/Documents/Tattle/services-ui/packages/text-extract/node_modules/gatsby-plugin-typography/gatsby-ssr'),
+      plugin: require('/Users/dennygeorge/Documents/Tattle/web-apps/packages/text-extract/node_modules/gatsby-plugin-typography/gatsby-ssr'),
       options: {"plugins":[],"pathToConfigModule":"src/gatsby-plugin-typography"},
     },{
-      plugin: require('/Users/dennygeorge/Documents/Tattle/services-ui/packages/text-extract/node_modules/gatsby-plugin-mdx/gatsby-ssr'),
-      options: {"plugins":[],"defaultLayouts":{"default":"/Users/dennygeorge/Documents/Tattle/services-ui/packages/text-extract/src/components/centered-container.js"}},
+      plugin: require('/Users/dennygeorge/Documents/Tattle/web-apps/packages/text-extract/node_modules/gatsby-plugin-mdx/gatsby-ssr'),
+      options: {"plugins":[],"defaultLayouts":{"default":"/Users/dennygeorge/Documents/Tattle/web-apps/packages/text-extract/src/components/centered-container.js"}},
     }]
 // During bootstrap, we write requires at top of this file which looks like:
 // var plugins = [

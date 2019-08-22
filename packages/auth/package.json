@@ -4,7 +4,8 @@
   "description": "source code to perform authorizations for front end apps",
   "main": "index.js",
   "scripts": {
-    "test": "echo 'testing auth'"
+    "test": "echo 'testing auth'",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
