@@ -1,0 +1,20 @@
+{
+  "name": "@tattle/auth",
+  "version": "1.0.0",
+  "description": "source code to perform authorizations for front end apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'testing auth'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tattle/config": "1.0.0",
+    "aws-sdk": "^2.513.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {}
+}

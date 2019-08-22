@@ -1,0 +1,48 @@
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import React from "react"
+import Layout from "../components/layout"
+import LayoutSidebarContent from '../components/layout-sidebar-content'
+import CTA from '../components/cta'
+import Logo from '../components/logo'
+import Footer from '../components/footer'
+import { basename } from 'path';
+
+import ServiceUI from '../components/text-extract-ui'
+
+const IndexPage = () => (
+  <div>
+      <Layout>
+        <LayoutSidebarContent>
+            <div sx={{
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+              <div sx={{
+                display:'flex',
+                flexDirection:'column'
+              }}>
+                <Logo/>
+                <div sx={{
+                  backgroundColor: 'base',
+                  color: 'textDark',
+                  padding: 3,
+                  borderRadius: '0.4em'
+                }}>
+                  <h1 sx={{
+                    color:'primary'
+                  }}>Text-Extractor</h1>
+                  <h4> Extract text from memes </h4>
+                  <p> We built this tool to help extract text out of memes automatically.</p>
+                  <CTA/>
+                </div>
+                </div>
+                <Footer/>
+            </div>
+            <ServiceUI/>
+        </LayoutSidebarContent>
+      </Layout>
+  </div>
+)
+
+export default IndexPage
