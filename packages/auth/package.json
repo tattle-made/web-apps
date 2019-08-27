@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo 'testing auth'",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build": "echo 'built auth'"
   },
   "author": "",
   "license": "ISC",

@@ -1,3 +1,15 @@
 language: node_js
 node_js:
   - "10.13.0"
+
+matrix:
+	include:
+		- name: "auth pipeline"
+			env: PACKAGE_LOCATION="packages/auth"
+		- name: "services ui pipeline"
+			env: PACKAGE_LOCATION="packages/text-extract"
+			
+script:
+	- cd $PACKAGE_LOCATION
+	- npm test
+	- npm run-script build
