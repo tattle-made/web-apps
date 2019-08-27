@@ -84,11 +84,12 @@ const MyDropzone = () => {
           </div>
           <div sx={{
             textTransform: 'uppercase',
-            color: 'gray.4',
+            color: 'gray.6  ',
             marginTop: 2,
-            textAlign: 'right'
+            textAlign: 'right',
+            fontSize:8
           }}>
-            <h4> status : {serviceState.message}</h4>
+            <h5> status : {serviceState.message}</h5>
           </div>
         </div>
 
@@ -97,7 +98,7 @@ const MyDropzone = () => {
           serviceResult!=''?
           <div>
             <Result message={serviceResult}/>
-            <Feedback/> 
+            {/* <Feedback/>  */}
           </div>
           :
           null

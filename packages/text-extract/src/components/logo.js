@@ -11,9 +11,8 @@ const Logo = props =>
     }}>
         <img src={logo} alt='Tattle Logo'/>
         <h3 sx={{
-            marginLeft: 1,
-            marginTop: 1,
-            color:'#0065B2'
+            marginLeft: 2,
+            color:'blue.8'
         }}> Tattle </h3>
     </div>
 

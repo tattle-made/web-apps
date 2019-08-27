@@ -3,11 +3,11 @@ export default {
   colors: {
     text : '#232323',
     background: '#fff',
-    textDark: '#D8D8D8',
+    textDark: '#ffffff',
     backgroundDark: '#0065B2',
-    primary: '#F7C400',
-    base: "#0065B2",
-    "black": "#000000",
+    primary: '#E65447',
+    base: "#E65447",
+    "black": "#473c3b",
     "gray": [
       "#faf9f8",
       "#f0ecec",
