@@ -4,12 +4,12 @@ node_js:
 
 matrix:
 	include:
-		- name: "auth pipeline"
-			env: PACKAGE_LOCATION="packages/auth"
-		- name: "services ui pipeline"
+    - name: "auth pipeline"
+      env: PACKAGE_LOCATION="packages/auth"
+    - name: "services ui pipeline"
 			env: PACKAGE_LOCATION="packages/text-extract"
 			
 script:
-	- cd $PACKAGE_LOCATION
-	- npm test
+  - cd $PACKAGE_LOCATION
+  - npm test
 	- npm run-script build
