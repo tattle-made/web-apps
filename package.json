@@ -5,6 +5,7 @@
     "lerna": "^3.16.4"
   },
   "scripts": {
-    "dev" : "lerna run dev"
+    "dev" : "lerna run dev",
+    "test": "lerna run test"
   }
 }
