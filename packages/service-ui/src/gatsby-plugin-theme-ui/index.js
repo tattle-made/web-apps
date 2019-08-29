@@ -128,6 +128,9 @@ export default {
       "#342d93",
       "#241f67"
     ],
+    indigoOverlay: [
+      "#edecfcaa"
+    ],
     "violet": [
       "#f5ebfc",
       "#ead6f9",
@@ -168,7 +171,8 @@ export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   sizes: {
     container: 640,
-    sidebar : 320
+    sidebar : 320,
+    modal: 250
   },
   buttons: {
     primary:{
