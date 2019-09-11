@@ -1,8 +1,9 @@
-import { configure, addDecorator } from '@storybook/react';
+import { configure, addDecorator, addParameters } from '@storybook/react';
 import React from 'react'
 import { ThemeProvider } from 'theme-ui'
 import theme from '../src/gatsby-plugin-theme-ui/index'
 import typography from '../src/gatsby-plugin-typography'
+import {DEFAULT_VIEWPORT} from '@storybook/addon-viewport/preview'
 
 // automatically import all files ending in *.stories.js
 const req = require.context('../stories', true, /\.stories\.js$/);
@@ -22,6 +23,8 @@ global.__PATH_PREFIX__ = ""
 window.___navigate = pathname => {
   action("NavigateTo:")(pathname)
 }
+
+// addParameters({ viewport : { viewports: DEFAULT_VIEWPORT}});
 
 addDecorator((story) => (
   <ThemeProvider theme={theme}>
