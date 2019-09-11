@@ -28,6 +28,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-theme-ui`,
+    `gatsby-theme-style-guide`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
