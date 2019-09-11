@@ -24,8 +24,6 @@ window.___navigate = pathname => {
   action("NavigateTo:")(pathname)
 }
 
-// addParameters({ viewport : { viewports: DEFAULT_VIEWPORT}});
-
 addDecorator((story) => (
   <ThemeProvider theme={theme}>
     {story()}

@@ -7,16 +7,24 @@ import {useSelector} from 'react-redux'
 
 const SearchInput = (props) => {
     return(
-        <div sx={{
-            display: 'flex',
-            alignItems:'center',
-            backgroundColor: 'primary',
-        }}>
-            <h1 sx={{
-                marginRight : 4
-            }}> Search </h1>
-            <input type='text'/> 
-            <button> Go </button>
+        <div>
+            <h4> Search in dataset </h4>
+            <div sx={{
+                display: 'flex',
+                alignItems: 'center',
+                m:1
+            }}>
+                <input sx={{
+                    p: 2,
+                }}type='text' value='Enter Search'/>
+                <p sx={{
+                    m:2
+                }}> or </p>
+                <button sx={{
+                    p: 2,
+                    borderColor: 'gray.2'
+                }}> Upload Video or Image </button>
+            </div>
         </div>
     )
 }
