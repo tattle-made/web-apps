@@ -10,7 +10,8 @@ const {s3} = require('./s3')
 app.use(express.json())
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:8000"); 
+    // res.header("Access-Control-Allow-Origin", "http://localhost:8000"); 
+    // res.header("Access-Control-Allow-Origin", "*"); 
     res.header("Access-Control-Allow-Origin", "http://tattle-websites.s3-website.ap-south-1.amazonaws.com"); 
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();

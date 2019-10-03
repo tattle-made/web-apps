@@ -40,6 +40,24 @@ const MyDropzone = () => {
             })
             .catch((err) => setServiceState({type:'ERROR', message:'Something went wrong'}));
           })
+          // api call to create post in the backend
+          .then((response)=>{
+            console.log('making API call');
+            return axios.post(
+              'http://localhost:8080/api/posts/',
+              {
+                "type" : "image",
+                "data" : "",
+                "filename": fileName,
+                "userId" : 159
+              },
+              {
+                headers: {
+                  token: 'be2742a0-e610-11e9-98c0-cfafcf9716d4'
+                }
+              }
+            );
+          })
         })
         .catch((err)=>console.log('==>error ',err))
 
