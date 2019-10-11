@@ -11,6 +11,8 @@ import Feedback from './feedback';
 import Logo from '../components/logo'
 import Result from '../components/result'
 
+const SHELL_EXPRESS_SERVER_URL = 'http://localhost:8080'
+
 
 const MyDropzone = () => {
     const onDrop = useCallback(acceptedFiles => {
@@ -42,9 +44,9 @@ const MyDropzone = () => {
           })
           // api call to create post in the backend
           .then((response)=>{
-            console.log('making API call');
+            console.log(`Making API call to ${SHELL_EXPRESS_SERVER_URL}`);
             return axios.post(
-              'http://localhost:8080/api/posts/',
+              `${SHELL_EXPRESS_SERVER_URL}/api/posts/`,
               {
                 "type" : "image",
                 "data" : "",
