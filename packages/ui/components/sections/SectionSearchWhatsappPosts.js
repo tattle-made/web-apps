@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import {Box} from 'grommet'
+import {Box, Heading} from 'grommet'
 import {MoleculeSearchInputForm} from '../molecules'
+import {MultipleWithClickMoreButton} from '../atoms/MediaBlock'
 
 /**
 * @author
@@ -8,7 +9,7 @@ import {MoleculeSearchInputForm} from '../molecules'
 **/
 
 const SectionSearchWhatsappPosts = () => {
-  const [fetching, setFetching] = useState(false)
+   const [fetching, setFetching] = useState(false)
 
 useEffect(()=> {
   setFetching(true)
@@ -16,18 +17,19 @@ useEffect(()=> {
 
  return (
      <Box
-        fill={'vertical'}
-        width={'large'}
         direction={'column'}
-        gap={'small'}
+        gap={'medium'}
      >
-        {/* {fetching && <h3>something</h3>} */}   
-        <MoleculeSearchInputForm />
         <Box
-            border={{color:'brand'}}
-        >
-           <h3>Result Area</h3>   
-        </Box>      
+            width={'large'}
+            direction={'column'}
+            gap={'medium'}
+         >
+            <MoleculeSearchInputForm />
+         </Box>
+        <MultipleWithClickMoreButton
+            label={'Similar Posts'}
+        ></MultipleWithClickMoreButton>     
     </Box>
  )
 }

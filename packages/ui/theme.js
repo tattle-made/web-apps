@@ -18,6 +18,9 @@ const TattleTheme = {
             "width": "1px",
             "radius": "0.2em",
         },
+        "size": {
+            "xmedium" : '90px'
+        }
     },
 };
 

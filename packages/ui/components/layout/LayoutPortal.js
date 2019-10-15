@@ -20,7 +20,7 @@ useEffect(()=> {
   <Grommet theme={TattleTheme}>
     <Grid
         rows={['xxsmall', 'full']}
-        columns={['small', 'full']}
+        columns={['small', 'xlarge']}
         gap="small"
         areas={[
             { name: 'header', start: [0, 0], end: [1, 0] },

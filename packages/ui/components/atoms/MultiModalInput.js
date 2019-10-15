@@ -52,8 +52,6 @@ const SearchTypeItem = (props) => {
 const SearchDropdownOptions = styled.div`
     background: #ededed;
     position: absolute;
-    z-Index: 5;
-    box-shadow: 0px 4px 12px 0px rgba(199,199,199,1);
 `
 
 /**
@@ -137,9 +135,11 @@ return(
         </Box>
         {expanded && (
             <SearchDropdownOptions>
-                <SearchTypeItem id={0} onSelect={itemSelected} icon='type' label='text'/>
-                <SearchTypeItem id={1} onSelect={itemSelected} icon='link-2' label='url'/>
-                <SearchTypeItem id={2} onSelect={itemSelected} icon='upload' label='file'/>
+                <Box elevation={'small'}>
+                    <SearchTypeItem id={0} onSelect={itemSelected} icon='type' label='text'/>
+                    <SearchTypeItem id={1} onSelect={itemSelected} icon='link-2' label='url'/>
+                    <SearchTypeItem id={2} onSelect={itemSelected} icon='upload' label='file'/>
+                </Box>
             </SearchDropdownOptions>
         )}
     </SearchTypeDropdown>
