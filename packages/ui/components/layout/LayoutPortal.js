@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {Grommet, Box, Grid,} from 'grommet'
+import {Grommet, Box, Grid, Heading, Text, ResponsiveContext} from 'grommet'
 import PropTypes from 'prop-types';
 import TattleTheme from '../../theme'
 
@@ -8,6 +8,12 @@ import TattleTheme from '../../theme'
 * @function LayoutPortal
     
 **/
+
+const columnsFactory = {
+  'medium' : ['small', 'flex'],
+  'small' : ['xxsmall', 'flex']
+}
+
 
 const LayoutPortal = ({content}) => {
   const [fetching, setFetching] = useState(false)
@@ -18,20 +24,25 @@ useEffect(()=> {
 
  return (
   <Grommet theme={TattleTheme}>
-    <Grid
-        rows={['xxsmall', 'full']}
-        columns={['small', 'xlarge']}
-        gap="small"
-        areas={[
-            { name: 'header', start: [0, 0], end: [1, 0] },
-            { name: 'nav', start: [0, 1], end: [0, 1] },
-            { name: 'main', start: [1, 1], end: [1, 1] },
-        ]}
-    >
-        <Box gridArea="header" background="brand" />
-        <Box gridArea="nav" background="light-5" />
-        <Box gridArea="main" > {content} </Box>
-    </Grid>
+    <ResponsiveContext.Consumer>
+      {
+        (size)=>(
+          <Grid
+            rows={['flex']}
+            columns={columnsFactory[size]}
+            gap="small"
+            areas={[
+                { name: 'nav', start: [0, 0], end: [0, 0] },
+                { name: 'main', start: [1, 0], end: [1, 0] },
+            ]}
+          >
+            <Box gridArea="nav" background="brand" > Posts <br/> User <br/> Tasks <br/> Search <Text>{size}</Text> </Box>
+            <Box gridArea="main" > {content} </Box>
+          </Grid>
+
+        )
+      }
+    </ResponsiveContext.Consumer>
   </Grommet>
  )
 }
