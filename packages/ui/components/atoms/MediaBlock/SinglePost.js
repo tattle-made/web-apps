@@ -17,7 +17,7 @@ const boxDimension = {
     'small' : '12em'
 }
 
-const Single = ({type, src}) => {
+const SinglePost = ({type, src}) => {
   const [fetching, setFetching] = useState(false)
   const [hover, setHover] = useState(false)
 
@@ -33,7 +33,7 @@ const onMouseLeave = ()=> setHover(false);
  return (
     <ResponsiveContext.Consumer>
     {(size)=>(
-        <Stack anchor={'top-right'}>
+        <Stack anchor={'center'}>
             <Box
             width={boxDimension[size]}
             border={{color:'border'}}
@@ -80,7 +80,6 @@ const onMouseLeave = ()=> setHover(false);
                     direction={'row'} 
                     gap={'xsmall'} 
                     pad={'xsmall'} 
-                    animation={'fadeIn'}
                     onMouseEnter={onMouseEnter}
                 >
                     <Edit size={20}/> 
@@ -93,4 +92,4 @@ const onMouseLeave = ()=> setHover(false);
  )
 }
 
-export default Single
+export default SinglePost

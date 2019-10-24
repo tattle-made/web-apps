@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import {Grommet, Box, Grid, Heading, Text, ResponsiveContext} from 'grommet'
+import BreadCrumb from '../atoms/BreadCrumb'
 import PropTypes from 'prop-types';
 import TattleTheme from '../../theme'
+import SectionNavigation from '../atoms/SectionNavigation';
 
 /**
 * @author
@@ -36,8 +38,14 @@ useEffect(()=> {
                 { name: 'main', start: [1, 0], end: [1, 0] },
             ]}
           >
-            <Box gridArea="nav" background="brand" > Posts <br/> User <br/> Tasks <br/> Search <Text>{size}</Text> </Box>
-            <Box gridArea="main" > {content} </Box>
+            <Box gridArea="nav" background="brand" > 
+              {/* Posts <br/> User <br/> Tasks <br/> Search <Text>{size}</Text>  */}
+            </Box>
+            <Box gridArea="main" > 
+              <BreadCrumb/>
+              <SectionNavigation/>
+              {content} 
+            </Box>
           </Grid>
 
         )

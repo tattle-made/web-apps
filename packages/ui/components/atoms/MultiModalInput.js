@@ -9,6 +9,7 @@ const SearchTypeDropdown = styled.div`
     cursor: pointer;
 `
 
+
 const InvisibleFileUploadButton = styled.input`
     background:red;
     display: none;
@@ -81,7 +82,7 @@ const itemSelected = (id) =>  {
 }
 
 return(
-    <SearchTypeDropdown>
+    <Box background='light-1'>
         <Box 
             direction={'row'}
             align={'center'}
@@ -142,7 +143,7 @@ return(
                 </Box>
             </SearchDropdownOptions>
         )}
-    </SearchTypeDropdown>
+    </Box>
 )
 }
 

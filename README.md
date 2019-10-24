@@ -7,6 +7,7 @@ the core ui components are in the package ui.
 To develop new features, it is recommended to have both these packages open in your IDE and run
 
 ```lerna run develop watch --stream --scope @tattle/ui-sandbox```
+then watch localhost:3000
 
 This will start the gatsby app in develop mode supporting hot reload of changes. 
 
