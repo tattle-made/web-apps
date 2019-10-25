@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {Box, Heading, Text, Button, CheckBox, Collapsible} from 'grommet'
+import {Box, Heading, Text, Button, CheckBox, Collapsible, RangeInput} from 'grommet'
 import {MoleculeSearchInputForm} from '../molecules'
 import {MultipleWithClickMoreButton} from '../atoms/MediaBlock'
 import SinglePost from '../atoms/MediaBlock/SinglePost';
@@ -33,10 +33,14 @@ const alsoSeenOnData = {
 	]
 }
 
-const SearchFilter = () => {
+
+const SearchFilter = ({onSave, init}) => {
+   const APPROXIMATE_THRESHOLD = 40;
+
    const[collapse, setCollapse]=useState(false)
    const[duplicate, setDuplicate]=useState(true);
    const[approximate, setApproximate]=useState(true);
+   const [approximateThreshold, setApproximateThreshold] = React.useState(APPROXIMATE_THRESHOLD);
    const[similar, setSimilar]=useState(true);
    const[stories, setStories]=useState(true);
 
@@ -51,10 +55,14 @@ const SearchFilter = () => {
                   checked={duplicate}
                   label="Duplicate Posts"
                   onChange={(event) => setDuplicate(event.target.checked)}/>
-               <CheckBox
-                  checked={approximate}
-                  label="Approximate Matches"
-                  onChange={(event) => setApproximate(event.target.checked)}/>
+               <Box direction={'row'} align={'center'} gap={'small'}>
+                  <CheckBox
+                     checked={approximate}
+                     label="Approximate Matches"
+                     onChange={(event) => setApproximate(event.target.checked)}/>
+                  <Text size="'small"> {approximateThreshold} </Text>
+                  <RangeInput onChange={(e) => setApproximateThreshold(e.target.value)} value={approximateThreshold} />
+               </Box>
                <CheckBox
                   checked={similar}
                   label="Semantically Similar Posts"
@@ -64,7 +72,14 @@ const SearchFilter = () => {
                   label="External Stories"
                   onChange={(event) => setStories(event.target.checked)}/>
 
-               <Button width={'small'} label={'save'}/>
+               <Button 
+                  width={'small'} 
+                  label={'save'} 
+                  onClick={ ()=> {
+                     setCollapse(!collapse)
+                     onSave({duplicate, approximate, similar, stories})
+                  }}
+               />
             </Box>
          </Collapsible>
       </Box>
@@ -72,7 +87,15 @@ const SearchFilter = () => {
 }
 
 const SectionSearchWhatsappPosts = () => {
+   const defaultOptions = {
+      duplicate: true,
+      approximate: true,
+      similar: true,
+      stories: false
+   }
+
    const [fetching, setFetching] = useState(false)
+   const [options, setOptions] = useState(defaultOptions)
 
 useEffect(()=> {
   setFetching(true)
@@ -92,30 +115,40 @@ useEffect(()=> {
          </Box>
          
          {/* Settings Section */}
-         <SearchFilter/>
-
-         <MultipleLinks
-            title={"Also Seen on"}
-            loading={alsoSeenOnData.loading}
-            links={alsoSeenOnData.items}
-            error={alsoSeenOnData.error}
+         <SearchFilter
+            onSave={(options) => setOptions(options)}
          />
 
-         <Box>
-            <Heading level={4}>Duplicate</Heading>
-            <SinglePost
-                  type={'image'}
-                  src={"https://firebasestorage.googleapis.com/v0/b/crowdsourcesocialposts.appspot.com/o/image-posts%2F425f24f2-eda6-4e9f-99ec-d0eeb0b64db4?alt=media&token=fdbbb89f-1662-4652-9037-768a9d8b7424"}
+         {options.stories && 
+            <MultipleLinks
+               title={"Also Seen on"}
+               loading={alsoSeenOnData.loading}
+               links={alsoSeenOnData.items}
+               error={alsoSeenOnData.error}
             />
-         </Box>
+         }
 
-         <MultipleWithClickMoreButton
-            label={'Approximate Matches'}
-         />
+         {options.duplicate &&
+            <Box>
+               <Heading level={4}>Duplicate</Heading>
+               <SinglePost
+                     type={'image'}
+                     src={"https://firebasestorage.googleapis.com/v0/b/crowdsourcesocialposts.appspot.com/o/image-posts%2F425f24f2-eda6-4e9f-99ec-d0eeb0b64db4?alt=media&token=fdbbb89f-1662-4652-9037-768a9d8b7424"}
+               />
+            </Box>
+         }
 
-         <MultipleWithClickMoreButton
-            label={'Semantically Similar Matches'}
-         />
+         {options.approximate &&
+            <MultipleWithClickMoreButton
+               label={'Approximate Matches'}
+            />
+         }
+
+         {options.similar &&
+            <MultipleWithClickMoreButton
+               label={'Semantically Similar Matches'}
+            />
+         }
 
 
       
