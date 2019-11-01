@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Tattle - Text Extractor`,
-    description: `We specialize in extracting text out of memes`,
-    author: `@tattle-made`,
+    title: `Gatsby Default Starter`,
+    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    author: `@gatsbyjs`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,23 +24,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/tattle-icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    `gatsby-plugin-theme-ui`,
-    `gatsby-theme-style-guide`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/gatsby-plugin-typography`,
-      }
-    },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        defaultLayouts: {
-          default: require.resolve("./src/components/centered-container.js"),
-        },
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

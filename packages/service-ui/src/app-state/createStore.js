@@ -11,8 +11,10 @@ const count = (state={count: 0}, action) => {
   return state
 }
 
-const createStore = () => reduxCreateStore(
-    combineReducers(reducers) , 
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+// const createStore = () => reduxCreateStore(
+//     combineReducers(reducers) , 
+//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+//     )
+
+const createStore = () => reduxCreateStore(combineReducers(reducers) )
 export default createStore

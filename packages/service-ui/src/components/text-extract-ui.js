@@ -11,6 +11,8 @@ import Feedback from './feedback';
 import Logo from '../components/logo'
 import Result from '../components/result'
 
+const SHELL_EXPRESS_SERVER_URL = 'http://localhost:8080'
+
 
 const MyDropzone = () => {
     const onDrop = useCallback(acceptedFiles => {
@@ -39,6 +41,24 @@ const MyDropzone = () => {
               setServiceState({type:'NEUTRAL', message:'waiting for upload'})
             })
             .catch((err) => setServiceState({type:'ERROR', message:'Something went wrong'}));
+          })
+          // api call to create post in the backend
+          .then((response)=>{
+            console.log(`Making API call to ${SHELL_EXPRESS_SERVER_URL}`);
+            return axios.post(
+              `${SHELL_EXPRESS_SERVER_URL}/api/posts/`,
+              {
+                "type" : "image",
+                "data" : "",
+                "filename": fileName,
+                "userId" : 159
+              },
+              {
+                headers: {
+                  token: 'be2742a0-e610-11e9-98c0-cfafcf9716d4'
+                }
+              }
+            );
           })
         })
         .catch((err)=>console.log('==>error ',err))

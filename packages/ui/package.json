@@ -1,0 +1,21 @@
+{
+  "name": "@tattle-made/ui",
+  "version": "1.0.1",
+  "description": "core repository of all UI components for Tattle",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "denny",
+  "license": "ISC",
+  "dependencies": {
+    "grommet": "^2.7.9",
+    "grommet-icons": "^4.3.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-feather": "^2.0.3",
+    "react-helmet": "^5.2.1",
+    "styled-components": "^4.4.0"
+  }
+}

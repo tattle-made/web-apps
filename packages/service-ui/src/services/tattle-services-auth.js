@@ -1,5 +1,6 @@
 import HTTP from './http'
-const http = new HTTP('http://13.235.141.145:3000');
+const AUTH_SERVER_URL = 'http://localhost:3001'
+const http = new HTTP(AUTH_SERVER_URL);
 
 const getSignedUrl = (filename, fileType) => (
     http.post('auth/policy', {filename, fileType})
