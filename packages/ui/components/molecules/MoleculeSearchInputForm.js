@@ -15,8 +15,7 @@ useEffect(()=> {
 })
 
  return (
-    <Box
-    >
+    <Box>
         <MultiModalInput/>
     </Box> 
  )

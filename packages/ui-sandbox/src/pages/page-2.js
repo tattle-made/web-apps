@@ -1,5 +1,5 @@
 import React from "react"
-import {Layout, Section} from 'ui'
+import {Layout, Section} from '@tattle-made/ui'
 const {LayoutPortal} = Layout;
 const {SectionSearchWhatsappPosts} = Section;
 

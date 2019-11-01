@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {Layout, Section} from 'ui'
+import {Layout, Section} from '@tattle-made/ui'
 const {LayoutPortal} = Layout;
 
 /**
