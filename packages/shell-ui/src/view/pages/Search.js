@@ -15,6 +15,10 @@ import SimpleSearchResult from '../components/TempImageCard'
 
 import {Container} from 'react-bootstrap'
 
+import {Layout, Section} from '@tattle-made/ui'
+const {LayoutPortal} = Layout;
+const {SectionSearchWhatsappPosts} = Section;
+
 class SearchInput extends Component {
   constructor(props) {
     super(props);
@@ -51,23 +55,7 @@ class SearchInput extends Component {
     return (
       <Container>
         <BreadCrumb path={this.props.match.path} />
-        <SearchForm 
-          onFormSubmit={this.onSubmit} 
-          onChange={this.onInputChange}
-          loading={this.props.loading}
-        />
-        {/* <SearchResult
-          data={this.state.data}
-          content_type={this.state.content_type}
-        /> */}
-
-        {
-          this.props.searchResult.doc_id==undefined
-          ? 
-            null
-          :
-            <SimpleSearchResult docId={this.props.searchResult.doc_id}/>
-        }
+        <SectionSearchWhatsappPosts/>
       </Container>
     );
   }
