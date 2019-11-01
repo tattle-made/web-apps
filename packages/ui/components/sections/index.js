@@ -1,4 +1,4 @@
 import SectionSearchWhatsappPosts from './SectionSearchWhatsappPosts';
-export default {
+export {
     SectionSearchWhatsappPosts
 }

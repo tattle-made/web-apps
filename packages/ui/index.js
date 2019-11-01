@@ -1,7 +1,7 @@
-import Layout from './components/layout/'
-import Section from './components/sections'
+import * as Layout from './components/layout/'
+import * as Section from './components/sections'
 import IconDropdown from './components/atoms/IconDropdown'
-import Molecules from './components/molecules'
+import * as Molecules from './components/molecules'
 
 const test = 'test'
 
