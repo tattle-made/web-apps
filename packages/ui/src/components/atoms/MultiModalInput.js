@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { ChevronDown } from "react-feather"
+import { ChevronDown, Search } from "react-feather"
 import * as Icon from 'react-feather'
 import {Box, Text, TextInput, Button} from 'grommet'
 
@@ -133,7 +133,13 @@ return(
                     null
                 }
             </Box>
+
+            <Box align={'center'} 
+                margin={'medium'}>
+                <Search/>
+            </Box>
         </Box>
+        
         {expanded && (
             <SearchDropdownOptions>
                 <Box elevation={'small'}>

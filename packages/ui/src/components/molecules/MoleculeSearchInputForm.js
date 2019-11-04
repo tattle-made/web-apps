@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {Box} from 'grommet'
 import {MultiModalInput} from '../atoms'
+import {Search} from 'react-feather'
 
 /**
 * @author
@@ -15,7 +16,7 @@ useEffect(()=> {
 })
 
  return (
-    <Box>
+    <Box direction={'row'}>
         <MultiModalInput/>
     </Box> 
  )

@@ -1,7 +1,7 @@
-import Single from './SinglePost';
+import SinglePost from './SinglePost';
 import MultipleWithClickMoreButton from './MultipleWithClickMoreButton';
 
 export{
-    Single,
+    SinglePost,
     MultipleWithClickMoreButton
 }
