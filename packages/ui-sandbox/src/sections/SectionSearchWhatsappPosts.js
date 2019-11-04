@@ -55,12 +55,16 @@ const SectionSearchWhatsappPosts = () => {
       setFetching(true)
    })
 
+   const onSubmit = ((payload) => {
+      console.log('searched : ', payload);
+   })
+
  return (
      <Box
         direction={'column'}
         gap={'medium'}
      >
-         <MultiModalInput />
+         <MultiModalInput onSubmit={onSubmit}/>
          
          <MoleculeSearchFilterOptions
             onSave={(options) => setOptions(options)}/>
