@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { ChevronDown } from "react-feather"
+import { ChevronDown, Search } from "react-feather"
 import * as Icon from 'react-feather'
 import {Box, Text, TextInput, Button} from 'grommet'
 
@@ -55,16 +55,32 @@ const SearchDropdownOptions = styled.div`
     position: absolute;
 `
 
+const createPayload = (selection, textQuery, urlQuery) => {
+    switch(selection){
+        case 0:
+            return({mode:'text', data:{query:textQuery}});
+        case 1 :
+                return({mode:'url', data:{query: urlQuery}});
+        default:
+            return({});
+    }
+}
+
+
 /**
 * @author
 * @function MultiModalSearch
 todo : the box height of '48 px' that was hardcoded needs to have a better approach
+selection id mappings : 0-> text 1-> url 2-> file
 **/
 
-const MultiModalInput = () => {
+const MultiModalInput = ({onSubmit}) => {
     const [fetching, setFetching] = useState(false)
     const [expanded, setExpanded] = React.useState(false)
     const [selection, setSelection] = React.useState(0)
+    
+    const [textSearchQuery, setTextSearchQuery] = React.useState('');
+    const [urlSearchQuery, setUrlSearchQuery] = React.useState('');
 
     const fileUploader = useRef(null);
 
@@ -106,14 +122,14 @@ return(
                     selection == 0 ? 
                     <TextInput
                         placeholder="Enter text"
-                        // value={value}
-                        // onChange={event => setValue(event.target.value)}
+                        value={textSearchQuery}
+                        onChange={event => setTextSearchQuery(event.target.value)}
                     /> : 
                     selection == 1 ?
                     <TextInput
                         placeholder="http://"
-                        // value={value}
-                        // onChange={event => setValue(event.target.value)}
+                        value={urlSearchQuery}
+                        onChange={event => setUrlSearchQuery(event.target.value)}
                     /> :
                     selection == 2 ? 
                     <Box 
@@ -133,7 +149,13 @@ return(
                     null
                 }
             </Box>
+
+            <Box align={'center'} 
+                margin={'medium'}>
+                    <Button plain icon={<Search/>} onClick={()=>onSubmit(createPayload(selection, textSearchQuery, urlSearchQuery))} />
+            </Box>
         </Box>
+        
         {expanded && (
             <SearchDropdownOptions>
                 <Box elevation={'small'}>

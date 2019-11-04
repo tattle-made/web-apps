@@ -1,15 +1,14 @@
 import React from "react"
-import {Layout, Section} from '@tattle-made/ui'
-const {LayoutPortal} = Layout;
-const {SectionSearchWhatsappPosts} = Section;
+import {Layout} from '@tattle-made/ui'
+import SectionSearch from '../sections/SectionSearchWhatsappPosts'
+
+const {SimpleLayout} = Layout;
 
 const SecondPage = () => {
   return(
-    <LayoutPortal
-      content={
-        <SectionSearchWhatsappPosts/>
-      }
-    />
+    <SimpleLayout>
+        <SectionSearch/>
+    </SimpleLayout>
   )
 }
 

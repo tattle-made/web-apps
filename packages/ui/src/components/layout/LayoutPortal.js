@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import {Grommet, Box, Grid, Heading, Text, ResponsiveContext} from 'grommet'
+import TattleTheme from '../../theme'
 import BreadCrumb from '../atoms/BreadCrumb'
 import PropTypes from 'prop-types';
-import TattleTheme from '../../theme'
 import SectionNavigation from '../atoms/SectionNavigation';
 
 /**
