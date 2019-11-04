@@ -15,9 +15,10 @@ import SimpleSearchResult from '../components/TempImageCard'
 
 import {Container} from 'react-bootstrap'
 
-import {Layout, Section} from '@tattle-made/ui'
-const {LayoutPortal} = Layout;
-const {SectionSearchWhatsappPosts} = Section;
+import {Layout} from '@tattle-made/ui'
+import SectionSearch from '../sections/SectionSearchWhatsappPosts'
+
+const {SimpleLayout} = Layout;
 
 class SearchInput extends Component {
   constructor(props) {
@@ -53,9 +54,14 @@ class SearchInput extends Component {
   render() {
     console.log('==test==', typeof(this.props.searchResult))
     return (
+      // <Container>
+      //   <BreadCrumb path={this.props.match.path} />
+      //   <SectionSearchWhatsappPosts/>
+      // </Container>
       <Container>
-        <BreadCrumb path={this.props.match.path} />
-        <SectionSearchWhatsappPosts/>
+        <SimpleLayout>
+          <SectionSearch/>
+        </SimpleLayout>
       </Container>
     );
   }
