@@ -7,6 +7,7 @@ import { useDispatch, useSelector} from 'react-redux';
 import {post} from '../../service/shell-server'
 
 import MoleculeSearchFilterOptions from '../molecules/MoleculeSearchFilterOptions';
+import MoleculeSemanticallySimilarPost from '../molecules/MoleculeSemanticallySimilarPost';
 
 import {Atoms, Molecules} from '@tattle-made/ui'
 import MoleculeDuplicatePost from '../molecules/MoleculeDuplicatePost';
@@ -42,6 +43,47 @@ const alsoSeenOnData = {
 	]
 }
 
+const SemanticallySimilarData = {
+   status: 'loading',
+   data :[
+      {
+          "id": 258,
+          "type": "image",
+          "data": "",
+          "filename": "944d7240-e626-11e9-8887-479c55adcf91",
+          "indexed_for_search": false,
+          "createdAt": "2019-10-03T21:41:50.000Z",
+          "updatedAt": "2019-10-03T21:41:50.000Z",
+          "userId": 159,
+          "user": {
+              "username": "service-text-extract",
+              "mediaSource": {
+                  "serviceName": "aws",
+                  "dirName": "tattle-services"
+              }
+          },
+          "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/944d7240-e626-11e9-8887-479c55adcf91"
+      },
+      {
+          "id": 260,
+          "type": "image",
+          "data": "",
+          "filename": "e8d4bd70-e64c-11e9-9181-6390a1c38207",
+          "indexed_for_search": false,
+          "createdAt": "2019-10-04T02:16:12.000Z",
+          "updatedAt": "2019-10-04T02:16:12.000Z",
+          "userId": 159,
+          "user": {
+              "username": "service-text-extract",
+              "mediaSource": {
+                  "serviceName": "aws",
+                  "dirName": "tattle-services"
+              }
+          },
+          "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/e8d4bd70-e64c-11e9-9181-6390a1c38207"
+      }
+  ]
+};
 
 /**
 * @author denny
@@ -52,12 +94,13 @@ const SectionSearchWhatsappPosts = () => {
       duplicate: true,
       approximate: true,
       similar: true,
-      stories: false
+      stories: true
    }
 
    const [fetching, setFetching] = useState(false)
    const [options, setOptions] = useState(defaultOptions)
    const [duplicateResult, setDuplicateResult] = useState({status: 'default'})
+   const [semanticallySimilarResult, setSemanticallySimilarResult] = useState({status : 'default'})
 
    const test = useSelector( state => state.loginUser.username);
 
@@ -72,6 +115,7 @@ const SectionSearchWhatsappPosts = () => {
    const onSubmit = ((payload) => {
       console.log('searched : ', payload);
       if(payload.mode == 'url'){
+         setDuplicateResult({status:'loading'})
          post(
             '/search/duplicate',
             {
@@ -86,6 +130,22 @@ const SectionSearchWhatsappPosts = () => {
             return data;
          })
          .then((data) => setDuplicateResult({...data, status:'data'}))
+         .catch((err) => console.log(err));
+      } else if(payload.mode == 'text'){
+         setDuplicateResult({status:'loading'})
+         post(
+            '/search/tag',
+            {
+               tag: payload.data.query,
+            },
+            'be2742a0-e610-11e9-98c0-cfafcf9716d4'
+         )
+         .then((data) => {
+            console.log(' API RESPONSE FOR TAG ===='); 
+            console.log(data);
+            return data;
+         })
+         .then((data) => setSemanticallySimilarResult({...data, status:'data'}))
          .catch((err) => console.log(err));
       }
    })
@@ -121,11 +181,12 @@ const SectionSearchWhatsappPosts = () => {
             label={'Approximate Matches'}
          />
 
-         {/* {options.similar &&
-            <MultipleWithClickMoreButton
-               label={'Semantically Similar Matches'}
-            />
-         } */}    
+         <MoleculeSemanticallySimilarPost
+            visible={true}
+            label={'Semantically Similar Matches'}
+            data={SemanticallySimilarData}
+         />
+
    </Box>
 )
 }

@@ -6,11 +6,13 @@ import MoleculeSearchFilterOptions from '../molecules/MoleculeSearchFilterOption
 
 import {Atoms, Molecules} from '@tattle-made/ui'
 import MoleculeDuplicatePost from '../molecules/MoleculeDuplicatePost';
+import MoleculeSemanticallySimilarPost from '../molecules/MoleculeSemanticallySimilarPost';
 
 const {ExternalLink, MediaBlock, MultiModalInput} = Atoms;
 const {MultipleLinks} = ExternalLink;
 const {MultipleWithClickMoreButton, SinglePost} = MediaBlock;
 const {MoleculeSearchInputForm} = Molecules;
+
 
 
 const alsoSeenOnData = {
@@ -34,6 +36,49 @@ const alsoSeenOnData = {
 		}
 	]
 }
+
+
+const SemanticallySimilarData = {
+   status: 'loading',
+   data :[
+      {
+          "id": 258,
+          "type": "image",
+          "data": "",
+          "filename": "944d7240-e626-11e9-8887-479c55adcf91",
+          "indexed_for_search": false,
+          "createdAt": "2019-10-03T21:41:50.000Z",
+          "updatedAt": "2019-10-03T21:41:50.000Z",
+          "userId": 159,
+          "user": {
+              "username": "service-text-extract",
+              "mediaSource": {
+                  "serviceName": "aws",
+                  "dirName": "tattle-services"
+              }
+          },
+          "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/944d7240-e626-11e9-8887-479c55adcf91"
+      },
+      {
+          "id": 260,
+          "type": "image",
+          "data": "",
+          "filename": "e8d4bd70-e64c-11e9-9181-6390a1c38207",
+          "indexed_for_search": false,
+          "createdAt": "2019-10-04T02:16:12.000Z",
+          "updatedAt": "2019-10-04T02:16:12.000Z",
+          "userId": 159,
+          "user": {
+              "username": "service-text-extract",
+              "mediaSource": {
+                  "serviceName": "aws",
+                  "dirName": "tattle-services"
+              }
+          },
+          "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/e8d4bd70-e64c-11e9-9181-6390a1c38207"
+      }
+  ]
+};
 
 
 /**
@@ -84,6 +129,13 @@ const SectionSearchWhatsappPosts = () => {
          <MultipleWithClickMoreButton
             visible={options.approximate}
             label={'Approximate Matches'}
+         />
+
+
+         <MoleculeSemanticallySimilarPost
+            visible={true}
+            label={'Semantically Similar Matches'}
+            data={SemanticallySimilarData}
          />
 
          {/* {options.similar &&

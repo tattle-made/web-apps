@@ -8,15 +8,15 @@ const {SinglePost} = MediaBlock;
 
 /**
 * @author denny
-* @function MoleculeDuplicatePost
+* @function MoleculeSemanticallySimilarPost
 status : default, loading, error
 message : text depending on status
 **/
 
-const MoleculeDuplicatePost = ({visible, title, data}) => {
+const MoleculeSemanticallySimilarPost = ({visible, label, data}) => {
     return(
         <Box>
-            <Heading level={4}>{title}</Heading>
+            <Heading level={4}>{label}</Heading>
             {
                 data.status === 'default' ?
                 <Box>  </Box>
@@ -25,10 +25,14 @@ const MoleculeDuplicatePost = ({visible, title, data}) => {
                 <Spinner animation="border" />
                 :
                 data.status==='data' && visible ?
-                <SinglePost
-                        type={data.type}
-                        src={data.mediaUrl}
-                />
+                <Box direction={'row'} gap={'medium'}>
+                    {data.data.map((data) => (
+                        <SinglePost
+                            type={data.type}
+                            src={data.mediaUrl}
+                        />
+                    ))}
+                </Box>
                 :
                 <Box></Box>
             }
@@ -36,4 +40,4 @@ const MoleculeDuplicatePost = ({visible, title, data}) => {
     )
 }
 
-export default MoleculeDuplicatePost
+export default MoleculeSemanticallySimilarPost

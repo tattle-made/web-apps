@@ -68,10 +68,10 @@ const onMouseLeave = ()=> setHover(false);
                     }
                 </Box>    
 
-                <Box pad={'xsmall'}>
+                {/*<Box pad={'xsmall'}>
                     <TagLabel size={'small'} weight={600} level={6}> Tags </TagLabel>
                     <Text> libero, felis, posuere, non, consectetur </Text>
-                </Box>
+                </Box>*/}
             </Box>
         
             { hover &&
