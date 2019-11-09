@@ -5,7 +5,7 @@ const TattleTheme = {
         },
         colors:{
             "brand": '#E65447',
-            "brand-1": 'FFE5E2'
+            "brand-1": '#FFDFDD'
         },
     },
     heading: {

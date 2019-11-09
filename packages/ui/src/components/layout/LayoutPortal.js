@@ -1,67 +1,73 @@
-import React, { useState, useEffect } from 'react'
-import {Grommet, Box, Grid, Heading, Text, ResponsiveContext} from 'grommet'
+import React from 'react'
+import {Grommet, ResponsiveContext, Box, Stack, Grid, Heading, Text} from 'grommet'
 import TattleTheme from '../../theme'
-import BreadCrumb from '../atoms/BreadCrumb'
-import PropTypes from 'prop-types';
-import SectionNavigation from '../atoms/SectionNavigation';
 
-/**
-* @author
-* @function LayoutPortal
-    
-**/
-
-const columnsFactory = {
-  'medium' : ['small', 'flex'],
-  'small' : ['xxsmall', 'flex']
+const PortalLayoutDesktop = ({primaryNavigationContent, mainSectionContent, children}) => {
+  return(
+      <Grid
+          rows={['flex']}
+          columns={['auto', 'flex']}
+          areas={[
+              {name: 'PrimaryNavigationSection', start:[0,0], end:[0,0]},
+              {name: 'MainSection', start:[1,0], end:[1,0]}
+          ]}
+          gap={'small'}
+          fill
+      >
+      <Box fill background={'brand-1'} gridArea={'PrimaryNavigationSection'}>
+          {primaryNavigationContent}
+      </Box>
+      <Box fill background={'light-2'} gridArea={'MainSection'}>
+          {mainSectionContent}
+      </Box>
+      </Grid>
+  )   
 }
 
-
-const LayoutPortal = ({content}) => {
-  const [fetching, setFetching] = useState(false)
-
-useEffect(()=> {
-  setFetching(true)
-})
-
- return (
-  <Grommet theme={TattleTheme}>
-    <ResponsiveContext.Consumer>
-      {
-        (size)=>(
-          <Grid
-            rows={['flex']}
-            columns={columnsFactory[size]}
-            gap="small"
-            areas={[
-                { name: 'nav', start: [0, 0], end: [0, 0] },
-                { name: 'main', start: [1, 0], end: [1, 0] },
-            ]}
-          >
-            <Box gridArea="nav" background="brand" > 
-              {/* Posts <br/> User <br/> Tasks <br/> Search <Text>{size}</Text>  */}
-            </Box>
-            <Box gridArea="main" > 
-              <BreadCrumb/>
-              <SectionNavigation/>
-              {content} 
-            </Box>
-          </Grid>
-
-        )
-      }
-    </ResponsiveContext.Consumer>
-  </Grommet>
- )
+const PortalLayoutMobile = ({primaryNavigationContent, mainSectionContent, children}) => {
+  return(
+      <Grid
+          rows={['flex']}
+          columns={['xsmall', 'flex']}
+          areas={[
+              {name: 'PrimaryNavigationSection', start:[0,0], end:[0,0]},
+              {name: 'MainSection', start:[1,0], end:[1,0]}
+          ]}
+          gap={'small'}
+          fill
+      >
+      <Box fill background={'brand-1'} gridArea={'PrimaryNavigationSection'}>
+          {primaryNavigationContent}
+      </Box>
+      <Box fill background={'light-2'} gridArea={'MainSection'}>
+          {mainSectionContent}
+      </Box>
+      </Grid>
+  )   
 }
 
-LayoutPortal.propTypes = {
-    header: PropTypes.func,
-    sideNav: PropTypes.func,
-    content: PropTypes.object,
-    statusUpdate: PropTypes.func,
-    overlay: PropTypes.func
+const LayoutPortal = ({primaryNavigationContent, mainSectionContent}) => {
+    return(
+        <ResponsiveContext.Consumer>
+            {size => (
+                size == 'small' ?
+                <PortalLayoutMobile
+                    primaryNavigationContent={primaryNavigationContent}
+                    mainSectionContent={mainSectionContent}
+                >  
+                </PortalLayoutMobile>
+                :
+                size == 'medium' ?
+                <PortalLayoutDesktop
+                    primaryNavigationContent={primaryNavigationContent}
+                    mainSectionContent={mainSectionContent}
+                >  
+                </PortalLayoutDesktop>
+                :
+                <Heading> Layout for this size is not defined </Heading>
+            )}
+        </ResponsiveContext.Consumer>
+    )   
 }
-
 
 export default LayoutPortal
