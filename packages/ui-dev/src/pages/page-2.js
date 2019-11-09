@@ -1,11 +1,12 @@
 import React from "react"
-import {Grommet, Box, Heading, Text} from 'grommet'
-import { Layout } from '@tattle-made/ui';
+import {Grommet, Box, Heading, Text, Layer} from 'grommet'
+import { Layout, Atoms } from '@tattle-made/ui';
 
 const {AppShell, LayoutPortal} = Layout;
+const {Status} = Atoms;
 
 const SecondPage = () => (
-  <AppShell >
+  <AppShell>
     <LayoutPortal
       primaryNavigationContent={
         <Heading> Navigation </Heading>
@@ -15,6 +16,12 @@ const SecondPage = () => (
       }
     >
     </LayoutPortal>
+    
+    <Status
+      type={'ok'}
+      visibility={false}
+      message={'Error fetching resources'}
+    />
   </AppShell>
 )
 
