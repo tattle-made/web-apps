@@ -3,5 +3,5 @@
     "packages/*"
   ],
   "version": "0.0.0",
-  "hoist": ["react", "react-dom", "react-helmet", "prop-types"]
+  "hoist": ["react", "react-dom", "react-helmet", "prop-types", "grommet", "react-feather", "styled-components"]
 }

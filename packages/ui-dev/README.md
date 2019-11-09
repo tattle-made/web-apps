@@ -95,12 +95,3 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
-
-
-# Dev Notes
-while developing UI in this package, 
-1. open ui/package.json
-2. modify main:build/index.js to src/index.js
-
-the es linter for gatsby is throwing up a lot of warnings and erros. the es-linter is probably right and
-our code isnt following modern JS syntactical practices. so fix it at some point.
