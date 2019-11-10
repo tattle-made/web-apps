@@ -36,7 +36,7 @@ const onMouseLeave = ()=> setHover(false);
         <Stack anchor={'center'}>
             <Box
             width={boxDimension[size]}
-            border={{color:'border'}}
+            border={{color: type=='error' ? 'status-error' : 'border'}}
             onMouseEnter = {onMouseEnter}
             onMouseLeave = {onMouseLeave}
             round={'xsmall'}
