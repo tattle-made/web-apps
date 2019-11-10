@@ -15,6 +15,18 @@ export const singlePost = () => (
     />
 )
 
+const sectionDataDefault={
+    status: 'default',
+}
+
+export const moleculeSinglePostDefault  = () => (
+    <MoleculeSinglePost
+        visible={true}
+        title={'Molecule Single Post'}
+        data={sectionDataDefault}
+    />
+)
+
 const sectionDataLoading={
     status: 'loading',
 }

@@ -6,6 +6,17 @@ export default {
   title: 'External Urls',
 };
 
+const moleculeUrlDefaultData = {
+    status: 'default',
+}
+
+export const moleculeUrlDefaultBlock = () => (
+    <MultipleLinks
+        title={'Molecule URLs'}
+        data={ moleculeUrlDefaultData }
+    />
+)
+
 const moleculeUrlLoadingData = {
     status: 'loading',
 }

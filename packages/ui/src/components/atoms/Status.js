@@ -42,8 +42,10 @@ const spinning = (
 
 const Status = ({type, message}) => {
     useEffect(()=> {
-        Promise.delay(1000)
-        .then(() => setVisibility(false))
+        if(type!='loading'){
+            Promise.delay(1000)
+            .then(() => setVisibility(false))
+        }
     }, [] );
 
     const [visibility, setVisibility] = useState(true);
