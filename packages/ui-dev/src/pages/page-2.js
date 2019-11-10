@@ -5,11 +5,25 @@ import { Layout, Atoms } from '@tattle-made/ui';
 const {AppShell, LayoutPortal} = Layout;
 const {Status} = Atoms;
 
+const MenuItem = ({label}) => (
+  <Link to={'/user'}>
+      <Box direction={'row'} gap={'small'}>
+        {/* <FontAwesomeIcon icon={props.icon} color='#000637' /> */}
+        <Heading level={2}> {label} </Heading>
+      </Box>
+    </Link>
+);
+
 const SecondPage = () => (
   <AppShell>
     <LayoutPortal
       primaryNavigationContent={
-        <Heading> Navigation </Heading>
+        <>
+          <Heading> Navigation </Heading>
+          <MenuItem label={'User'}/>
+          <Heading level={2}> Post </Heading>
+          <Heading level={2}> Search </Heading>
+        </>
       }
       mainSectionContent={
         <Heading> Main </Heading>
@@ -19,9 +33,10 @@ const SecondPage = () => (
     
     <Status
       type={'ok'}
-      visibility={false}
+      visibility={true}
       message={'Error fetching resources'}
     />
+
   </AppShell>
 )
 

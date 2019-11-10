@@ -8,7 +8,8 @@ import {Layer, Box, Text} from 'grommet'
 
 const color = {
     'error': 'status-error',
-    'ok' : 'status-ok'
+    'ok' : 'status-ok',
+    'loading': 'status-warning'
 }
 
 const Status = ({visibility, type, message}) => {
@@ -42,6 +43,6 @@ Status.defaultProps = {
 }
 
 /*
-type=error, message
+type=loading ,ok, error
 visibilty
 */
