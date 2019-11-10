@@ -2,17 +2,21 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { SinglePost } from '../src/components/atoms/MediaBlock';
 import MoleculeSinglePost from '../src/components/molecules/MoleculeSinglePost';
+import {Grommet} from 'grommet'
+import TattleTheme from '../src/theme';
 
 export default {
     title: 'Media Block',
 };
 
 
-export const singlePost = () => (
-    <SinglePost
-        type='image'
-        src='https://tattle-media.s3.amazonaws.com/post_image_1.jpeg'
-    />
+export const componentSinglePost = () => (
+    <Grommet theme={TattleTheme}>
+        <SinglePost
+            type='image'
+            src='https://tattle-media.s3.amazonaws.com/post_image_1.jpeg'
+        />
+    </Grommet>
 )
 
 const sectionDataDefault={
@@ -20,11 +24,13 @@ const sectionDataDefault={
 }
 
 export const moleculeSinglePostDefault  = () => (
-    <MoleculeSinglePost
-        visible={true}
-        title={'Molecule Single Post'}
-        data={sectionDataDefault}
-    />
+    <Grommet theme={TattleTheme}>
+        <MoleculeSinglePost
+            visible={true}
+            title={'Molecule Single Post'}
+            data={sectionDataDefault}
+        />
+    </Grommet>
 )
 
 const sectionDataLoading={
@@ -32,11 +38,13 @@ const sectionDataLoading={
 }
 
 export const moleculeSinglePostLoading  = () => (
-    <MoleculeSinglePost
-        visible={true}
-        title={'Molecule Single Post'}
-        data={sectionDataLoading}
-    />
+    <Grommet theme={TattleTheme}>
+        <MoleculeSinglePost
+            visible={true}
+            title={'Molecule Single Post'}
+            data={sectionDataLoading}
+        />
+    </Grommet>
 )
 
 const sectionDataData = {
@@ -46,11 +54,13 @@ const sectionDataData = {
 }
 
 export const moleculeSinglePostData  = () => (
-    <MoleculeSinglePost
-        visible={true}
-        title={'Molecule Single Post'}
-        data={sectionDataData}
-    />
+    <Grommet theme={TattleTheme}>
+        <MoleculeSinglePost
+            visible={true}
+            title={'Molecule Single Post'}
+            data={sectionDataData}
+        />
+    </Grommet>
 )
 
 const sectionDataError = {
@@ -59,9 +69,11 @@ const sectionDataError = {
 }
 
 export const moleculeSinglePostError  = () => (
-    <MoleculeSinglePost
-        visible={true}
-        title={'Molecule Single Post'}
-        data={sectionDataError}
-    />
+    <Grommet theme={TattleTheme}>
+        <MoleculeSinglePost
+            visible={true}
+            title={'Molecule Single Post'}
+            data={sectionDataError}
+        />
+    </Grommet>
 )

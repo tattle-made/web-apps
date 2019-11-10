@@ -1,6 +1,8 @@
 import React from 'react';
 import { actions } from '@storybook/addon-actions';
 import { MultipleLinks } from '../src/components/atoms/ExternalLink';
+import { Grommet } from 'grommet';
+import TattleTheme from '../src/theme';
 
 export default {
   title: 'External Urls',
@@ -11,10 +13,12 @@ const moleculeUrlDefaultData = {
 }
 
 export const moleculeUrlDefaultBlock = () => (
-    <MultipleLinks
-        title={'Molecule URLs'}
-        data={ moleculeUrlDefaultData }
-    />
+    <Grommet theme={TattleTheme}>
+        <MultipleLinks
+            title={'Molecule URLs'}
+            data={ moleculeUrlDefaultData }
+        />
+    </Grommet>
 )
 
 const moleculeUrlLoadingData = {
@@ -22,10 +26,12 @@ const moleculeUrlLoadingData = {
 }
 
 export const moleculeUrlLoadingBlock = () => (
-    <MultipleLinks
-        title={'Molecule URLs'}
-        data={ moleculeUrlLoadingData }
-    />
+    <Grommet theme={TattleTheme}>
+        <MultipleLinks
+            title={'Molecule URLs'}
+            data={ moleculeUrlLoadingData }
+        />
+    </Grommet>
 )
 
 const moleculeUrlErrorData = {
@@ -34,10 +40,12 @@ const moleculeUrlErrorData = {
 }
 
 export const moleculeUrlErrorBlock = () => (
-    <MultipleLinks
-        title={'Molecule URLs'}
-        data={ moleculeUrlErrorData }
-    />
+    <Grommet theme={TattleTheme}>
+        <MultipleLinks
+            title={'Molecule URLs'}
+            data={ moleculeUrlErrorData }
+        />
+    </Grommet>
 )
 
 const moleculeUrlData = {
@@ -62,8 +70,10 @@ const moleculeUrlData = {
 }
 
 export const moleculeUrlBlock = () => (
-    <MultipleLinks
-        title={'Molecule URLs'}
-        data={ moleculeUrlData }
-    />
+    <Grommet theme={TattleTheme}>
+        <MultipleLinks
+            title={'Molecule URLs'}
+            data={ moleculeUrlData }
+        />
+    </Grommet>
 )

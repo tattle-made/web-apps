@@ -37,7 +37,6 @@ message : text depending on status
 
 const MoleculeSinglePost = ({visible, title, data}) => {
     return(
-        <Grommet theme={TattleTheme}>
             <Box>
                 <Box 
                     pad={'small'} 
@@ -72,7 +71,6 @@ const MoleculeSinglePost = ({visible, title, data}) => {
                     <Box></Box>
                 }
             </Box>
-        </Grommet>
     )
 }
 
