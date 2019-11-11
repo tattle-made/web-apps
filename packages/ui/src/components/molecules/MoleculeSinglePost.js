@@ -39,7 +39,6 @@ const MoleculeSinglePost = ({visible, title, data}) => {
     return(
             <Box>
                 <Box 
-                    pad={'small'} 
                     direction={'row'}
                     align={'center'}
                     gap={'medium'}

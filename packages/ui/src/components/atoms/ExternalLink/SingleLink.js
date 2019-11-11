@@ -15,7 +15,7 @@ useEffect(()=> {
 })
 
  return (
-    <Box>
+    <Box margin={{bottom:'small'}}>
         {/* {fetching && <h3>something</h3>} */}
         <Box direction={'row'} align={'center'} gap={'small'}>
           <Text size={'medium'}> {title}</Text>
@@ -24,7 +24,7 @@ useEffect(()=> {
           </a>
         </Box>
         
-        <Text size={'small'} color={'light-6'}> {timestamp} </Text>
+        <Text size={'small'}> {timestamp} </Text>
     </Box>
  )
 }
