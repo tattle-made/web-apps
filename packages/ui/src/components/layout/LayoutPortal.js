@@ -22,7 +22,7 @@ const PortalGrid = ({size, primaryNavigationContent, mainSectionContent}) => {
         <Box fill background={'brand-1'} gridArea={'PrimaryNavigationSection'}>
             {primaryNavigationContent}
         </Box>
-        <Box fill background={'light-2'} gridArea={'MainSection'}>
+        <Box fill gridArea={'MainSection'}>
             {mainSectionContent}
         </Box>
         </Grid>
