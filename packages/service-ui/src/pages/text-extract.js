@@ -31,7 +31,7 @@ const TextExtractPage = () => (
                 }}>
                   <h1>Text-Extractor</h1>
                   <h4> Extract text from memes </h4>
-                  <p> We built this tool to help extract text out of memes automatically.</p>
+                  <p> This tool automates extraction of text from memes</p>
                   <CTA/>
                 </div>
                 </div>

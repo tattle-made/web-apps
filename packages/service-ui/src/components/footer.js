@@ -7,9 +7,9 @@ const Footer = props =>
 <div sx={{
     padding: 2
 }}>
-    <FooterLink url='#' label='BLOG'/> |
-    <FooterLink url='#' label='MAILING LIST'/> |
-    <FooterLink url='#' label='CONTACT'/>
+    <FooterLink url='http://blog.tattle.co.in/' label='BLOG'/> |
+    <FooterLink url='https://mailchi.mp/b0a851c89c0d/tattle_update' label='MAILING LIST'/> |
+    <FooterLink url='mailto:manage@tattle.co.in' label='CONTACT'/>
 </div>
 
 export default Footer;
