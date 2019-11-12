@@ -11,7 +11,7 @@ import Feedback from './feedback';
 import Logo from '../components/logo'
 import Result from '../components/result'
 
-const SHELL_EXPRESS_SERVER_URL = 'http://localhost:8080'
+const SHELL_EXPRESS_SERVER_URL = 'http://13.233.84.78:3003'
 
 
 const MyDropzone = () => {
