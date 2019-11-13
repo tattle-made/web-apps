@@ -81,12 +81,14 @@ const SearchDropdownOptions = styled.div`
     position: absolute;
 `
 
-const createPayload = (selection, textQuery, urlQuery) => {
+const createPayload = (selection, textQuery, urlQuery, fileQuery) => {
     switch(selection){
         case 0:
             return({mode:'text', data:{query:textQuery}});
         case 1 :
                 return({mode:'url', data:{query: urlQuery}});
+        case 2 :
+                return({mode:'file', data: {query: fileQuery.query}})
         default:
             return({});
     }
@@ -100,7 +102,7 @@ todo : the box height of '48 px' that was hardcoded needs to have a better appro
 selection id mappings : 0-> text 1-> url 2-> file
 **/
 
-const MultiModalInput = ({onSubmit}) => {
+const MultiModalInput = ({onSubmit, s3AuthConf}) => {
     const [fetching, setFetching] = useState(false)
     const [expanded, setExpanded] = React.useState(false)
     const [selection, setSelection] = React.useState(2)
@@ -108,6 +110,8 @@ const MultiModalInput = ({onSubmit}) => {
     const [textSearchQuery, setTextSearchQuery] = React.useState('');
     const [urlSearchQuery, setUrlSearchQuery] = React.useState('');
     const [fileSearchQuery, setFileSearchQuery] = React.useState({status:'default'})
+
+    const [s3AuthConfig, setS3AuthConf] = React.useState(s3AuthConf);
 
     const fileUploader = useRef(null);
 
@@ -120,17 +124,18 @@ const onFileChangeHandler = (event) => {
     const file = event.target.files[0];
     const fileName = file.name;
     const fileType = file.type;
+    const s3FileUrl = `https://tattle-services-search.s3.ap-south-1.amazonaws.com/${fileName}`
     
     setFileSearchQuery({status:'loading'})
 
     // console.log({fileName, fileType});
 
-    axios.post('http://localhost:3003/api/s3-auth', {
+    axios.post(s3AuthConfig.url, {
         type: fileType,
         filename: fileName
     }, {
         headers: {
-            token : '0f4fe090-0643-11ea-bc52-1387edf2f78a'
+            token : s3AuthConfig.token
         }
     }
     )
@@ -138,7 +143,6 @@ const onFileChangeHandler = (event) => {
         return response.data.signedUrl;
     })
     .then((signedUrl) => {
-        console.log({signedUrl});
         var options = {
             headers: {
               'Content-Type': file.type
@@ -147,8 +151,7 @@ const onFileChangeHandler = (event) => {
           return axios.put(signedUrl, file, options)
     })
     .then((uploadResponse) => {{
-        console.log(uploadResponse);
-        setFileSearchQuery({status:'data'})
+        setFileSearchQuery({status:'data', query: s3FileUrl})
     }})
     .catch((err) => {
         setFileSearchQuery({status:'error'})
@@ -243,7 +246,7 @@ return(
 
             <Box align={'center'} 
                 margin={'medium'}>
-                    <Button plain icon={<Search/>} onClick={()=>onSubmit(createPayload(selection, textSearchQuery, urlSearchQuery))} />
+                    <Button plain icon={<Search/>} onClick={()=>onSubmit(createPayload(selection, textSearchQuery, urlSearchQuery, fileSearchQuery))} />
             </Box>
         </Box>
         
