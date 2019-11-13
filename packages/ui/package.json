@@ -17,6 +17,7 @@
     "react-dom": "^16.11.0"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "bluebird": "^3.7.1",
     "grommet": "^2.8.0",
     "grommet-icons": "^4.3.0",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-console": "^1.2.1",
     "@storybook/addon-links": "^5.2.6",
     "@storybook/addon-storysource": "^5.2.6",
     "@storybook/addons": "^5.2.6",

@@ -3,11 +3,37 @@ import styled from 'styled-components'
 import { ChevronDown, Search } from "react-feather"
 import * as Icon from 'react-feather'
 import {Box, Text, TextInput, Button} from 'grommet'
+import axios from 'axios';
 
 const SearchTypeDropdown = styled.div`
     background: #ededed;
     cursor: pointer;
 `
+
+const spinning = (
+    <svg
+        version="1.1"
+        viewBox="0 0 32 32"
+        width="22px"
+        height="22px"
+        fill="#333333"
+    >
+        <path
+        opacity=".25"
+        d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"
+        />
+        <path d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z">
+        <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 16 16"
+            to="360 16 16"
+            dur="0.8s"
+            repeatCount="indefinite"
+        />
+        </path>
+    </svg>
+);
 
 
 const InvisibleFileUploadButton = styled.input`
@@ -77,16 +103,58 @@ selection id mappings : 0-> text 1-> url 2-> file
 const MultiModalInput = ({onSubmit}) => {
     const [fetching, setFetching] = useState(false)
     const [expanded, setExpanded] = React.useState(false)
-    const [selection, setSelection] = React.useState(0)
+    const [selection, setSelection] = React.useState(2)
     
     const [textSearchQuery, setTextSearchQuery] = React.useState('');
     const [urlSearchQuery, setUrlSearchQuery] = React.useState('');
+    const [fileSearchQuery, setFileSearchQuery] = React.useState({status:'default'})
 
     const fileUploader = useRef(null);
 
     const toggleDropdown = (event, info) => {
         setExpanded(!expanded)
     }
+
+const onFileChangeHandler = (event) => {
+    console.log(event.target.files[0]);
+    const file = event.target.files[0];
+    const fileName = file.name;
+    const fileType = file.type;
+    
+    setFileSearchQuery({status:'loading'})
+
+    // console.log({fileName, fileType});
+
+    axios.post('http://localhost:3003/api/s3-auth', {
+        type: fileType,
+        filename: fileName
+    }, {
+        headers: {
+            token : '0f4fe090-0643-11ea-bc52-1387edf2f78a'
+        }
+    }
+    )
+    .then((response) => {
+        return response.data.signedUrl;
+    })
+    .then((signedUrl) => {
+        console.log({signedUrl});
+        var options = {
+            headers: {
+              'Content-Type': file.type
+            }
+          };
+          return axios.put(signedUrl, file, options)
+    })
+    .then((uploadResponse) => {{
+        console.log(uploadResponse);
+        setFileSearchQuery({status:'data'})
+    }})
+    .catch((err) => {
+        setFileSearchQuery({status:'error'})
+        console.log(err)
+    });
+}
 
 useEffect(()=> {
     setFetching(true)
@@ -137,13 +205,36 @@ return(
                         alignContent={'center'}
                         
                     >
-                        <Button
-                            label="Upload Files"
-                            onClick={() => {fileUploader.current.click()}}
-                            fill={'vertical'}
-                            color={'border'}
-                        /> 
-                        <InvisibleFileUploadButton type='file' ref={fileUploader} onChange={console.log('file added')}/>
+                        
+                            <Button
+                                onClick={() => {fileUploader.current.click()}}
+                                fill={'vertical'}
+                                color={'border'}
+                            >
+                                <Box direction={'row'}
+                                    align={'center'}
+                                    gap={'medium'}
+                                    pad={{horizontal: 'medium', vertical: 'xsmall'}}
+                                    round={'small'}
+                                    border={
+                                        {
+                                            "side": 'all',
+                                            "color" : 'border'   
+                                        }
+                                    }
+                                >
+                                    {
+                                        fileSearchQuery.status==='default'?<Text> Upload Files </Text> :
+                                        fileSearchQuery.status==='error'?<Text color={'status-error'}> Error uploading file </Text> :
+                                        fileSearchQuery.status==='data'?<Text color={'status-ok'}> Ready for search </Text> :
+                                        fileSearchQuery.status==='loading'?<Text color={'status-ok'}> Uploading </Text> :
+                                        <Text color={'status-ok'}> Unknown Error </Text>
+                                    }
+                                    { fileSearchQuery.status==='loading' && spinning}
+                                </Box>
+                            </Button> 
+                            
+                        <InvisibleFileUploadButton type='file' ref={fileUploader} onChange={onFileChangeHandler}/>
                     </Box>
                     : 
                     null
@@ -159,9 +250,9 @@ return(
         {expanded && (
             <SearchDropdownOptions>
                 <Box elevation={'small'}>
+                    <SearchTypeItem id={2} onSelect={itemSelected} icon='upload' label='file'/>
                     <SearchTypeItem id={0} onSelect={itemSelected} icon='type' label='text'/>
                     <SearchTypeItem id={1} onSelect={itemSelected} icon='link-2' label='url'/>
-                    <SearchTypeItem id={2} onSelect={itemSelected} icon='upload' label='file'/>
                 </Box>
             </SearchDropdownOptions>
         )}
