@@ -36,7 +36,6 @@ const onMouseLeave = ()=> setHover(false);
     {(size)=>(
         <Box
         width={boxDimension[size]}
-        height={{ min : boxDimension[size]}}
         border={{color: type=='error' ? 'status-error' : 'border'}}
         onMouseEnter = {onMouseEnter}
         onMouseLeave = {onMouseLeave}
@@ -44,7 +43,8 @@ const onMouseLeave = ()=> setHover(false);
         overflow={'hidden'}
         >
             <Box
-                fill
+                width={boxDimension[size]}
+                height={boxDimension[size]}
             >
                 {
                     type=='image'?
