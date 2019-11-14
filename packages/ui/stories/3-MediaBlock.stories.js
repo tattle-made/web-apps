@@ -50,7 +50,10 @@ export const moleculeSinglePostLoading  = () => (
 const sectionDataData = {
     status: 'data',
     type: 'image',
-    mediaUrl: 'https://tattle-media.s3.amazonaws.com/post_image_1.jpeg'
+    mediaUrl: 'https://tattle-media.s3.amazonaws.com/post_image_1.jpeg',
+    heading: 'Flower blooming',
+    body: 'lorem ipsum kyasd sdeca',
+    timestamp: '2019-11-13T07:49:45.000Z'
 }
 
 export const moleculeSinglePostData  = () => (

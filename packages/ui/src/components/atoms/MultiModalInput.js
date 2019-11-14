@@ -45,6 +45,7 @@ const dropDownOptions = {
     0 : {icon: 'type', label: 'text'},
     1 : {icon: 'link-2', label: 'url'},
     2 : {icon: 'upload', label: 'file'},
+    3 : {icon: 'tag', label: 'tags'}
 }
 
 
@@ -69,7 +70,8 @@ const SearchTypeItem = (props) => {
             {
                 props.icon=='type'?<Icon.Type size={24} /> :
                 props.icon=='link-2'?<Icon.Link2 size={24}/> :
-                props.icon=='upload'?<Icon.Upload size={24}/> : null
+                props.icon=='upload'?<Icon.Upload size={24}/> : 
+                props.icon=='tag'?<Icon.Tag size={24}/> : null
             }
             <Text > {props.label} </Text>
         </Box>
@@ -81,7 +83,7 @@ const SearchDropdownOptions = styled.div`
     position: absolute;
 `
 
-const createPayload = (selection, textQuery, urlQuery, fileQuery) => {
+const createPayload = (selection, textQuery, urlQuery, fileQuery, tagQuery) => {
     switch(selection){
         case 0:
             return({mode:'text', data:{query:textQuery}});
@@ -89,6 +91,8 @@ const createPayload = (selection, textQuery, urlQuery, fileQuery) => {
                 return({mode:'url', data:{query: urlQuery}});
         case 2 :
                 return({mode:'file', data: {query: fileQuery.query}})
+        case 3 :
+                return({mode:'tag', data: {query: tagQuery}})
         default:
             return({});
     }
@@ -110,6 +114,7 @@ const MultiModalInput = ({onSubmit, s3AuthConf}) => {
     const [textSearchQuery, setTextSearchQuery] = React.useState('');
     const [urlSearchQuery, setUrlSearchQuery] = React.useState('');
     const [fileSearchQuery, setFileSearchQuery] = React.useState({status:'default'})
+    const [tagQuery, setTagQuery] = React.useState()
 
     const [s3AuthConfig, setS3AuthConf] = React.useState(s3AuthConf);
 
@@ -239,6 +244,13 @@ return(
                             
                         <InvisibleFileUploadButton type='file' ref={fileUploader} onChange={onFileChangeHandler}/>
                     </Box>
+                    :
+                    selection == 3 ?
+                    <TextInput
+                        placeholder="Describe what you are looking for"
+                        value={tagQuery}
+                        onChange={event => setTagQuery(event.target.value)}
+                    /> 
                     : 
                     null
                 }
@@ -246,7 +258,7 @@ return(
 
             <Box align={'center'} 
                 margin={'medium'}>
-                    <Button plain icon={<Search/>} onClick={()=>onSubmit(createPayload(selection, textSearchQuery, urlSearchQuery, fileSearchQuery))} />
+                    <Button plain icon={<Search/>} onClick={()=>onSubmit(createPayload(selection, textSearchQuery, urlSearchQuery, fileSearchQuery, tagQuery))} />
             </Box>
         </Box>
         
@@ -256,6 +268,7 @@ return(
                     <SearchTypeItem id={2} onSelect={itemSelected} icon='upload' label='file'/>
                     <SearchTypeItem id={0} onSelect={itemSelected} icon='type' label='text'/>
                     <SearchTypeItem id={1} onSelect={itemSelected} icon='link-2' label='url'/>
+                    <SearchTypeItem id={3} onSelect={itemSelected} icon='tag' label='tags'/>
                 </Box>
             </SearchDropdownOptions>
         )}

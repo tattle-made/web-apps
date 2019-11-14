@@ -55,6 +55,8 @@ const MoleculeSinglePost = ({visible, title, data}) => {
                     <SinglePost
                             type={data.type}
                             src={data.mediaUrl}
+                            heading={data.heading}
+                            body={data.body}
                     />
                     :
                     data.status==='error' ?

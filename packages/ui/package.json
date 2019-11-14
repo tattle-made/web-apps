@@ -1,6 +1,6 @@
 {
   "name": "@tattle-made/ui",
-  "version": "1.2.0",
+  "version": "1.2.3",
   "description": "core repository of all UI components for Tattle",
   "main": "build/index.js",
   "scripts": {
@@ -21,6 +21,7 @@
     "bluebird": "^3.7.1",
     "grommet": "^2.8.0",
     "grommet-icons": "^4.3.0",
+    "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-feather": "^2.0.3",
