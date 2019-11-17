@@ -3,11 +3,13 @@ import MultiModalInput from './MultiModalInput';
 import * as ExternalLink from './ExternalLink';
 import * as MediaBlock from './MediaBlock';
 import Status from './Status';
+import AppLogo from './AppLogo';
 
 export {
     IconDropdown,
     MultiModalInput,
     ExternalLink,
     MediaBlock,
-    Status
+    Status,
+    AppLogo
 }

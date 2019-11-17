@@ -2,7 +2,9 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { Grommet } from 'grommet'
 import TattleTheme from '../src/theme';
-import AppLogo from '../src/components/atoms/AppLogo';
+
+import { Atoms } from '../src';
+const { AppLogo } = Atoms;
 
 
 export default {
