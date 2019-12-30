@@ -1,67 +1,47 @@
-import React, { useState, useEffect } from 'react'
-import {Grommet, Box, Grid, Heading, Text, ResponsiveContext} from 'grommet'
+import React from 'react'
+import {Grommet, ResponsiveContext, Box, Stack, Grid, Heading, Text} from 'grommet'
 import TattleTheme from '../../theme'
-import BreadCrumb from '../atoms/BreadCrumb'
-import PropTypes from 'prop-types';
-import SectionNavigation from '../atoms/SectionNavigation';
 
-/**
-* @author
-* @function LayoutPortal
-    
-**/
-
-const columnsFactory = {
-  'medium' : ['small', 'flex'],
-  'small' : ['xxsmall', 'flex']
+const columns = {
+    'medium' : ['auto', 'flex'],
+    'small' : ['xsmall', 'flex']
 }
 
-
-const LayoutPortal = ({content}) => {
-  const [fetching, setFetching] = useState(false)
-
-useEffect(()=> {
-  setFetching(true)
-})
-
- return (
-  <Grommet theme={TattleTheme}>
-    <ResponsiveContext.Consumer>
-      {
-        (size)=>(
-          <Grid
+const PortalGrid = ({size, primaryNavigationContent, mainSectionContent}) => {
+    return(
+        <Grid
             rows={['flex']}
-            columns={columnsFactory[size]}
-            gap="small"
+            columns={columns[size]}
             areas={[
-                { name: 'nav', start: [0, 0], end: [0, 0] },
-                { name: 'main', start: [1, 0], end: [1, 0] },
+                {name: 'PrimaryNavigationSection', start:[0,0], end:[0,0]},
+                {name: 'MainSection', start:[1,0], end:[1,0]}
             ]}
-          >
-            <Box gridArea="nav" background="brand" > 
-              {/* Posts <br/> User <br/> Tasks <br/> Search <Text>{size}</Text>  */}
-            </Box>
-            <Box gridArea="main" > 
-              <BreadCrumb/>
-              <SectionNavigation/>
-              {content} 
-            </Box>
-          </Grid>
-
-        )
-      }
-    </ResponsiveContext.Consumer>
-  </Grommet>
- )
+            gap={'small'}
+            fill
+        >
+        <Box fill background={'brand-1'} gridArea={'PrimaryNavigationSection'}>
+            {primaryNavigationContent}
+        </Box>
+        <Box fill gridArea={'MainSection'}>
+            {mainSectionContent}
+        </Box>
+        </Grid>
+    )   
 }
 
-LayoutPortal.propTypes = {
-    header: PropTypes.func,
-    sideNav: PropTypes.func,
-    content: PropTypes.object,
-    statusUpdate: PropTypes.func,
-    overlay: PropTypes.func
+const LayoutPortal = ({primaryNavigationContent, mainSectionContent}) => {
+    return(
+        <ResponsiveContext.Consumer>
+            {size => (
+                <PortalGrid
+                    size={size}
+                    primaryNavigationContent={primaryNavigationContent}
+                    mainSectionContent={mainSectionContent}
+                >  
+                </PortalGrid>
+            )}
+        </ResponsiveContext.Consumer>
+    )   
 }
-
 
 export default LayoutPortal

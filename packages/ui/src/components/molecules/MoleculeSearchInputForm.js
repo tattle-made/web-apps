@@ -8,7 +8,7 @@ import {Search} from 'react-feather'
 * @function MoleculeSearchInputForm
 **/
 
-const MoleculeSearchInputForm = () => {
+const MoleculeSearchInputForm = ({s3AuthConf}) => {
   const [fetching, setFetching] = useState(false)
 
 useEffect(()=> {
@@ -17,7 +17,7 @@ useEffect(()=> {
 
  return (
     <Box direction={'row'}>
-        <MultiModalInput/>
+        <MultiModalInput s3AuthConf={s3AuthConf}/>
     </Box> 
  )
 }

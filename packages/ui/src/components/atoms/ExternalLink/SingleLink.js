@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {Box, Text} from 'grommet'
+import { ExternalLink } from 'react-feather';
 
 /**
 * @author
@@ -14,10 +15,15 @@ useEffect(()=> {
 })
 
  return (
-    <Box>
+    <Box margin={{bottom:'small'}}>
         {/* {fetching && <h3>something</h3>} */}
-        <Text size={'medium'}> {title}</Text>
-        <Text size={'small'} truncate={true}> {url} </Text> 
+        <Box direction={'row'} align={'center'} gap={'small'}>
+          <Text size={'medium'}> {title}</Text>
+          <a href={url} target='_blank'>
+            <ExternalLink size={14}/>
+          </a>
+        </Box>
+        
         <Text size={'small'}> {timestamp} </Text>
     </Box>
  )
