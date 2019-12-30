@@ -28,13 +28,13 @@ const logo = (
 * @function Logo
 **/
 
-const AppLogo = () => {
+const AppLogo = ({name}) => {
     return (
         <ResponsiveContext.Consumer>
         {(size) => (
-            <Box direction={'row'} align={'center'} gap={'small'}>
+            <Box direction={'row'} align={'baseline'} gap={'small'}>
                 {logo}
-                { size!='small' && <Heading level={3}> Archive </Heading>}
+                { size!='small' && <Heading level={3}> {name} </Heading>}
             </Box>
         )}
         </ResponsiveContext.Consumer>
