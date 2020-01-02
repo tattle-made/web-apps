@@ -1,6 +1,6 @@
 import React from 'react'
 import {Grommet, Box, Heading, Text} from 'grommet';
-import SinglePost from '../atoms/MediaBlock/SinglePost';
+import SinglePost from './SinglePost';
 
 const spinning = (
     <svg

@@ -23,14 +23,14 @@ const AppShell = ({children}) => (
         <Box fill={'horizontal'} as={'header'}>
             <SimpleHeader/>
         </Box>
-        <Box fill={'vertical'} as={'main'}>
+        <Box as={'main'}>
             <ContentPageLayout>
                 {children}
             </ContentPageLayout>
         </Box>
-        <Box fill={'horizontal'} as={'footer'}>
-            <SmallFooter items={FooterItems}/>
-        </Box>
+    <Box fill={'horizontal'} as={'footer'}>
+        <SmallFooter items={FooterItems}/>
+    </Box>
     </Grommet>
 )
 
@@ -42,7 +42,7 @@ const ContentPageLayout = ({children}) => {
             <Box 
                 width={'960px'} 
                 pad={'small'}
-                margin={{top:'medium'}}
+                margin={{top:'large', bottom: 'large'}}
                 alignSelf={'center'}
             >
                 {children}
@@ -51,7 +51,7 @@ const ContentPageLayout = ({children}) => {
             <Box 
                 fill
                 pad={'small'}
-                margin={{top:'medium'}}
+                margin={{top:'large', bottom: 'large'}}
             >
                 {children}
             </Box>
