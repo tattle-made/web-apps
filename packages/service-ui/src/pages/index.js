@@ -8,6 +8,7 @@ import Logo from '../components/logo'
 import Footer from '../components/footer'
 import { basename } from 'path';
 import {Link} from 'gatsby'
+import {Box} from 'grommet'
 
 import ServiceUI from '../components/text-extract-ui'
 
@@ -38,11 +39,11 @@ const IndexPage = () => (
                 </div>
                 <Footer/>
             </div>
-            <div>
+            <Box direction={'column'} gap={'small'}>
               <h2> Links </h2>
-              <Link to="text-extract"> Text Extract </Link>
-              <Link to="fact-check-search"> Search </Link>
-            </div>
+                <Link to="text-extract"> Text Extract </Link>
+                <Link to="fact-check-search"> Fact Check Search </Link>
+            </Box>
         </LayoutSidebarContent>
       </Layout>
   </div>

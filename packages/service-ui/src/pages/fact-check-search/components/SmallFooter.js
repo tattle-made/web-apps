@@ -1,24 +1,9 @@
 import React from 'react'
 import { Box, Text } from 'grommet'
 import { Slack, GitHub, Twitter } from 'react-feather';
-import {Link} from 'gatsby'
 import styled from 'styled-components';
+import { Link, ExternalLink } from './TattleLinks';
 
-const ThemedLink = styled(Link)`
-    text-decoration: none;
-    color: inherit;
-    :visited {
-        color: inherit;
-    }
-`
-
-const ThemedExternalLink = styled.a`
-    text-decoration: none;
-    color: inherit;
-    :visited {
-        color: inherit;
-    }
-`
 
 /**
 * @author
@@ -29,11 +14,18 @@ const SmallFooter = ({items}) => (
         <Box direction={'row'} border wrap={'true'}>
             <Box direction={'row'} pad={'small'} gap={'small'} wrap={'true'}>
                 {
-                    items.primary.map((primaryItem) => (
-                        <ThemedLink to={`/fact-check-search/${primaryItem.target}`}>
-                            <Text> {primaryItem.label} </Text>
-                        </ThemedLink>
-                    ))
+                    items.primary.map((primaryItem) => {
+                        return (
+                            primaryItem.type==='internal' ? 
+                                <Link to={`/fact-check-search/${primaryItem.target}`}>
+                                    <Text> {primaryItem.label} </Text>
+                                </Link>
+                            :
+                                <ExternalLink href={primaryItem.target} target="_blank" >
+                                    <Text> {primaryItem.label} </Text>
+                                </ExternalLink>
+                        )
+                    })
                 }
             </Box>
 
@@ -42,18 +34,18 @@ const SmallFooter = ({items}) => (
             </Box>
 
             <Box direction={'row'} pad={'small'} gap={'small'} align={'center'}>
-                <ThemedExternalLink 
+                <ExternalLink 
                     href={'https://tarunima.typeform.com/to/BxZjfv'} target={'_blank'}>
                     <Slack size={16}/> 
-                </ThemedExternalLink>
-                <ThemedExternalLink 
+                </ExternalLink>
+                <ExternalLink 
                     href={'https://github.com/tattle-made'} target={'_blank'}>
                     <GitHub size={16}/>
-                </ThemedExternalLink>
-                <ThemedExternalLink 
+                </ExternalLink>
+                <ExternalLink 
                     href={'https://twitter.com/tattlemade'} target={'_blank'}>
                     <Twitter size={16}/>
-                </ThemedExternalLink>
+                </ExternalLink>
             </Box>
         </Box>
 )

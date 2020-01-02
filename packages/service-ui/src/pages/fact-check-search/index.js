@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {Grommet, Box, Heading, Text, Button} from 'grommet'
 import AppShell from './components/AppShell';
+import { Link } from './components/TattleLinks';
 
 
 /**
@@ -28,10 +29,16 @@ const FactCheckSearch = () => {
             </Heading>
 
             <Box direction={'row'} gap={'small'} margin={{top:'large'}}>
-                <Button label={'Explore dataset'} align={'center'} pad={'medium'} />
-                <Button label={'Search for media'} align={'center'} pad={'medium'} />
+                <Link to={'/fact-check-search/explore'}>
+                    <Button label={'Explore dataset'} align={'center'} pad={'medium'} />
+                </Link>
+                <Link to={'/fact-check-search/search'}>
+                    <Button label={'Search for media'} align={'center'} pad={'medium'} />
+                </Link>
             </Box>
         </AppShell>
+
+        
     )
 }
 

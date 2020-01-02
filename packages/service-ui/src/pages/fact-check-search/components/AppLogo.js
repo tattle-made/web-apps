@@ -1,5 +1,6 @@
 import React from 'react'
 import { ResponsiveContext, Box, Heading } from 'grommet'
+import { Link } from './TattleLinks'
 
 const Logo = () => (
     <Box
@@ -20,7 +21,9 @@ const AppLogo = ({name}) => {
         <ResponsiveContext.Consumer>
         {(size) => (
             <Box pad={'small'} direction={'row'} align={'center'} gap={'small'}>
-                <Logo/>
+                <Link to={'/'}>
+                    <Logo/>
+                </Link>
                 { size!='small' && <Heading level={4} margin={'none'}> {name} </Heading>}
             </Box>
         )}
