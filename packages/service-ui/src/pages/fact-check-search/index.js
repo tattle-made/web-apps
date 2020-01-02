@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import {Grommet, Box} from 'grommet'
-import { Atoms } from '@tattle-made/ui';
-const {Footer} = Atoms;
-const {SmallFooter} = Footer;
 
 const FooterItems = {
     primary : [
@@ -27,10 +24,11 @@ const FactCheckSearch = () => {
     })
 
     return (
-        <div>
-            {fetching && <h3>something</h3>}
-            <SmallFooter items={FooterItems}/>
-        </div>
+        <Grommet full>
+            <Box fill={'horizontal'} background={'brand'}>
+                Test
+            </Box>
+        </Grommet>
     )
 }
 

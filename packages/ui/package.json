@@ -1,6 +1,6 @@
 {
   "name": "@tattle-made/ui",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "core repository of all UI components for Tattle.",
   "main": "build/index.js",
   "scripts": {

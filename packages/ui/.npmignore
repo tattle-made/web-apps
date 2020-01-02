@@ -1,3 +1,6 @@
 src
 .babelrc
 webpack.config.js
+stories/*
+.storybook/*
+storybook-static/*
