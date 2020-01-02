@@ -18,10 +18,11 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-south-2
     - name: Run a multi-line script
-      run: |
-        aws --version
-        npm install lerna
-        node_modules/lerna/cli.js run deploy-install --parallel --stream
-        node_modules/lerna/cli.js run build --parallel --stream
-        node_modules/lerna/cli.js run deploy --parallel --stream
+      run: npm install lerna
+    - name: Install Packages
+      run: node_modules/lerna/cli.js run deploy-install --parallel --stream
+    - name: Build Site
+      run: node_modules/lerna/cli.js run build --parallel --stream
+    - name: Deploy Site
+      run: node_modules/lerna/cli.js run deploy --parallel --stream
         
