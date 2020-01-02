@@ -22,5 +22,6 @@ jobs:
         aws --version
         npm install lerna
         node_modules/lerna/cli.js run deploy-install --parallel --stream
+        node_modules/lerna/cli.js run build --parallel --stream
         node_modules/lerna/cli.js run deploy --parallel --stream
         
