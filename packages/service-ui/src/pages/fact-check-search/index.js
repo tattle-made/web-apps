@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {Grommet, Box, Heading, Text, Button} from 'grommet'
-import AppShell from './components/AppShell';
-import { Link } from './components/TattleLinks';
+import AppShell from '../../components/fact-check-search/components/AppShell';
+import { Link } from '../../components/fact-check-search/components/TattleLinks';
 
 
 /**

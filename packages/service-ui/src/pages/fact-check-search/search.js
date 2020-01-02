@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Stack, Heading, Text, TextInput, Button } from 'grommet'
 import { Upload, ExternalLink as WebsiteLink } from 'react-feather'
-import AppShell from './components/AppShell';
-import { ExternalLink } from './components/TattleLinks';
+import AppShell from '../../components/fact-check-search/components/AppShell';
+import { ExternalLink } from '../../components/fact-check-search/components/TattleLinks';
 
 const matches = {
     status : 'data',
