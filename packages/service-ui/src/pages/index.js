@@ -41,7 +41,7 @@ const IndexPage = () => (
             <div>
               <h2> Links </h2>
               <Link to="text-extract"> Text Extract </Link>
-              <Link to="search"> Search </Link>
+              <Link to="fact-check-search"> Search </Link>
             </div>
         </LayoutSidebarContent>
       </Layout>
