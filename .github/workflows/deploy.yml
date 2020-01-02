@@ -19,6 +19,8 @@ jobs:
         aws-region: ap-south-2
     - name: Run a multi-line script
       run: npm install lerna
+    - name: Lerna Bootstrap
+      run: node_modules/lerna/cli.js bootstrap
     - name: Install Packages
       run: node_modules/lerna/cli.js run deploy-install --parallel --stream
     - name: Build Site
