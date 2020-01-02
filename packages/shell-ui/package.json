@@ -51,7 +51,7 @@
   "scripts": {
     "sass": "node-sass -w src/view/style/sass/stylesheet.scss src/view/style/stylesheet.css",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "echo 'dummy build shell-ui'",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
