@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch",
-    // "build": "webpack",
     "build": "echo 'dummy build'",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
