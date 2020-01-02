@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Box, Text } from 'grommet'
 import { Slack, GitHub, Twitter } from 'react-feather';
 
 /**
 * @author
-* @function SmallFooter
+* @function SmallFooter widget
 **/
 
 const SmallFooter = ({items}) => (

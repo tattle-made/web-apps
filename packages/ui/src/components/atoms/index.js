@@ -4,8 +4,8 @@ import * as ExternalLink from './ExternalLink';
 import * as MediaBlock from './MediaBlock';
 import Status from './Status';
 import AppLogo from './AppLogo';
-// import * as Footer from './Footer'
-// import * as Header from './Header'
+import * as Footer from './Footer';
+import * as Header from './Header';
 
 
 export {
@@ -15,6 +15,6 @@ export {
     MediaBlock,
     Status,
     AppLogo,
-    // Footer,
-    // Header
+    Footer,
+    Header
 }
