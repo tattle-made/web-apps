@@ -18,7 +18,7 @@ const ThemedLink = styled(Link)`
 **/
 
 const SimpleHeader = () => (
-    <Box direction={'row'} border wrap={'true'}>
+    <Box direction={'row'} border wrap={true}>
         <AppLogo name={'Fact Check Search'}/>
 
         <Box margin={{left: 'large'}} pad={'small'} direction={'row'} align={'center'} gap={'medium'}>

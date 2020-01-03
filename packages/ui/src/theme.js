@@ -149,8 +149,14 @@ const TattleTheme = {
         },
         colors:{
             "brand": '#E65447',
-            "brand-1": '#FFDFDD'
+            "brand-1": '#FFDFDD',
+            "focus": '#0CA7D3'
         },
+        focus: {
+            border:{
+                color: '#FF00FF'
+            }
+        }
     },
     heading: {
         font: {

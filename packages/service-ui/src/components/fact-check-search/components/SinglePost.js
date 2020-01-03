@@ -24,8 +24,6 @@ const SinglePost = ({type, src, heading, body, timestamp}) => {
 
 useEffect(()=> {
   setFetching(true)
-  console.log('====')
-  console.log({type, src})
 })
 
 const onMouseEnter = ()=> setHover(true);

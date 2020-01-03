@@ -32,7 +32,7 @@ const DataAccess = () => {
     }
 
     return (
-        <Box align={'right'}>
+        <Box>
             <DropButton
                 label="Access Data"
                 open={open}

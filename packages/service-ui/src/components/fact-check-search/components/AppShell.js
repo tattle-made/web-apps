@@ -6,10 +6,10 @@ import TattleTheme from './theme';
 
 const FooterItems = {
     primary : [
-        { label : 'Tattle', target: 'http://tattle.co.in', type:'external'},
-        { label : 'Blog', target: 'http://blog.tattle.co.in', type:'external'},
-        { label : 'Status', target: '/status', type:'internal'},
-        { label : 'Contribute', target: '/contribute', type:'internal'},
+        { id : 1, label : 'Tattle', target: 'http://tattle.co.in', type:'external'},
+        { id : 2, label : 'Blog', target: 'http://blog.tattle.co.in', type:'external'},
+        { id : 3, label : 'Status', target: '/status', type:'internal'},
+        { id : 4, label : 'Contribute', target: '/contribute', type:'internal'},
     ],
 }
 

@@ -36,7 +36,9 @@ message : text depending on status
 
 const MoleculeMultiplePosts = ({ title, data}) => {
     return(
-        <Box>
+        <Box
+            align={'end'}
+        >
             <Box 
                 direction={'row'}
                 align={'center'}
@@ -50,9 +52,15 @@ const MoleculeMultiplePosts = ({ title, data}) => {
                 <Box>  </Box>
                 :
                 data.status==='data' ?
-                <Box direction={'row'} wrap={true}>
+                <Box 
+                    direction={'row'} 
+                    wrap={true}
+                >
                     {data.posts.map((post) => (
-                        <Box margin={{right:'small', bottom:'small'}}>
+                        <Box 
+                            key={post.id}
+                            margin={{right:'small', bottom:'small'}}
+                        >
                             <SinglePost
                                 type={post.type}
                                 src={post.mediaUrl}

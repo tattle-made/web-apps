@@ -11,17 +11,24 @@ import { Link, ExternalLink } from './TattleLinks';
 **/
 
 const SmallFooter = ({items}) => (
-        <Box direction={'row'} border wrap={'true'}>
-            <Box direction={'row'} pad={'small'} gap={'small'} wrap={'true'}>
+        <Box direction={'row'} border wrap={true}>
+            <Box direction={'row'} pad={'small'} gap={'small'} wrap={true}>
                 {
                     items.primary.map((primaryItem) => {
                         return (
                             primaryItem.type==='internal' ? 
-                                <Link to={`/fact-check-search/${primaryItem.target}`}>
+                                <Link 
+                                    key={primaryItem.id}
+                                    to={`/fact-check-search/${primaryItem.target}`}
+                                >
                                     <Text> {primaryItem.label} </Text>
                                 </Link>
                             :
-                                <ExternalLink href={primaryItem.target} target="_blank" >
+                                <ExternalLink 
+                                    key={primaryItem.id}
+                                    href={primaryItem.target} 
+                                    target="_blank" 
+                                >
                                     <Text> {primaryItem.label} </Text>
                                 </ExternalLink>
                         )
