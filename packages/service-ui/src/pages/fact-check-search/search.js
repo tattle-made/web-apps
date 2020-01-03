@@ -35,7 +35,6 @@ function SearchInput() {
     const [value, setValue] = React.useState('');
     return (
         <Box gap={'small'}>
-            <Text> Enter a keyword </Text>
             <Stack anchor="right">
                 <TextInput
                     placeholder="Search for fact checked stories"

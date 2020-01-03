@@ -72,7 +72,7 @@
     "storybook": "start-storybook -s public -p 6006",
     "build-storybook": "build-storybook",
     "deploy-install": "npm install",
-    "deploy": "gatsby-plugin-s3 deploy"
+    "deploy": "gatsby-plugin-s3 deploy --yes"
   },
   "repository": {
     "type": "git",
