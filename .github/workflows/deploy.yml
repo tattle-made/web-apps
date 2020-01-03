@@ -11,12 +11,12 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run a one-line script
       run: echo Hello, world!
-    - name: Configure AWS Credentials 3
+    - name: Configure AWS Credentials 4
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ap-south-2
+        aws-region: ap-south-1
     - name: Run a multi-line script
       run: npm install lerna
     - name: Lerna Bootstrap
