@@ -5,47 +5,37 @@ import { Upload, ExternalLink as WebsiteLink } from 'react-feather'
 import AppShell from '../../components/fact-check-search/components/AppShell';
 import { ExternalLink } from '../../components/fact-check-search/components/TattleLinks';
 import axios from 'axios';
+import { Spinner } from '../../components/fact-check-search/components/Spinner';
 
 const s3AuthConf = {
-    url: 'http://13.235.149.236:3003/api/s3-auth',
-    token: '795e30d0-2e0d-11ea-bccd-f902c27eeb11'
+    url: 'http://archive-staging.ap-south-1.elasticbeanstalk.com:3003/api/s3-auth',
+    token: '1a30f690-3d3c-11ea-936a-09ab78005393'
 }
+
+const API_URL = 'http://archive-staging.ap-south-1.elasticbeanstalk.com:3003/api'
 
 const InvisibleFileUploadButton = styled.input`
     background:red;
     display: none;
 `
 
-const matches = {
-    status : 'data',
-    posts : [
-        {
-            id : 123123,
-            domain : 'altnews.in/hindi',
-            url : 'http://www.google.com',
-            headline : 'Sed maximus dignissim orci sit amet molestie.',
-            distance : 0.01
-        },
-        {
-            id : 1231234,
-            domain : 'quint.com',
-            url : 'http://www.google.com',
-            headline : 'Maecenas velit felis, pharetra eu facilisis vulputate, facilisis condimentum elit. Phasellus et lectus ac velit congue pellentesque.',
-            distance : 5.0
-        },
-        {
-            id : 23495,
-            domain : 'vishvasnews',
-            url : 'http://www.google.com',
-            headline : 'Nullam nibh lorem, suscipit non dui sit amet, posuere convallis nibh.',
-            distance : 15.0
-        }
-    ] 
-}
+
+const postWithToken = (endpoint, payload, token)=>{
+    return axios.post(`${API_URL}${endpoint}`, 
+      payload,
+      {
+        headers: {token}
+      }
+      )
+    .catch((err) => console.log('ERROR IN API CALL ',err));
+  }
+  
 
 function SearchInput() {
     const [searchQuery, setSearchQuery] = React.useState('');
     const fileUploader = useRef(null);
+
+    const [result, setResult] = React.useState({status:'default'})
 
     const onSearch = () => {
         console.log('searching', searchQuery);
@@ -61,6 +51,8 @@ function SearchInput() {
         // setFileSearchQuery({status:'loading'})
     
         // console.log({fileName, fileType});
+
+        setResult({status:'loading'})
     
         axios.post(s3AuthConf.url, {
             type: fileType,
@@ -85,7 +77,18 @@ function SearchInput() {
         .then((uploadResponse) => {{
             // setFileSearchQuery({status:'data', query: s3FileUrl})
             console.log('file URL ', s3FileUrl)
+            return postWithToken(
+                '/search/duplicate-stories',
+                {
+                    url: s3FileUrl
+                },
+                'be2742a0-e610-11e9-98c0-cfafcf9716d4'
+            )
         }})
+        .then((data) => {
+            console.log(data)
+            setResult(data.data)
+        })
         .catch((err) => {
             // setFileSearchQuery({status:'error'})
             console.log(err)
@@ -117,37 +120,54 @@ function SearchInput() {
                 </Box>
             </Stack>
             <InvisibleFileUploadButton type='file' ref={fileUploader} onChange={onFileChangeHandler}/>
-            <Box margin={{top : 'medium'}}>
-                <Heading level={2}> Also seen on </Heading>
-                    {
-                        matches.posts.map((match)=>(
-                            <Box key={match.id} margin={{top:'small', bottom:'medium'}} fill={'horizontal'}>
-                                <Heading level={4} margin={'none'}> {match.headline} </Heading>
-                                <Box direction={'row'} 
-                                    gap={'xsmall'} 
-                                    wrap={true}
-                                    margin={{top:'xsmall'}}
-                                >
-                                    <Box pad={'xsmall'} 
-                                        border={true} round={'small'} 
-                                        background={'light-3'}>
-                                        <Text> high </Text>
-                                    </Box>
+            {
+                result.status==='data' ? 
+                <Box margin={{top : 'medium'}}>
+                    <Heading level={2}> Also seen on </Heading>
+                        {
+                            result.urls.map((match)=>(
+                                <Box key={match.id} margin={{top:'small', bottom:'medium'}} fill={'horizontal'}>
+                                    <Heading level={4} margin={'none'}> {match.title} </Heading>
                                     <Box direction={'row'} 
+                                        gap={'xsmall'} 
                                         wrap={true}
-                                        align={'center'}
-                                        gap={'xsmall'}
+                                        margin={{top:'xsmall'}}
                                     >
-                                        <Text> {match.domain} </Text>
-                                        <ExternalLink href={match.url} target={'_blank'}>
-                                            <WebsiteLink size={16}/>
-                                        </ExternalLink>
+                                        <Box pad={'xsmall'} 
+                                            border={true} round={'small'} 
+                                            background={'light-3'}>
+                                            <Text> high </Text>
+                                        </Box>
+                                        <Box direction={'row'} 
+                                            wrap={true}
+                                            align={'center'}
+                                            gap={'xsmall'}
+                                        >
+                                            <Text> {match.timestamp} </Text>
+                                            <ExternalLink href={match.url} target={'_blank'}>
+                                                <WebsiteLink size={16}/>
+                                            </ExternalLink>
+                                        </Box>
                                     </Box>
                                 </Box>
-                            </Box>
-                        ))
-                    }
-            </Box>
+                            ))
+                        }
+                    </Box>
+                :
+                result.status==='loading' ?
+                <Box height={'56vh'}> 
+                    <Spinner />
+                </Box>
+                :
+                result.status==='default' ?
+                <Box height={'56vh'}>
+                    
+                </Box>
+                :
+                <Box> 
+                    Something unexpected happen
+                </Box>
+            }
         </Box>
     );
 }

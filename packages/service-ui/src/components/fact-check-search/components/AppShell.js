@@ -23,7 +23,7 @@ const AppShell = ({children}) => (
         <Box fill={'horizontal'} as={'header'}>
             <SimpleHeader/>
         </Box>
-        <Box as={'main'}>
+        <Box as={'main'} >
             <ContentPageLayout>
                 {children}
             </ContentPageLayout>
