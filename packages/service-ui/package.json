@@ -12,6 +12,7 @@
     "@theme-ui/presets": "^0.2.34",
     "@theme-ui/style-guide": "^0.2.35",
     "@theme-ui/typography": "^0.2.34",
+    "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.6",
     "emotion": "^10.0.14",
     "gatsby": "^2.13.61",

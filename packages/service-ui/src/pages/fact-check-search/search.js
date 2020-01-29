@@ -7,12 +7,14 @@ import { ExternalLink } from '../../components/fact-check-search/components/Tatt
 import axios from 'axios';
 import { Spinner } from '../../components/fact-check-search/components/Spinner';
 
-const s3AuthConf = {
-    url: 'http://archive-staging.ap-south-1.elasticbeanstalk.com:3003/api/s3-auth',
-    token: '1a30f690-3d3c-11ea-936a-09ab78005393'
-}
 
 const API_URL = 'http://archive-staging.ap-south-1.elasticbeanstalk.com:3003/api'
+const TOKEN = '7d5208f0-4295-11ea-b1cd-857f27f10814'
+
+const s3AuthConf = {
+    url: 'http://archive-staging.ap-south-1.elasticbeanstalk.com:3003/api/s3-auth',
+    token: TOKEN 
+}
 
 const InvisibleFileUploadButton = styled.input`
     background:red;
@@ -82,7 +84,7 @@ function SearchInput() {
                 {
                     url: s3FileUrl
                 },
-                'be2742a0-e610-11e9-98c0-cfafcf9716d4'
+                TOKEN
             )
         }})
         .then((data) => {

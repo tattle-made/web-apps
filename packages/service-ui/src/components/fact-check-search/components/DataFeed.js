@@ -4,83 +4,8 @@ import DataAccess from './DataAccess'
 import MoleculeMultiplePosts from './MoleculeMultiplePosts'
 import { ArrowLeft, ArrowRight } from 'react-feather';
 import DataFeedControls from '../DataFeedControls';
-
-const multipleMediaBlockData = {
-    status:'data',
-    posts: [
-        {
-            "id": 258,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/944d7240-e626-11e9-8887-479c55adcf91"
-        },
-        {
-            "id": 260,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/e8d4bd70-e64c-11e9-9181-6390a1c38207"
-        },
-        {
-            "id": 261,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/944d7240-e626-11e9-8887-479c55adcf91"
-        },
-        {
-            "id": 262,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/e8d4bd70-e64c-11e9-9181-6390a1c38207"
-        },
-        {
-            "id": 263,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/944d7240-e626-11e9-8887-479c55adcf91"
-        },
-        {
-            "id": 264,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/e8d4bd70-e64c-11e9-9181-6390a1c38207"
-        },
-        {
-            "id": 265,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/944d7240-e626-11e9-8887-479c55adcf91"
-        },
-        {
-            "id": 266,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/e8d4bd70-e64c-11e9-9181-6390a1c38207"
-        },
-        {
-            "id": 267,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/944d7240-e626-11e9-8887-479c55adcf91"
-        },
-        {
-            "id": 268,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/e8d4bd70-e64c-11e9-9181-6390a1c38207"
-        },
-        {
-            "id": 269,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/944d7240-e626-11e9-8887-479c55adcf91"
-        },
-        {
-            "id": 270,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/e8d4bd70-e64c-11e9-9181-6390a1c38207"
-        },
-        {
-            "id": 271,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/944d7240-e626-11e9-8887-479c55adcf91"
-        },
-        {
-            "id": 272,
-            "type": "image",
-            "mediaUrl": "https://tattle-services.s3.ap-south-1.amazonaws.com/e8d4bd70-e64c-11e9-9181-6390a1c38207"
-        }
-    ]
-}
-
+import { postWithToken, get } from '../../../services/shell-server';
+import { TOKEN } from '../../../config';
 
 /**
 * @author 
@@ -92,6 +17,7 @@ const DataFeed = () => {
     const [pageCount, setPageCount] = useState(30)
     const [fetching, setFetching] = useState(false)
     const [ pageNumber, setPageNumber ] = useState(1)
+    const [multipleMediaBlockData, setMultipleMediaBlockData] = useState({ status: 'default'})
 
     const increment = () => {
         if(pageNumber!=pageCount){
@@ -107,7 +33,13 @@ const DataFeed = () => {
 
     useEffect(()=> {
         setFetching(true)
-    })
+        get('/posts/1', TOKEN)
+        .then((response) => {
+            // console.log({status: 'data', posts: response.data.posts})
+            setMultipleMediaBlockData({status: 'data', posts: response.data.posts});
+        })
+        .catch((err) => console.log(err));
+    }, [multipleMediaBlockData])
 
     const onFilterChange = (params) => {
         console.log(params)
