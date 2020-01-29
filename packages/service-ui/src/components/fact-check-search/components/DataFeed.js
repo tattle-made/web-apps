@@ -14,7 +14,7 @@ import { TOKEN } from '../../../config';
 
 const DataFeed = () => {
 
-    const [pageCount, setPageCount] = useState(30)
+    const [pageCount, setPageCount] = useState(0)
     const [fetching, setFetching] = useState(false)
     const [ pageNumber, setPageNumber ] = useState(1)
     const [multipleMediaBlockData, setMultipleMediaBlockData] = useState({ status: 'default'})
@@ -22,24 +22,34 @@ const DataFeed = () => {
     const increment = () => {
         if(pageNumber!=pageCount){
             setPageNumber(pageNumber+1)
+            getData(pageNumber);
         }
     }
 
     const decrement = () => {
         if(pageNumber!=1){
             setPageNumber(pageNumber-1)
+            getData(pageNumber);
         }
+    }
+
+    const getData = (pageNum) => {
+        setMultipleMediaBlockData({status: 'loading'});
+        return get(`/posts/${pageNum}`, TOKEN)
+        .then((response) => {
+            setPageCount(response.data.totalPages)
+            // console.log({status: 'data', posts: response.data.posts})
+            setMultipleMediaBlockData({status: 'data', posts: response.data.posts});
+        })
+        .catch((err) => {
+            setMultipleMediaBlockData({status: 'error'});
+        });
     }
 
     useEffect(()=> {
         setFetching(true)
-        get('/posts/1', TOKEN)
-        .then((response) => {
-            // console.log({status: 'data', posts: response.data.posts})
-            setMultipleMediaBlockData({status: 'data', posts: response.data.posts});
-        })
-        .catch((err) => console.log(err));
-    }, [multipleMediaBlockData])
+        getData(1)
+    }, [])
 
     const onFilterChange = (params) => {
         console.log(params)
@@ -55,12 +65,6 @@ const DataFeed = () => {
                 <DataAccess/>
             </Box>
 
-            <Box margin={{top:'medium'}}>
-                <MoleculeMultiplePosts
-                    data={ multipleMediaBlockData }
-                />
-            </Box>
-            
             <Box 
                 fill={'horizontal'} 
                 margin={{top:'medium'}}
@@ -84,6 +88,13 @@ const DataFeed = () => {
                     <ArrowRight size={16}/>
                 </Button>
             </Box>
+
+            <Box margin={{top:'medium'}}>
+                <MoleculeMultiplePosts
+                    data={ multipleMediaBlockData }
+                />
+            </Box>
+            
         </Box>
     )
 }
