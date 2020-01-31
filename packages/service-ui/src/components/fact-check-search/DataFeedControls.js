@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {Box, Heading, Text, CheckBox, Button} from 'grommet'
+import {Box, Heading, Text, CheckBox, Button, RadioButtonGroup } from 'grommet'
 
 /**
 * @author
@@ -7,36 +7,21 @@ import {Box, Heading, Text, CheckBox, Button} from 'grommet'
 **/
 
 const DataFeedControls = ({onChange}) => {
-    const [textCheck, setTextCheck] = React.useState(true);
-    const [imageCheck, setImageCheck] = React.useState(true);
-    const [videoCheck, setVideoCheck] = React.useState(true);
+    const [value, setFilterValue] = React.useState('all');
 
-    const setValue = {
-        text : setTextCheck,
-        image : setImageCheck,
-        video : setVideoCheck 
+    const onFilterChecked = (value) => {
+        setFilterValue(value)
+        onChange(value)
     }
-
-    const getFilterParams = () => ({
-        text : textCheck,
-        image : imageCheck,
-        video : videoCheck
-    })
 
     useEffect(()=> {
         //setFetching(true)
     })
 
-    const onOptionClicked = (type, checked) => {
-        setValue[type](checked)
-        console.log(getFilterParams())
-        //onChange(getFilterParams())
-    }
-
     return (
         <Box direction={'row'} 
             fill={'horizontal'}
-            gap={'medium'}
+            gap={'large'}
             align={'center'}
         >
             <Box align={'baseline'}> <Heading level={'2'} margin={'none'}> Data </Heading> </Box>
@@ -45,9 +30,13 @@ const DataFeedControls = ({onChange}) => {
                 align={'baseline'}
                 wrap={true}
             >
-                <CheckBox checked={textCheck} label={'text'} onChange={(e)=>onOptionClicked('text', e.target.checked)} />
-                <CheckBox checked={imageCheck} label={'image'} onChange={(e)=>onOptionClicked('image', e.target.checked)} />
-                <CheckBox checked={videoCheck} label={'video'} onChange={(e)=>onOptionClicked('video', e.target.checked)} />
+                <RadioButtonGroup
+                    name="type"
+                    direction={'row'}
+                    options={['all', 'image', 'video', 'text']}
+                    value={value}
+                    onChange={(event) => onFilterChecked(event.target.value) }
+                />
             </Box>
         </Box>
     )

@@ -37,36 +37,36 @@ message : text depending on status
 const emptyData= {
     status: 'data',
     posts: [
-        { id: 1, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 2, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 3, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 4, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 5, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 6, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 7, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 8, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 9, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 10, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 11, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 12, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 13, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 14, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 15, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 16, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 17, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 18, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 19, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 20, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 21, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 22, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 23, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 24, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 25, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 26, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 27, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 28, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 29, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
-        { id: 30, type: 'image', mediaUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgIN1oLILDJlQKBF-OYMrPwelj-lFTq-tt0X3lLxU6bwNSv1zts'},
+        { id: 1, type: 'image' },
+        { id: 2, type: 'image' },
+        { id: 3, type: 'image' },
+        { id: 4, type: 'image' },
+        { id: 5, type: 'image' },
+        { id: 6, type: 'image' },
+        { id: 7, type: 'image' },
+        { id: 8, type: 'image' },
+        { id: 9, type: 'image' },
+        { id: 10, type: 'image' },
+        { id: 11, type: 'image' },
+        { id: 12, type: 'image' },
+        { id: 13, type: 'image' },
+        { id: 14, type: 'image' },
+        { id: 15, type: 'image' },
+        { id: 16, type: 'image' },
+        { id: 17, type: 'image' },
+        { id: 18, type: 'image' },
+        { id: 19, type: 'image' },
+        { id: 20, type: 'image' },
+        { id: 21, type: 'image' },
+        { id: 22, type: 'image' },
+        { id: 23, type: 'image' },
+        { id: 24, type: 'image' },
+        { id: 25, type: 'image' },
+        { id: 26, type: 'image' },
+        { id: 27, type: 'image' },
+        { id: 28, type: 'image' },
+        { id: 29, type: 'image' },
+        { id: 30, type: 'image' },
     ]
 }
 
@@ -106,7 +106,6 @@ const MoleculeMultiplePosts = ({ title, data}) => {
                             >
                                 <SinglePost
                                     type={post.type}
-                                    src={post.mediaUrl}
                                 />
                             </Box>
                         ))}
@@ -124,7 +123,8 @@ const MoleculeMultiplePosts = ({ title, data}) => {
                         >
                             <SinglePost
                                 type={post.type}
-                                src={post.mediaUrl}
+                                src={post.url}
+                                timestamp={post.createdAt}
                             />
                         </Box>
                     ))}

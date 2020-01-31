@@ -6,10 +6,9 @@ import AppShell from '../../components/fact-check-search/components/AppShell';
 import { ExternalLink } from '../../components/fact-check-search/components/TattleLinks';
 import axios from 'axios';
 import { Spinner } from '../../components/fact-check-search/components/Spinner';
+import { TOKEN } from '../../config';
+import { postWithToken } from '../../services/shell-server';
 
-
-const API_URL = 'http://archive-staging.ap-south-1.elasticbeanstalk.com:3003/api'
-const TOKEN = '7d5208f0-4295-11ea-b1cd-857f27f10814'
 
 const s3AuthConf = {
     url: 'http://archive-staging.ap-south-1.elasticbeanstalk.com:3003/api/s3-auth',
@@ -22,15 +21,6 @@ const InvisibleFileUploadButton = styled.input`
 `
 
 
-const postWithToken = (endpoint, payload, token)=>{
-    return axios.post(`${API_URL}${endpoint}`, 
-      payload,
-      {
-        headers: {token}
-      }
-      )
-    .catch((err) => console.log('ERROR IN API CALL ',err));
-  }
   
 
 function SearchInput() {
@@ -41,6 +31,19 @@ function SearchInput() {
 
     const onSearch = () => {
         console.log('searching', searchQuery);
+        setResult({status:'loading'})
+        postWithToken('/search/find-text-in-image',
+            {
+                text: searchQuery
+            },
+            TOKEN
+        )
+        .then((res) => {
+            console.log(res)
+            res.data
+            setResult(res.data)
+            //setResult(res.data)
+        })
     }
 
     const onFileChangeHandler = (event) => {
@@ -125,9 +128,37 @@ function SearchInput() {
             {
                 result.status==='data' ? 
                 <Box margin={{top : 'medium'}}>
-                    <Heading level={2}> Also seen on </Heading>
+                    <Heading level={2}> Found on </Heading>
                         {
-                            result.urls.map((match)=>(
+                            result.urls && result.urls.map((match)=>(
+                                <Box key={match.id} margin={{top:'small', bottom:'medium'}} fill={'horizontal'}>
+                                    <Heading level={4} margin={'none'}> {match.title} </Heading>
+                                    <Box direction={'row'} 
+                                        gap={'xsmall'} 
+                                        wrap={true}
+                                        margin={{top:'xsmall'}}
+                                    >
+                                        <Box pad={'xsmall'} 
+                                            border={true} round={'small'} 
+                                            background={'light-3'}>
+                                            <Text> high </Text>
+                                        </Box>
+                                        <Box direction={'row'} 
+                                            wrap={true}
+                                            align={'center'}
+                                            gap={'xsmall'}
+                                        >
+                                            <Text> {match.timestamp} </Text>
+                                            <ExternalLink href={match.url} target={'_blank'}>
+                                                <WebsiteLink size={16}/>
+                                            </ExternalLink>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            ))
+                        }
+                        {
+                            result.posts && result.posts.map((match)=>(
                                 <Box key={match.id} margin={{top:'small', bottom:'medium'}} fill={'horizontal'}>
                                     <Heading level={4} margin={'none'}> {match.title} </Heading>
                                     <Box direction={'row'} 

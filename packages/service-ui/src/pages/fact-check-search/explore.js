@@ -34,8 +34,8 @@ useEffect(()=> {
 
 return (
   <AppShell>
-    <Box width={'horizontal'} height={'350px'} border>
-    </Box>
+    {/* <Box width={'horizontal'} height={'350px'} border>
+    </Box> */}
     <Box direction={'row'} gap={'small'} margin={{top:'medium'}}>
       <Box width={'50%'} border pad={'medium'}>
         <DataVizOverview>

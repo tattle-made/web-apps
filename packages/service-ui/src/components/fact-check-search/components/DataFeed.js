@@ -17,28 +17,29 @@ const DataFeed = () => {
     const [pageCount, setPageCount] = useState(0)
     const [fetching, setFetching] = useState(false)
     const [ pageNumber, setPageNumber ] = useState(1)
+    const [ mediaType, setMediaType] = useState('all')
     const [multipleMediaBlockData, setMultipleMediaBlockData] = useState({ status: 'default'})
+    const [ filterValue, setFilterValue ] = React.useState('all');
 
     const increment = () => {
         if(pageNumber!=pageCount){
             setPageNumber(pageNumber+1)
-            getData(pageNumber);
+            getData(filterValue, pageNumber);
         }
     }
 
     const decrement = () => {
         if(pageNumber!=1){
             setPageNumber(pageNumber-1)
-            getData(pageNumber);
+            getData(filterValue, pageNumber);
         }
     }
 
-    const getData = (pageNum) => {
+    const getData = (type, pageNum) => {
         setMultipleMediaBlockData({status: 'loading'});
-        return get(`/posts/${pageNum}`, TOKEN)
+        return get(`/fact-check-story/${type}/${pageNum}`, TOKEN)
         .then((response) => {
             setPageCount(response.data.totalPages)
-            // console.log({status: 'data', posts: response.data.posts})
             setMultipleMediaBlockData({status: 'data', posts: response.data.posts});
         })
         .catch((err) => {
@@ -48,11 +49,12 @@ const DataFeed = () => {
 
     useEffect(()=> {
         setFetching(true)
-        getData(1)
+        getData(filterValue, 1)
     }, [])
 
-    const onFilterChange = (params) => {
-        console.log(params)
+    const onFilterChange = (filterValue) => {
+        setFilterValue(filterValue)
+        getData(filterValue, pageNumber)
     }
 
     return (
@@ -60,6 +62,7 @@ const DataFeed = () => {
             <Box direction={'row'} 
                 fill={'horizontal'} 
                 margin={{top: 'large'}}
+                wrap={true}
             >
                 <DataFeedControls onChange={onFilterChange}/>
                 <DataAccess/>

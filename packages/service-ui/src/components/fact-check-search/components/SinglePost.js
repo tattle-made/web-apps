@@ -71,7 +71,7 @@ const onMouseLeave = ()=> setHover(false);
                 <Box pad={'small'}>
                     <Text size={'medium'}> {heading} </Text>
                     <Text size={'small'}> {body} </Text>
-                    <Text size={'xsmall'}> {Moment(timestamp).format('lll')} </Text>
+                    { timestamp ? <Text size={'xsmall'}> {Moment(timestamp).format('lll')} </Text> : <Text size={'xsmall'}> ... </Text>  }
                 </Box>
             }
 
