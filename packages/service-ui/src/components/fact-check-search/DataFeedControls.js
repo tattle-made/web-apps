@@ -20,7 +20,7 @@ const DataFeedControls = ({onChange}) => {
 
     return (
         <Box direction={'row'} 
-            fill={'horizontal'}
+            flex={'grow'}
             gap={'large'}
             align={'center'}
         >

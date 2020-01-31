@@ -15,7 +15,7 @@ import Moment from 'moment';
 
 const boxDimension = {
     'medium' : '12em',
-    'small' : '18em'
+    'small' : '8em'
 }
 
 const SinglePost = ({type, src, heading, body, timestamp}) => {

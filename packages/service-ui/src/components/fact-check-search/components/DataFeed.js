@@ -62,9 +62,9 @@ const DataFeed = () => {
             <Box direction={'row'} 
                 fill={'horizontal'} 
                 margin={{top: 'large'}}
-                wrap={true}
+                wrap={'true'}
             >
-                <DataFeedControls onChange={onFilterChange}/>
+                <DataFeedControls onChange={ onFilterChange }/>
                 <DataAccess/>
             </Box>
 
@@ -92,7 +92,7 @@ const DataFeed = () => {
                 </Button>
             </Box>
 
-            <Box margin={{top:'medium'}}>
+            <Box >
                 <MoleculeMultiplePosts
                     data={ multipleMediaBlockData }
                 />

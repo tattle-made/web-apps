@@ -84,7 +84,7 @@ const MoleculeMultiplePosts = ({ title, data}) => {
                 
             </Box>
 
-            <Box height={'xxsmall'}>
+            <Box height={'1em'} margin={'xxsmall'}>
                 { data.status=='loading' && spinning }
             </Box>
 
