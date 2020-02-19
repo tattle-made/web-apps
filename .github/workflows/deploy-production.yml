@@ -1,6 +1,8 @@
 name: CI
 
-on: [push]
+on: push
+  branch:
+    - master
 
 jobs:
   build:
@@ -23,6 +25,8 @@ jobs:
       run: node_modules/lerna/cli.js bootstrap
     - name: Install Packages
       run: node_modules/lerna/cli.js run deploy-install --parallel --stream
+    - name: Setup Config
+      run: node_modules/lerna/cli.js exec --scope @tattle/service-ui src/config/setup-config.sh PRODUCTION
     - name: Build Site
       run: node_modules/lerna/cli.js run build --parallel --stream
     - name: Deploy Site
