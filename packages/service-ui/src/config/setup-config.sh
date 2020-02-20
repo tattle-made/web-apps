@@ -1,5 +1,6 @@
 #!/bin/bash
 echo 'Setting up Config based on environment'
+echo $1
 
 if [ "$1" == "DEVELOPMENT" ]
 then
