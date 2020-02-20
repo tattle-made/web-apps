@@ -1,3 +1,4 @@
+#!/bin/bash
 echo 'Setting up Config based on environment'
 
 if [ "$1" == "DEVELOPMENT" ]
