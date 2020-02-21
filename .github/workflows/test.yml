@@ -1,9 +1,9 @@
-name: CI
+name: test
 
 on: 
   push:
     branches:
-      - feature/ci-debug 
+      - feature/npm-bump 
 
 jobs:
   build:
@@ -11,8 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a multi-line script
-      run: npm install lerna
-    - name: Setup Config
-      run: node_modules/lerna/cli.js exec --scope @tattle/service-ui src/config/setup-config.sh DEVELOPMENT        
+    - name: checkout
+      uses: action/checkout@master
+      with:
+        ref: feature/npm-bump
+    - name: bump patch version
+      uses: github-actions-x/commit@v2.3
+      with: 
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        push-branch: 'feature/npm-bump'
+        commit-message: 'bump version : patch'
+        name: dennyabrain
+        email: denny@tattle.co.in
+        
