@@ -1,6 +1,6 @@
 {
   "name": "@tattle-made/ui",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "description": "core repository of all UI components for Tattle.",
   "main": "build/index.js",
   "scripts": {
@@ -13,10 +13,10 @@
   "author": "denny",
   "license": "ISC",
   "peerDependencies": {
-    "react": "16.12.0",
-    "react-dom": "16.12.0",
     "grommet": "2.9.0",
     "grommet-icons": "4.4.0",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
     "styled-components": "4.4.1"
   },
   "dependencies": {
