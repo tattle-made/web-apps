@@ -15,7 +15,13 @@ jobs:
       uses: actions/checkout@master
       with:
         ref: feature/npm-bump
-    - name: bump patch version
+    - name: Install Lerna
+      run: npm install lerna
+    - name: Lerna Bootstrap
+      run: node_modules/lerna/cli.js bootstrap
+    - name: Bump Version Patch
+      run: node_modules/lerna/cli.js version patch
+    - name: Push update to Github
       uses: github-actions-x/commit@v2.3
       with: 
         github-token: ${{ secrets.GITHUB_TOKEN }}
