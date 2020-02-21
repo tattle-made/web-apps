@@ -1,6 +1,6 @@
 {
   "name": "@tattle/auth",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "source code to perform authorizations for front end apps",
   "main": "index.js",
   "scripts": {
