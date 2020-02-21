@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ARCHIVE_SERVER_PATH } from '../config';
 
-const API_URL = `${ARCHIVE_SERVER_PATH}/api`;
+const API_URL = `${ARCHIVE_SERVER_PATH}/public`;
 const SOCKET_URL = `${ARCHIVE_SERVER_PATH}/`;
 
 const get = (endpoint, token)=>{
