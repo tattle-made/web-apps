@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: checkout
-      uses: action/checkout@master
+      uses: actions/checkout@master
       with:
         ref: feature/npm-bump
     - name: bump patch version
