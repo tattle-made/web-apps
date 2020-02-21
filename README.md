@@ -16,4 +16,4 @@ I recommend opening your IDE and a browser side by side to see changes in real t
 
 ## Deploy
 
-Push to github and based on the branch [development, master] your site will get deployed to the staging endpoint or production endpoint
+Push to github and based on the branch [development, master] your site will get deployed to the staging endpoint or production endpoint.
