@@ -6,12 +6,12 @@ import AppShell from '../../components/fact-check-search/components/AppShell';
 import { ExternalLink } from '../../components/fact-check-search/components/TattleLinks';
 import axios from 'axios';
 import { Spinner } from '../../components/fact-check-search/components/Spinner';
-import { TOKEN } from '../../config';
+import { ARCHIVE_SERVER_PATH, TOKEN } from '../../config';
 import { postWithToken } from '../../services/shell-server';
 
 
 const s3AuthConf = {
-    url: 'http://archive-staging.ap-south-1.elasticbeanstalk.com:3003/api/s3-auth',
+    url: `${ARCHIVE_SERVER_PATH}/api/s3-auth`,
     token: TOKEN 
 }
 
