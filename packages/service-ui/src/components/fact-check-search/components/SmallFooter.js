@@ -11,7 +11,7 @@ import { Link, ExternalLink } from '../../atomic/TattleLinks';
 **/
 
 const SmallFooter = ({items}) => (
-        <Box direction={'row'} border wrap={true}>
+        <Box direction={'row'} wrap={true}>
             <Box direction={'row'} pad={'small'} gap={'small'} wrap={true}>
                 {
                     items.primary.map((primaryItem) => {

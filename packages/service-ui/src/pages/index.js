@@ -17,10 +17,7 @@ const footerItems = {
 }
 
 const primaryNav = {
-  options : [
-      {label: 'Explore', target:'/fact-check-search/explore'},
-      {label: 'Search', target:'/fact-check-search/search'},
-  ]
+  options : []
 }
 
 

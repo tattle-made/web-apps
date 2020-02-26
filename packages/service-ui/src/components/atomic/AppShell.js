@@ -19,7 +19,7 @@ const AppShell = ({children, footerItems, headerLabel, headerTarget, primaryNav}
                 primaryNav={primaryNav}
             />
         </Box>
-        <Box as={'main'} >
+        <Box as={'main'} fill={'vertical'}>
             <ContentPageLayout>
                 {children}
             </ContentPageLayout>

@@ -19,7 +19,7 @@ const ThemedLink = styled(Link)`
 **/
 
 const SimpleHeader = ({label, primaryNav}) => (
-    <Box direction={'row'} border wrap={true}>
+    <Box direction={'row'} wrap={true}>
         <AppLogo name={label}/>
 
         <Box margin={{left: 'large'}} pad={'small'} direction={'row'} align={'center'} gap={'medium'}>
