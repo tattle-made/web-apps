@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Box, Stack, Heading, Text, TextInput, Button, Keyboard } from 'grommet'
 import styled from 'styled-components'
 import { Upload, ExternalLink as WebsiteLink } from 'react-feather'
-import AppShell from '../../components/fact-check-search/components/AppShell';
-import { ExternalLink } from '../../components/fact-check-search/components/TattleLinks';
+import AppShell from '../../components/atomic/AppShell';
+import { ExternalLink } from '../../components/atomic/TattleLinks';
 import axios from 'axios';
-import { Spinner } from '../../components/fact-check-search/components/Spinner';
+import { Spinner } from '../../components/atomic/Spinner';
 import { ARCHIVE_SERVER_PATH, TOKEN } from '../../config';
 import { postWithToken } from '../../services/shell-server';
 

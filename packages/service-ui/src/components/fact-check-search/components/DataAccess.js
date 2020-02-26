@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Heading, Text, DropButton, Button } from 'grommet'
-import { Link, ExternalLink } from './TattleLinks'
+import { Link, ExternalLink } from '../../atomic/TattleLinks'
 
 const DropContent = ({onClose}) => (
     <Box pad={'small'}>

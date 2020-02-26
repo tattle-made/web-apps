@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Grid, Box, Heading} from 'grommet'
-import AppShell from '../../components/fact-check-search/components/AppShell';
+import AppShell from '../../components/atomic/AppShell';
 import styled from 'styled-components'
 import DataFeed from '../../components/fact-check-search/components/DataFeed';
 

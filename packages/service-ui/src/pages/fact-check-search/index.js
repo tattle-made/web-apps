@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import {Grommet, Box, Heading, Text, Button} from 'grommet'
-import AppShell from '../../components/fact-check-search/components/AppShell';
-import { Link } from '../../components/fact-check-search/components/TattleLinks';
+import AppShell from '../../components/atomic/AppShell';
+import { Link } from '../../components/atomic/TattleLinks';
+
+const footerItems = {
+    primary : [
+        { id : 1, label : 'Tattle', target: 'http://tattle.co.in', type:'external'},
+        { id : 2, label : 'Blog', target: 'http://blog.tattle.co.in', type:'external'},
+        { id : 3, label : 'Status', target: '/status', type:'internal'},
+        { id : 4, label : 'Contribute', target: '/contribute', type:'internal'},
+    ],
+}
 
 
 /**
@@ -17,14 +26,16 @@ const FactCheckSearch = () => {
     })
 
     return (
-        <AppShell>
-            <Heading level={1} margin={'none'}>
+        <AppShell 
+            headerLabel={'Factcheck Search'}
+            footerItems={footerItems}>
+            <Heading level={1}>
                 Tattle Fact Check Search is a tool to find out if a media item has been fact checked before.
             </Heading>
-            <Heading level={2} margin={'none'}>
+            <Heading level={3}>
                 We scrape fact checking websites periodically and index them into our search engine. 
             </Heading>
-            <Heading level={2} margin={'none'}>
+            <Heading level={3}>
                 We’ve made this tool publically available for researchers and journalists to use.
             </Heading>
 

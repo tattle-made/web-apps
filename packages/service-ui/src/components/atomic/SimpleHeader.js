@@ -17,23 +17,20 @@ const ThemedLink = styled(Link)`
 * @function SimpleHeader
 **/
 
-const SimpleHeader = () => (
+const SimpleHeader = ({label, options}) => (
     <Box direction={'row'} border wrap={true}>
-        <AppLogo name={'Fact Check Search'}/>
+        <AppLogo name={label}/>
 
         <Box margin={{left: 'large'}} pad={'small'} direction={'row'} align={'center'} gap={'medium'}>
-            <ThemedLink to={'/fact-check-search/explore'} > 
-                <Button plain={true}>
-                    <Heading margin={'none'} level={3}> Explore </Heading>
-                </Button>
-            </ThemedLink>
-            
-            <ThemedLink to={'/fact-check-search/search'} > 
-                <Button plain={true}>
-                    <Heading margin={'none'} level={3}> Search </Heading>
-                </Button>
-            </ThemedLink>
-
+            {
+                options.map((option) => {
+                    <ThemedLink to={option.target} > 
+                        <Button plain={true}>
+                            <Heading margin={'none'} level={3}> {option.label} hi </Heading>
+                        </Button>
+                    </ThemedLink>
+                })
+            }
         </Box>
     </Box>
 )

@@ -24,7 +24,7 @@ const AppLogo = ({name}) => {
                 <Link to={'/'}>
                     <Logo/>
                 </Link>
-                { size!='small' && <Heading level={4} margin={'none'}> {name} </Heading>}
+                { <Heading level={4} margin={'none'}> {name} </Heading>}
             </Box>
         )}
         </ResponsiveContext.Consumer>

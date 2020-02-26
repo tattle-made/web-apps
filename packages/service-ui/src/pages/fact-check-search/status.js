@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {Heading} from 'grommet'
-import AppShell from '../../components/fact-check-search/components/AppShell';
+import AppShell from '../../components/atomic/AppShell';
 
 /**
 * @author

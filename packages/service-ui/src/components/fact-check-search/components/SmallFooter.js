@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Text } from 'grommet'
 import { Slack, GitHub, Twitter } from 'react-feather';
 import styled from 'styled-components';
-import { Link, ExternalLink } from './TattleLinks';
+import { Link, ExternalLink } from '../../atomic/TattleLinks';
 
 
 /**
