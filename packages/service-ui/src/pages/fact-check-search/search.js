@@ -8,7 +8,7 @@ import axios from 'axios';
 import { Spinner } from '../../components/atomic/Spinner';
 import { ARCHIVE_SERVER_PATH, TOKEN } from '../../config';
 import { postWithToken } from '../../services/shell-server';
-import { footerItems, primaryNav } from './options';
+import { footerItems, primaryNav } from '../../config/options';
 
 
 const s3AuthConf = {

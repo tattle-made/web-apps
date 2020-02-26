@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {Grommet, Box, Heading, Text, Button} from 'grommet'
 import AppShell from '../../components/atomic/AppShell';
 import { Link } from '../../components/atomic/TattleLinks';
-import { footerItems, primaryNav } from './options';
+import { footerItems, primaryNav } from '../../config/options';
   
 
 

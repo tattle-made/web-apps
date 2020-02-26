@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {Heading, Paragraph} from 'grommet'
 import AppShell from '../../components/atomic/AppShell';
-import { footerItems, primaryNav } from './options';
+import { footerItems, primaryNav } from '../../config/options';
 
 /**
 * @author

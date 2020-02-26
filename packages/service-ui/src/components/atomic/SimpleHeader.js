@@ -3,7 +3,7 @@ import { Box, Heading, Text, Button} from 'grommet';
 import AppLogo from './AppLogo';
 import {Link} from 'gatsby'
 import styled from 'styled-components';
-import { primaryNav } from '../../pages/fact-check-search/options';
+import { primaryNav } from '../../config/options';
 
 const ThemedLink = styled(Link)`
     text-decoration: none;
