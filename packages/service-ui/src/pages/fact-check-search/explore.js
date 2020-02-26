@@ -3,6 +3,7 @@ import { Grid, Box, Heading} from 'grommet'
 import AppShell from '../../components/atomic/AppShell';
 import styled from 'styled-components'
 import DataFeed from '../../components/fact-check-search/components/DataFeed';
+import { footerItems, primaryNav } from './options';
 
 const DataVizOverview = styled.div`
   text-align: center;
@@ -33,7 +34,11 @@ useEffect(()=> {
 })
 
 return (
-  <AppShell>
+  <AppShell
+    headerLabel={'Factcheck Search'}
+    footerItems={footerItems}
+    primaryNav={primaryNav}
+  >
     {/* <Box width={'horizontal'} height={'350px'} border>
     </Box> */}
     <Box direction={'row'} gap={'small'} margin={{top:'medium'}}>

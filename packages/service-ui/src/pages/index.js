@@ -16,10 +16,19 @@ const footerItems = {
   ],
 }
 
+const primaryNav = {
+  options : [
+      {label: 'Explore', target:'/fact-check-search/explore'},
+      {label: 'Search', target:'/fact-check-search/search'},
+  ]
+}
+
+
 const IndexPage = () => (
   <AppShell
     headerLabel={'Tattle Services'}
     footerItems={footerItems}
+    primaryNav={primaryNav}
   >
     <Heading level={1}>
         Index

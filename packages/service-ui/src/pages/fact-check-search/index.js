@@ -2,15 +2,8 @@ import React, { useState, useEffect } from 'react'
 import {Grommet, Box, Heading, Text, Button} from 'grommet'
 import AppShell from '../../components/atomic/AppShell';
 import { Link } from '../../components/atomic/TattleLinks';
-
-const footerItems = {
-    primary : [
-        { id : 1, label : 'Tattle', target: 'http://tattle.co.in', type:'external'},
-        { id : 2, label : 'Blog', target: 'http://blog.tattle.co.in', type:'external'},
-        { id : 3, label : 'Status', target: '/status', type:'internal'},
-        { id : 4, label : 'Contribute', target: '/contribute', type:'internal'},
-    ],
-}
+import { footerItems, primaryNav } from './options';
+  
 
 
 /**
@@ -20,6 +13,7 @@ const footerItems = {
 
 const FactCheckSearch = () => {
     const [fetching, setFetching] = useState(false)
+    console.log(primaryNav);
 
     useEffect(()=> {
         setFetching(true)
@@ -28,7 +22,9 @@ const FactCheckSearch = () => {
     return (
         <AppShell 
             headerLabel={'Factcheck Search'}
-            footerItems={footerItems}>
+            footerItems={footerItems}
+            primaryNav={primaryNav}
+        >
             <Heading level={1}>
                 Tattle Fact Check Search is a tool to find out if a media item has been fact checked before.
             </Heading>

@@ -10,18 +10,13 @@ import TattleTheme from './theme';
 * @function ContentPageLayout
 **/
 
-const AppShell = ({children, footerItems, headerLabel, headerTarget}) => (
+const AppShell = ({children, footerItems, headerLabel, headerTarget, primaryNav}) => (
     <Grommet theme={TattleTheme} full>
         <Box fill={'horizontal'} as={'header'}>
             <SimpleHeader 
                 label={headerLabel}
                 target={headerTarget}
-                options={
-                    [
-                        {label: 'Explore', target:'/fact-check-search/explore'},
-                        {label: 'Search', target:'/fact-check-search/search'},
-                    ]
-                }
+                primaryNav={primaryNav}
             />
         </Box>
         <Box as={'main'} >

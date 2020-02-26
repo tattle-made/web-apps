@@ -8,6 +8,7 @@ import axios from 'axios';
 import { Spinner } from '../../components/atomic/Spinner';
 import { ARCHIVE_SERVER_PATH, TOKEN } from '../../config';
 import { postWithToken } from '../../services/shell-server';
+import { footerItems, primaryNav } from './options';
 
 
 const s3AuthConf = {
@@ -218,7 +219,11 @@ const Search = () => {
     })
 
     return (
-        <AppShell>
+        <AppShell
+            headerLabel={'Factcheck Search'}
+            footerItems={footerItems}
+            primaryNav={primaryNav}
+        >
             <SearchInput />
         </AppShell>
     )
