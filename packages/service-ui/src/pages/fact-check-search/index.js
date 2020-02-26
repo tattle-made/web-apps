@@ -40,7 +40,7 @@ const FactCheckSearch = () => {
                     <Button label={'Explore dataset'} align={'center'} pad={'medium'} />
                 </Link>
                 <Link to={'/fact-check-search/search'}>
-                    <Button label={'Search for media'} align={'center'} pad={'medium'} />
+                    <Button primary label={'Search for media'} align={'center'} pad={'medium'} />
                 </Link>
             </Box>
         </AppShell>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {Heading, Paragraph} from 'grommet'
 import AppShell from '../../components/atomic/AppShell';
+import { footerItems, primaryNav } from './options';
 
 /**
 * @author
@@ -15,7 +16,11 @@ const Contribute = () => {
     })
 
     return (
-        <AppShell>
+        <AppShell
+            headerLabel={'Factcheck Search'}
+            footerItems={footerItems}
+            primaryNav={primaryNav}
+        >
             <Heading level={1}>
                 Contribute
             </Heading>
