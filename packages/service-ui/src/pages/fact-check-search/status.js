@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {Heading} from 'grommet'
 import AppShell from '../../components/atomic/AppShell';
+import { footerItems, primaryNav } from '../../config/options';
 
 /**
 * @author
@@ -15,7 +16,11 @@ const Status = () => {
     })
 
     return (
-        <AppShell>
+        <AppShell
+            headerLabel={'Factcheck Search'}
+            footerItems={footerItems}
+            primaryNav={primaryNav}
+        >
             <Heading level={1} margin={'none'}>
                 Status
             </Heading>

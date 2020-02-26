@@ -2,7 +2,6 @@ import axios from 'axios'
 
 class HTTP {
     constructor(apiUrl){
-        console.log('==hi==', apiUrl)
         this.apiUrl = apiUrl
     }
 
