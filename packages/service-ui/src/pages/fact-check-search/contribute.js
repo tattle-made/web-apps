@@ -20,6 +20,7 @@ const Contribute = () => {
             headerLabel={'Factcheck Search'}
             footerItems={footerItems}
             primaryNav={primaryNav}
+            expandCenter={true}
         >
             <Heading level={1}>
                 Contribute

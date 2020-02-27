@@ -223,6 +223,7 @@ const Search = () => {
             headerLabel={'Factcheck Search'}
             footerItems={footerItems}
             primaryNav={primaryNav}
+            expandCenter={true}
         >
             <SearchInput />
         </AppShell>

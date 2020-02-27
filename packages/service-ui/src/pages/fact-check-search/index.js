@@ -24,6 +24,7 @@ const FactCheckSearch = () => {
             headerLabel={'Factcheck Search'}
             footerItems={footerItems}
             primaryNav={primaryNav}
+            expandCenter={true}
         >
             <Heading level={1}>
                 Tattle Fact Check Search is a tool to find out if a media item has been fact checked before.

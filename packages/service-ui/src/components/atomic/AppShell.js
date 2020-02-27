@@ -10,7 +10,7 @@ import TattleTheme from './theme';
 * @function ContentPageLayout
 **/
 
-const AppShell = ({children, footerItems, headerLabel, headerTarget, primaryNav}) => (
+const AppShell = ({children, footerItems, headerLabel, headerTarget, primaryNav, expandCenter}) => (
     <Grommet theme={TattleTheme} full>
         <Box fill={'horizontal'} as={'header'}>
             <SimpleHeader 
@@ -19,14 +19,23 @@ const AppShell = ({children, footerItems, headerLabel, headerTarget, primaryNav}
                 primaryNav={primaryNav}
             />
         </Box>
-        <Box as={'main'} fill={'vertical'}>
-            <ContentPageLayout>
-                {children}
-            </ContentPageLayout>
+        {
+            expandCenter == true ?
+            <Box as={'main'} fill={'vertical'}>
+                <ContentPageLayout>
+                    {children}
+                </ContentPageLayout>
+            </Box>
+            :
+            <Box as={'main'} >
+                <ContentPageLayout>
+                    {children}
+                </ContentPageLayout>
+            </Box>
+        }
+        <Box fill={'horizontal'} as={'footer'}>
+            <SmallFooter items={footerItems}/>
         </Box>
-    <Box fill={'horizontal'} as={'footer'}>
-        <SmallFooter items={footerItems}/>
-    </Box>
     </Grommet>
 )
 

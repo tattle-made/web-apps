@@ -28,6 +28,7 @@ const IndexPage = () => (
     headerLabel={'Tattle Services'}
     footerItems={footerItems}
     primaryNav={primaryNav}
+    expandCenter={true}
   >
     <Heading level={1}>
         Index

@@ -38,42 +38,45 @@ return (
     headerLabel={'Factcheck Search'}
     footerItems={footerItems}
     primaryNav={primaryNav}
+    expandCenter={false}
   >
     {/* <Box width={'horizontal'} height={'350px'} border>
     </Box> */}
-    <Box direction={'row'} gap={'small'} margin={{top:'medium'}}>
-      <Box width={'50%'} border pad={'medium'}>
-        <DataVizOverview>
-          <h1> 25K articles </h1>
-          <Grid
-            columns={{
-              count:3,
-              size: 'auto'
-            }}
-            gap={'small'}
-          >
-            <Box> <p> texts </p> </Box>
-            <Box> <p> images </p> </Box>
-            <Box> <p> videos </p> </Box>
-          </Grid>
-        
-          <Grid
+    <Box direction={'column'} gap={'medium'}>
+      <Box direction={'row'} gap={'small'} margin={{top:'medium'}}>
+        <Box width={'50%'} border pad={'medium'}>
+          <DataVizOverview>
+            <h1> 25K articles </h1>
+            <Grid
               columns={{
                 count:3,
                 size: 'auto'
               }}
               gap={'small'}
             >
-            <Box> <h2> 40K </h2> </Box>
-            <Box> <h2> 32K </h2> </Box>
-            <Box> <h2> 18K </h2> </Box>
-          </Grid>
-        </DataVizOverview>
+              <Box> <p> texts </p> </Box>
+              <Box> <p> images </p> </Box>
+              <Box> <p> videos </p> </Box>
+            </Grid>
+          
+            <Grid
+                columns={{
+                  count:3,
+                  size: 'auto'
+                }}
+                gap={'small'}
+              >
+              <Box> <h2> 40K </h2> </Box>
+              <Box> <h2> 32K </h2> </Box>
+              <Box> <h2> 18K </h2> </Box>
+            </Grid>
+          </DataVizOverview>
+        </Box>
+        <Box width={'50%'} border border pad={'medium'}></Box>
       </Box>
-      <Box width={'50%'} border border pad={'medium'}>
-      </Box>
-    </Box>
-    <DataFeed />
+      <DataFeed />
+    </Box>  
+  
   </AppShell>
 )
 }

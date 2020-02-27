@@ -20,6 +20,7 @@ const Status = () => {
             headerLabel={'Factcheck Search'}
             footerItems={footerItems}
             primaryNav={primaryNav}
+            expandCenter={false}
         >
             <Heading level={1} margin={'none'}>
                 Status

@@ -58,7 +58,7 @@ const DataFeed = () => {
     }
 
     return (
-        <Box>
+        <Box fill>
             <Box direction={'row'} 
                 fill={'horizontal'} 
                 margin={{top: 'large'}}
