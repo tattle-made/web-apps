@@ -63,6 +63,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "setup:config:local": "./src/config/setup-config.sh LOCALHOST",
     "build": "gatsby build",
     "sass": "sass --watch src/components/style:src/components/style",
     "develop": "gatsby develop",

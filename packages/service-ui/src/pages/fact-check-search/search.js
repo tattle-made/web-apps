@@ -142,7 +142,7 @@ function SearchInput() {
                                         <Box pad={'xsmall'} 
                                             border={true} round={'small'} 
                                             background={'light-3'}>
-                                            <Text> high </Text>
+                                            <Text> {match.domain} </Text>
                                         </Box>
                                         <Box direction={'row'} 
                                             wrap={true}
