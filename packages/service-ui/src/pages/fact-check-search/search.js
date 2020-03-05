@@ -138,28 +138,28 @@ function SearchInput() {
                         {
                             result.urls && result.urls.map((match)=>(
                                 <Box flex={false} key={match.id} margin={{top:'small', bottom:'medium'}} direction={'column'}>
-                                    <Heading level={4} margin={'none'}> {match.title} </Heading>
-                                    <Box direction={'row'} 
-                                        gap={'xsmall'} 
-                                        wrap={true}
-                                        margin={{top:'xsmall'}}
-                                    >
-                                        <Box pad={'xsmall'} 
-                                            round={'small'} 
-                                            background={'brand'}>
-                                            <Text color={'#eeeeee'}> {match.domain} </Text>
-                                        </Box>
+                                    <ExternalLink href={match.url} target={'_blank'}>
+                                        <Heading level={4} margin={'none'}> {match.title}> </Heading>
                                         <Box direction={'row'} 
+                                            gap={'xsmall'} 
                                             wrap={true}
-                                            align={'center'}
-                                            gap={'xsmall'}
+                                            margin={{top:'xsmall'}}
                                         >
-                                            <Text> {match.timestamp} </Text>
-                                            <ExternalLink href={match.url} target={'_blank'}>
+                                            <Box pad={'xsmall'} 
+                                                round={'small'} 
+                                                background={'brand'}>
+                                                <Text color={'#eeeeee'}> {match.domain} </Text>
+                                            </Box>
+                                            <Box direction={'row'} 
+                                                wrap={true}
+                                                align={'center'}
+                                                gap={'xsmall'}
+                                            >
+                                                <Text> {match.timestamp} </Text>
                                                 <WebsiteLink size={16}/>
-                                            </ExternalLink>
+                                            </Box>
                                         </Box>
-                                    </Box>
+                                    </ExternalLink>
                                 </Box>
                             ))
                         }
