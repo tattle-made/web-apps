@@ -128,11 +128,11 @@ function SearchInput() {
             <InvisibleFileUploadButton type='file' ref={fileUploader} onChange={onFileChangeHandler}/>
             {
                 result.status==='data' ? 
-                <Box margin={{top : 'medium'}}>
+                <Box margin={{top : 'medium'}} fill={'horizontal'}>
                     <Heading level={2}> Found on </Heading>
                         {
                             result.urls && result.urls.map((match)=>(
-                                <Box key={match.id} margin={{top:'small', bottom:'medium'}} fill={'horizontal'}>
+                                <Box flex={false} key={match.id} margin={{top:'small', bottom:'medium'}} direction={'column'}>
                                     <Heading level={4} margin={'none'}> {match.title} </Heading>
                                     <Box direction={'row'} 
                                         gap={'xsmall'} 
@@ -140,37 +140,9 @@ function SearchInput() {
                                         margin={{top:'xsmall'}}
                                     >
                                         <Box pad={'xsmall'} 
-                                            border={true} round={'small'} 
-                                            background={'light-3'}>
-                                            <Text> {match.domain} </Text>
-                                        </Box>
-                                        <Box direction={'row'} 
-                                            wrap={true}
-                                            align={'center'}
-                                            gap={'xsmall'}
-                                        >
-                                            <Text> {match.timestamp} </Text>
-                                            <ExternalLink href={match.url} target={'_blank'}>
-                                                <WebsiteLink size={16}/>
-                                            </ExternalLink>
-                                        </Box>
-                                    </Box>
-                                </Box>
-                            ))
-                        }
-                        {
-                            result.posts && result.posts.map((match)=>(
-                                <Box key={match.id} margin={{top:'small', bottom:'medium'}} fill={'horizontal'}>
-                                    <Heading level={4} margin={'none'}> {match.title} </Heading>
-                                    <Box direction={'row'} 
-                                        gap={'xsmall'} 
-                                        wrap={true}
-                                        margin={{top:'xsmall'}}
-                                    >
-                                        <Box pad={'xsmall'} 
-                                            border={true} round={'small'} 
-                                            background={'light-3'}>
-                                            <Text> high </Text>
+                                            round={'small'} 
+                                            background={'brand'}>
+                                            <Text color={'#eeeeee'}> {match.domain} </Text>
                                         </Box>
                                         <Box direction={'row'} 
                                             wrap={true}

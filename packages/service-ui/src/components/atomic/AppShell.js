@@ -12,29 +12,24 @@ import TattleTheme from './theme';
 
 const AppShell = ({children, footerItems, headerLabel, headerTarget, primaryNav, expandCenter}) => (
     <Grommet theme={TattleTheme} full>
-        <Box fill={'horizontal'} as={'header'}>
-            <SimpleHeader 
-                label={headerLabel}
-                target={headerTarget}
-                primaryNav={primaryNav}
-            />
-        </Box>
-        {
-            expandCenter == true ?
-            <Box as={'main'} fill={'vertical'}>
+        <Box fill>
+            <Box flex={false} as={'header'} >
+                <SimpleHeader 
+                    label={headerLabel}
+                    target={headerTarget}
+                    primaryNav={primaryNav}
+                />
+            </Box>
+
+            <Box flex overflow={'auto'} >
                 <ContentPageLayout>
                     {children}
                 </ContentPageLayout>
             </Box>
-            :
-            <Box as={'main'} >
-                <ContentPageLayout>
-                    {children}
-                </ContentPageLayout>
+            
+            <Box flex={false} >
+                <SmallFooter items={footerItems}/>
             </Box>
-        }
-        <Box fill={'horizontal'} as={'footer'}>
-            <SmallFooter items={footerItems}/>
         </Box>
     </Grommet>
 )
