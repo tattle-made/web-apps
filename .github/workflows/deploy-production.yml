@@ -1,4 +1,4 @@
-name: CI
+name: deploy-production
 
 on: 
   push:
@@ -32,4 +32,13 @@ jobs:
       run: node_modules/lerna/cli.js run build --parallel --stream
     - name: Deploy Site
       run: node_modules/lerna/cli.js run deploy --parallel --stream
+    
+    - name: Notify on Slack
+      uses: rtCamp/action-slack-notify@v2.0.0
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_MESSAGE: 'Deployed web-apps to production environment'
+        SLACK_TITLE: 'deploy-production workflow complete'
+        SLACK_COLOR: '#020637'
+        SLACK_ICON: https://tattle-media.s3.amazonaws.com/monogram-dark.svg
         
