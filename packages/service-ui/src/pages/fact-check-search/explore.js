@@ -42,9 +42,9 @@ return (
   >
     {/* <Box width={'horizontal'} height={'350px'} border>
     </Box> */}
-    <Box direction={'column'} gap={'medium'}>
+    <Box direction={'column'} gap={'medium'} flex={false}>
       <Box direction={'row'} gap={'small'} margin={{top:'medium'}}>
-        <Box width={'50%'} border pad={'medium'}>
+        <Box width={'50%'} border pad={'medium'} flex={false} >
           <DataVizOverview>
             <h1> 25K articles </h1>
             <Grid

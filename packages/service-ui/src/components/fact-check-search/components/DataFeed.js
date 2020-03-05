@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {Box, Heading, Text, CheckBox, Button} from 'grommet'
+import {ResponsiveContext, Box, Heading, Text, CheckBox, Button} from 'grommet'
 import DataAccess from './DataAccess'
 import MoleculeMultiplePosts from './MoleculeMultiplePosts'
 import { ArrowLeft, ArrowRight } from 'react-feather';
@@ -20,6 +20,8 @@ const DataFeed = () => {
     const [ mediaType, setMediaType] = useState('all')
     const [multipleMediaBlockData, setMultipleMediaBlockData] = useState({ status: 'default'})
     const [ filterValue, setFilterValue ] = React.useState('all');
+
+    const screenSize = React.useContext(ResponsiveContext);
 
     const increment = () => {
         if(pageNumber!=pageCount){
@@ -59,14 +61,28 @@ const DataFeed = () => {
 
     return (
         <Box fill>
-            <Box direction={'row'} 
-                fill={'horizontal'} 
-                margin={{top: 'large'}}
-                wrap={'true'}
-            >
-                <DataFeedControls onChange={ onFilterChange }/>
-                <DataAccess/>
-            </Box>
+            {
+                screenSize === 'small' ?
+                <Box direction={'column'} 
+                    fill={'horizontal'} 
+                    margin={{top: 'large'}}
+                    gap={'medium'}
+                    flex={false} 
+                >
+                    <DataFeedControls onChange={ onFilterChange }/>
+                    <DataAccess/>
+                </Box>
+                :
+                <Box direction={'row'} 
+                    fill={'horizontal'} 
+                    margin={{top: 'large'}}
+                    wrap={'true'}
+                    flex={false} 
+                >
+                    <DataFeedControls onChange={ onFilterChange }/>
+                    <DataAccess/>
+                </Box>
+            }
 
             <Box 
                 fill={'horizontal'} 

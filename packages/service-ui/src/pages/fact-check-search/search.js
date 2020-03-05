@@ -129,7 +129,12 @@ function SearchInput() {
             {
                 result.status==='data' ? 
                 <Box margin={{top : 'medium'}} fill={'horizontal'}>
-                    <Heading level={2}> Found on </Heading>
+                        {
+                            result.urls ? 
+                                <Heading level={2}> Found on </Heading>
+                            :
+                                <Heading level={2}> No match found </Heading>
+                        }
                         {
                             result.urls && result.urls.map((match)=>(
                                 <Box flex={false} key={match.id} margin={{top:'small', bottom:'medium'}} direction={'column'}>
@@ -171,7 +176,7 @@ function SearchInput() {
                 </Box>
                 :
                 <Box> 
-                    Something unexpected happen
+                    Something unexpected happened. We'll look into it. Please try again later.
                 </Box>
             }
         </Box>
