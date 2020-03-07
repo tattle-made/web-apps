@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Box, Stack, Heading, Text, TextInput, Button, Keyboard } from 'grommet'
 import styled from 'styled-components'
 import { Upload, ExternalLink as WebsiteLink } from 'react-feather'
@@ -9,7 +9,7 @@ import { Spinner } from '../../components/atomic/Spinner';
 import { ARCHIVE_SERVER_PATH, TOKEN } from '../../config';
 import { postWithToken } from '../../services/shell-server';
 import { footerItems, primaryNav } from '../../config/options';
-import Dropzone from 'react-dropzone'
+import {useDropzone} from 'react-dropzone'
 
 
 const s3AuthConf = {
@@ -31,21 +31,36 @@ function SearchInput() {
 
     const [result, setResult] = React.useState({status:'default'})
 
-    const onDrop = (acceptedFiles) => {
-        // Do something with the files
-        console.log('==files==')
-        console.log(acceptedFiles);
+    const onSearch = () => {
+        console.log('searching', searchQuery);
+        setResult({status:'loading'})
+        postWithToken('/search/find-text-in-image',
+            {
+                text: searchQuery
+            },
+            TOKEN
+        )
+        .then((res) => {
+            console.log(res)
+            res.data
+            setResult(res.data)
+            //setResult(res.data)
+        })
+    }
 
-        const file = acceptedFiles[0]
+    const onFileChangeHandler = (event) => {
+        console.log(event.target.files[0]);
+        const file = event.target.files[0];
         const fileName = file.name;
         const fileType = file.type;
-        // setServiceState({type:'PREVIEW', payload:{file:{preview: URL.createObjectURL(file)}}})
-        setResult({status:'loading'})
-
         const s3FileUrl = `https://tattle-services-search.s3.ap-south-1.amazonaws.com/${fileName}`
+        
+        // setFileSearchQuery({status:'loading'})
+    
+        // console.log({fileName, fileType});
 
         setResult({status:'loading'})
-
+    
         axios.post(s3AuthConf.url, {
             type: fileType,
             filename: fileName
@@ -85,29 +100,33 @@ function SearchInput() {
             // setFileSearchQuery({status:'error'})
             console.log(err)
         });
-    };
-
+    }
 
     return (
         <Box gap={'small'}>
-            <Box flex={false} hoverIndicator={true}>
-                <Dropzone onDrop={onDrop}>
-                    {({getRootProps, getInputProps}) => (
-                        <section>
-                        <div {...getRootProps()}>
-                            <input {...getInputProps()} />
-                            <Box border={{color:'#020637', style: 'dashed', size:'small'}} 
-                            pad={'medium'} 
-                            align={'center'}
-                            round={'small'}
-                            >
-                                Drag 'n' drop your image here, or click to upload it.
-                            </Box>
-                        </div>
-                        </section>
-                    )}
-                    </Dropzone>
-            </Box>
+            <Stack anchor="right">
+                <Keyboard onEnter={onSearch}>
+                    <TextInput
+                        placeholder="Search for fact checked stories"
+                        value={searchQuery}
+                        onChange={event => setSearchQuery(event.target.value)}
+                    />
+                </Keyboard>
+                <Box 
+                    pad={'small'}
+                    hoverIndicator={'true'}
+                    margin={{right: 'medium'}}
+                    align={'center'}
+                >
+                    <Button 
+                        plain
+                        onClick={() => {fileUploader.current.click()}}
+                    >
+                        <Upload size={24}/>
+                    </Button>
+                </Box>
+            </Stack>
+            <InvisibleFileUploadButton type='file' ref={fileUploader} onChange={onFileChangeHandler}/>
             {
                 result.status==='data' ? 
                 <Box margin={{top : 'medium'}} fill={'horizontal'}>
