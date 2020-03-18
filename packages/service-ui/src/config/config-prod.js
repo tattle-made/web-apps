@@ -1,2 +1,2 @@
-export const ARCHIVE_SERVER_PATH = 'https://archive.tattle.co.in';
-export const TOKEN = '7d5208f0-4295-11ea-b1cd-857f27f10814';
+export const ARCHIVE_SERVER_PATH = 'https://archive-server.tattle.co.in';
+export const TOKEN = 'b649a020-5e04-11ea-82eb-1d791108ec16';
