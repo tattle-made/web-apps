@@ -1,9 +1,9 @@
 import HTTP from './http'
-const AUTH_SERVER_URL = 'http://13.235.141.145:3001'
-const http = new HTTP(AUTH_SERVER_URL);
+import { ARCHIVE_SERVER_PATH, TOKEN_TEXT_EXTRACT } from '../config';
+const http = new HTTP(ARCHIVE_SERVER_PATH);
 
 const getSignedUrl = (filename, fileType) => (
-    http.post('auth/policy', {filename, fileType})
+    http.postWithToken('/api/s3-auth', {filename, fileType}, TOKEN_TEXT_EXTRACT)
     .then((response) => response.data.signedUrl)
     .catch((err)=> `Error Parsing Server response ${err}` )
 )

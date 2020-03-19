@@ -10,8 +10,7 @@ import uuidv1 from 'uuid/v1';
 import Feedback from './feedback';
 import Logo from '../components/logo'
 import Result from '../components/result'
-
-const SHELL_EXPRESS_SERVER_URL = 'http://13.235.149.236:3003'
+import {TOKEN_TEXT_EXTRACT as TOKEN, ARCHIVE_SERVER_PATH, USER_ID_TEXT_EXTRACT as USER_ID } from '../config'
 
 
 const MyDropzone = () => {
@@ -35,7 +34,7 @@ const MyDropzone = () => {
           };
           return axios.put(url, file, options)
           .then((response) => {
-            return extractText(`https://tattle-services.s3.ap-south-1.amazonaws.com/${fileName}`)
+            return extractText(`https://tattle-services-search.s3.ap-south-1.amazonaws.com/${fileName}`)
             .then((result) => {
               setServiceResult(result)
               setServiceState({type:'NEUTRAL', message:'waiting for upload'})
@@ -44,18 +43,18 @@ const MyDropzone = () => {
           })
           // api call to create post in the backend
           .then((response)=>{
-            console.log(`Making API call to ${SHELL_EXPRESS_SERVER_URL}`);
+            console.log(`Making API call to ${ARCHIVE_SERVER_PATH}`);
             return axios.post(
-              `${SHELL_EXPRESS_SERVER_URL}/api/posts/`,
+              `${ARCHIVE_SERVER_PATH}/api/posts/`,
               {
                 "type" : "image",
                 "data" : "",
                 "filename": fileName,
-                "userId" : 159
+                "userId" : USER_ID
               },
               {
                 headers: {
-                  token: 'be2742a0-e610-11e9-98c0-cfafcf9716d4'
+                  token: TOKEN
                 }
               }
             );

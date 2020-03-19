@@ -37,7 +37,7 @@ const IndexPage = () => (
      We open up our technology to be used by general public. Here's an updated list of publically available tools
     </Heading>
     <Box direction={'column'} gap={'small'}>      
-      {/* <Link to="text-extract"> Text Extract </Link> */}
+      <Link to="text-extract"> Text Extract </Link>
       <Link to="fact-check-search"> Fact Check Search </Link>
     </Box>
     <Text size={'small'} margin={{top:'medium'}}> version : {version} </Text>
