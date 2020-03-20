@@ -37,13 +37,13 @@ const IndexPage = () => (
      We open up our technology to be used by general public. Here's an updated list of publically available tools
     </Heading>
     <Box direction={'column'} gap={'small'} margin={{top:'medium'}}>      
-      <Box direction={'row'} gap={'xsmall'}>
+      {/* <Box direction={'row'} gap={'xsmall'}>
         <Link to="text-extract"> 
           <Heading level={4}> Text Extract </Heading> 
         </Link> 
         <Text> - </Text>
         <Text> Extract text automatically from memes </Text>
-      </Box>
+      </Box> */}
 
       <Box direction={'row'} gap={'xsmall'}>
         <Link to="khoj"> 
