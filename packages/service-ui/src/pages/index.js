@@ -2,12 +2,12 @@
 import { jsx } from 'theme-ui'
 import React from "react"
 import { basename } from 'path';
-import {Link} from 'gatsby'
 import {Box, Heading, Button, Text} from 'grommet'
 
 import ServiceUI from '../components/text-extract-ui'
 import AppShell from '../components/atomic/AppShell'
 import {version} from '../../package.json';
+import { Link } from '../components/atomic/TattleLinks';
 
 
 const footerItems = {
@@ -38,7 +38,13 @@ const IndexPage = () => (
     </Heading>
     <Box direction={'column'} gap={'small'}>      
       <Link to="text-extract"> Text Extract </Link>
-      <Link to="fact-check-search"> Fact Check Search </Link>
+      <Link to="khoj"> 
+        <Box direction={'row'} gap={'xsmall'}>
+          <Heading level={4}> Khoj </Heading> 
+          <Text> - </Text>
+          <Text> search engine for fact-check articles. </Text>
+        </Box>
+      </Link>
     </Box>
     <Text size={'small'} margin={{top:'medium'}}> version : {version} </Text>
   </AppShell>

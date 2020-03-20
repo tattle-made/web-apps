@@ -21,7 +21,7 @@ const FactCheckSearch = () => {
 
     return (
         <AppShell 
-            headerLabel={'Factcheck Search'}
+            headerLabel={'Khoj'}
             footerItems={footerItems}
             primaryNav={primaryNav}
             expandCenter={true}
@@ -37,10 +37,10 @@ const FactCheckSearch = () => {
             </Heading>
 
             <Box direction={'row'} gap={'small'} margin={{top:'large'}}>
-                <Link to={'/fact-check-search/explore'}>
+                <Link to={'/khoj/explore'}>
                     <Button label={'Explore dataset'} align={'center'} pad={'medium'} />
                 </Link>
-                <Link to={'/fact-check-search/search'}>
+                <Link to={'/khoj/search'}>
                     <Button primary label={'Search for media'} align={'center'} pad={'medium'} />
                 </Link>
             </Box>

@@ -17,7 +17,7 @@ const Contribute = () => {
 
     return (
         <AppShell
-            headerLabel={'Factcheck Search'}
+            headerLabel={'Khoj'}
             footerItems={footerItems}
             primaryNav={primaryNav}
             expandCenter={true}

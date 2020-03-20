@@ -19,7 +19,7 @@ const SmallFooter = ({items}) => (
                             primaryItem.type==='internal' ? 
                                 <Link 
                                     key={primaryItem.id}
-                                    to={`/fact-check-search/${primaryItem.target}`}
+                                    to={`/khoj/${primaryItem.target}`}
                                 >
                                     <Text> {primaryItem.label} </Text>
                                 </Link>
