@@ -35,42 +35,16 @@ function SEO({ description, lang, meta, title }) {
       }}
       title={title}
       titleTemplate={`%s`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
     >
+      <meta property="description" content={metaDescription} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={SocialImage} />
+      <meta property="og:type" content={'website'} />
+      <meta property="twitter:card" content={'summary'} />
+      <meta property="twitter:creator" content={site.siteMetadata.author} />
+      <meta property="twitter:title" content={title} />
+      <meta property="twitter:description" content={metaDescription} />
     </Helmet>
   )
 }

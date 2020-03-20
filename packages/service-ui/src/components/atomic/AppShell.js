@@ -3,6 +3,7 @@ import { Grommet, ResponsiveContext, Box } from 'grommet'
 import SimpleHeader from './SimpleHeader';
 import SmallFooter from '../fact-check-search/components/SmallFooter';
 import TattleTheme from './theme';
+import SEO from '../seo';
 
 
 /**
@@ -12,6 +13,7 @@ import TattleTheme from './theme';
 
 const AppShell = ({children, footerItems, headerLabel, headerTarget, primaryNav, expandCenter}) => (
     <Grommet theme={TattleTheme} full>
+        <SEO/>
         <Box fill>
             <Box flex={false} as={'header'} >
                 <SimpleHeader 
