@@ -36,6 +36,7 @@ function SEO({ description, lang, meta, title }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const author = site.siteMetadata.author
   const socialImageURL = allFile.edges[0].node.publicURL;
 
 
@@ -52,7 +53,8 @@ function SEO({ description, lang, meta, title }) {
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={socialImageURL} />
       <meta property="og:type" content={'website'} />
-      <meta property="twitter:card" content={'summary'} />
+      <meta property="twitter:card" content={'summary_large_image'} />
+      <meta property="twitter:site" content={author} />
       <meta property="twitter:creator" content={site.siteMetadata.author} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={metaDescription} />

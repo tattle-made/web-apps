@@ -14,7 +14,7 @@ import SEO from '../seo';
 const AppShell = ({children, footerItems, headerLabel, headerTarget, primaryNav, expandCenter}) => (
     <Grommet theme={TattleTheme} full>
         <SEO
-            title={'Tattle Services'}
+            title={`Tattle - ${headerLabel}`}
         />
         <Box fill>
             <Box flex={false} as={'header'} >
