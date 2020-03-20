@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight } from 'react-feather';
 import DataFeedControls from '../DataFeedControls';
 import { postWithToken, get } from '../../../services/shell-server';
 import { TOKEN } from '../../../config';
+import { ExternalLink } from '../../atomic/TattleLinks';
 
 /**
 * @author 

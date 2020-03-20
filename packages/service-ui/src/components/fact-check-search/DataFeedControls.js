@@ -25,7 +25,7 @@ const DataFeedControls = ({onChange}) => {
             align={'center'}
         >
             <Box align={'baseline'}> <Heading level={'2'} margin={'none'}> Data </Heading> </Box>
-            <Box direction={'row'} 
+            {/* <Box direction={'row'} 
                 gap={'small'}
                 align={'baseline'}
                 wrap={true}
@@ -37,7 +37,7 @@ const DataFeedControls = ({onChange}) => {
                     value={value}
                     onChange={(event) => onFilterChecked(event.target.value) }
                 />
-            </Box>
+            </Box> */}
         </Box>
     )
 }

@@ -38,13 +38,13 @@ const IndexPage = () => (
     </Heading>
     <Box direction={'column'} gap={'small'}>      
       <Link to="text-extract"> Text Extract </Link>
-      <Link to="khoj"> 
-        <Box direction={'row'} gap={'xsmall'}>
+      <Box direction={'row'} gap={'xsmall'}>
+        <Link to="khoj"> 
           <Heading level={4}> Khoj </Heading> 
-          <Text> - </Text>
-          <Text> search engine for fact-check articles. </Text>
-        </Box>
-      </Link>
+        </Link> 
+        <Text> - </Text>
+        <Text> search engine for fact-check articles. </Text>
+      </Box>
     </Box>
     <Text size={'small'} margin={{top:'medium'}}> version : {version} </Text>
   </AppShell>

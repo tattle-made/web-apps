@@ -27,16 +27,13 @@ const FactCheckSearch = () => {
             expandCenter={true}
         >
             <Heading level={1}>
-                Tattle Fact Check Search is a tool to find out if a media item has been fact checked before.
+                Tattle Khoj Helps you Find Fact Checked Stories About an Image.
             </Heading>
             <Heading level={3}>
-                We scrape fact checking websites periodically and index them into our search engine. 
-            </Heading>
-            <Heading level={3}>
-                We’ve made this tool publically available for researchers and journalists to use.
-            </Heading>
+                We Scrape IFCN Certified Indian Fact Checking Sites Periodically so That They May be Searchable Via Images.
+            </Heading> 
 
-            <Box direction={'row'} gap={'small'} margin={{top:'large'}}>
+            <Box direction={'row'} gap={'small'} margin={{top:'large'}} flex={false}>
                 <Link to={'/khoj/explore'}>
                     <Button label={'Explore dataset'} align={'center'} pad={'medium'} />
                 </Link>

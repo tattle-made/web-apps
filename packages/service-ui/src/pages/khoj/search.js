@@ -108,6 +108,9 @@ function SearchInput() {
                     )}
                     </Dropzone>
             </Box>
+            <Text size={'xsmall'}>
+                Images that you search for are temporarily stored on our servers to allow searching. These images are not added to Tattle's database of content.
+            </Text>
             {
                 result.status==='data' ? 
                 <Box margin={{top : 'medium'}} fill={'horizontal'}>

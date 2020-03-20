@@ -32,16 +32,24 @@ const DataAccess = () => {
     }
 
     return (
-        <Box>
-            <DropButton
-                label="Access Data"
-                open={open}
-                onOpen={onOpen}
-                onClose={onClose}
-                dropContent={<DropContent onClose={onClose} />}
-                dropProps={{ align: { top: "bottom" } }}
-            />
-        </Box>
+
+        <ExternalLink 
+            target={'_blank'}
+            href={'https://docs.google.com/forms/d/e/1FAIpQLSd6KtwsHiS1JaIME0D7n6CDrqZR3swI4D9i8fR2kr1Lp2CTvA/viewform'}
+        >
+            <Button label={'Access Dataset'} align={'center'} pad={'medium'} />
+        </ExternalLink>     
+        
+        // <Box>
+        //     <DropButton
+        //         label="Access Data"
+        //         open={open}
+        //         onOpen={onOpen}
+        //         onClose={onClose}
+        //         dropContent={<DropContent onClose={onClose} />}
+        //         dropProps={{ align: { top: "bottom" } }}
+        //     />
+        // </Box>
     )
 }
 
