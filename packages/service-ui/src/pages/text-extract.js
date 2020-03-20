@@ -1,46 +1,37 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import React from "react"
-import Layout from "../components/layout"
-import LayoutSidebarContent from '../components/layout-sidebar-content'
-import CTA from '../components/cta'
-import Logo from '../components/logo'
-import Footer from '../components/footer'
-import { basename } from 'path';
-
 import ServiceUI from '../components/text-extract-ui'
+import AppShell from '../components/atomic/AppShell';
+import {Box, Heading} from 'grommet';
+
+const footerItems = {
+  primary : [
+      { id : 1, label : 'Tattle', target: 'http://tattle.co.in', type:'external'},
+      { id : 2, label : 'Blog', target: 'http://blog.tattle.co.in', type:'external'},
+      { id : 3, label : 'Mailing List', target: 'https://mailchi.mp/b0a851c89c0d/tattle_update', type:'internal'},
+  ],
+}
+
+
+const primaryNav = {
+  options : [
+  
+  ]
+}
 
 const TextExtractPage = () => (
-  <div>
-      <Layout>
-        <LayoutSidebarContent>
-            <div sx={{
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
-              <div sx={{
-                display:'flex',
-                flexDirection:'column'
-              }}>
-                <Logo/>
-                <div sx={{
-                  backgroundColor: 'base',
-                  color: 'textDark',
-                  padding: 3,
-                  borderRadius: '0.4em'
-                }}>
-                  <h1>Text-Extractor</h1>
-                  <h4> Extract text from memes </h4>
-                  <p> This tool automates extraction of text from memes</p>
-                  <CTA/>
-                </div>
-                </div>
-                <Footer/>
-            </div>
-            <ServiceUI/>
-        </LayoutSidebarContent>
-      </Layout>
-  </div>
+  <AppShell
+    headerLabel={'Text Extractor'}
+    footerItems={footerItems}
+    primaryNav={primaryNav}
+    expandCenter={true}
+  >
+    <Heading level={3}>
+      Extract text from memes
+    </Heading>
+    <ServiceUI/>
+  </AppShell>
 )
 
 export default TextExtractPage

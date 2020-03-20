@@ -36,8 +36,15 @@ const IndexPage = () => (
     <Heading level={3}>
      We open up our technology to be used by general public. Here's an updated list of publically available tools
     </Heading>
-    <Box direction={'column'} gap={'small'}>      
-      <Link to="text-extract"> Text Extract </Link>
+    <Box direction={'column'} gap={'small'} margin={{top:'medium'}}>      
+      <Box direction={'row'} gap={'xsmall'}>
+        <Link to="text-extract"> 
+          <Heading level={4}> Text Extract </Heading> 
+        </Link> 
+        <Text> - </Text>
+        <Text> Extract text automatically from memes </Text>
+      </Box>
+
       <Box direction={'row'} gap={'xsmall'}>
         <Link to="khoj"> 
           <Heading level={4}> Khoj </Heading> 
