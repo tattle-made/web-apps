@@ -1,7 +1,7 @@
 module.exports = {
     siteMetadata: {
-      title: `Tattle - Text Extractor`,
-      description: `We specialize in extracting text out of memes`,
+      title: `Tattle Services`,
+      description: `Open Source and Publically Available tools to fight misinformation.`,
       author: `@tattle-made`,
     },
     plugins: [

@@ -12,9 +12,18 @@ import { useStaticQuery, graphql } from "gatsby"
 import SocialImage from '../images/social-card.jpg'
 
 function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+  const { site, allFile } = useStaticQuery(
     graphql`
       query {
+        allFile(filter: {name: {eq: "social-card"}}) {
+          edges {
+            node {
+              id
+              name
+              publicURL
+            }
+          }
+        },
         site {
           siteMetadata {
             title
@@ -27,6 +36,8 @@ function SEO({ description, lang, meta, title }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const socialImageURL = allFile.edges[0].node.publicURL;
+
 
   return (
     <Helmet
@@ -39,7 +50,7 @@ function SEO({ description, lang, meta, title }) {
       <meta property="description" content={metaDescription} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
-      <meta property="og:image" content={SocialImage} />
+      <meta property="og:image" content={socialImageURL} />
       <meta property="og:type" content={'website'} />
       <meta property="twitter:card" content={'summary'} />
       <meta property="twitter:creator" content={site.siteMetadata.author} />
