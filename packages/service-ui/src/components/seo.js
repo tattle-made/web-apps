@@ -56,6 +56,7 @@ function SEO({ description, lang, meta, title }) {
       <meta property="twitter:creator" content={site.siteMetadata.author} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={metaDescription} />
+      <meta property="twitter:image" content={socialImageURL} />
     </Helmet>
   )
 }
