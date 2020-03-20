@@ -14,7 +14,16 @@ const ThemedExternalLink = styled.a`
     }
 `
 
+const ThemedPlainExternalLink = styled.a`
+    text-decoration: none;
+    color: inherit;
+    :visited {
+        color: inherit;
+    }
+`
+
 export {
     ThemedLink as Link,
-    ThemedExternalLink as ExternalLink
+    ThemedExternalLink as ExternalLink,
+    ThemedPlainExternalLink as PlainExternalLink
 }

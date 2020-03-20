@@ -3,7 +3,7 @@ import { Box, Stack, Heading, Text, TextInput, Button, Keyboard } from 'grommet'
 import styled from 'styled-components'
 import { Upload, ExternalLink as WebsiteLink } from 'react-feather'
 import AppShell from '../../components/atomic/AppShell';
-import { ExternalLink } from '../../components/atomic/TattleLinks';
+import { PlainExternalLink } from '../../components/atomic/TattleLinks';
 import axios from 'axios';
 import { Spinner } from '../../components/atomic/Spinner';
 import { ARCHIVE_SERVER_PATH, TOKEN } from '../../config';
@@ -123,7 +123,7 @@ function SearchInput() {
                         {
                             result.urls && result.urls.map((match)=>(
                                 <Box flex={false} key={match.id} margin={{top:'small', bottom:'medium'}} direction={'column'}>
-                                    <ExternalLink href={match.url} target={'_blank'}>
+                                    <PlainExternalLink href={match.url} target={'_blank'}>
                                         <Heading level={4} margin={'none'}> {match.title}> </Heading>
                                         <Box direction={'row'} 
                                             gap={'xsmall'} 
@@ -146,7 +146,7 @@ function SearchInput() {
                                             </Box>
                                             
                                         </Box>
-                                    </ExternalLink>
+                                    </PlainExternalLink>
                                 </Box>
                             ))
                         }
