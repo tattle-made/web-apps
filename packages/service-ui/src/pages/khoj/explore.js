@@ -37,6 +37,7 @@ useEffect(()=> {
 return (
   <AppShell
     headerLabel={'Khoj'}
+    headerTarget={'/khoj'}
     footerItems={footerItems}
     primaryNav={primaryNav}
     expandCenter={false}

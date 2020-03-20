@@ -18,6 +18,7 @@ const Contribute = () => {
     return (
         <AppShell
             headerLabel={'Khoj'}
+            headerTarget={'/khoj'}
             footerItems={footerItems}
             primaryNav={primaryNav}
             expandCenter={true}

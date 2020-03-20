@@ -8,6 +8,14 @@ const ThemedLink = styled(Link)`
     }
 `
 
+const ThemedPlainLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+    :visited {
+        color: inherit;
+    }
+`
+
 const ThemedExternalLink = styled.a`
     :visited {
         color: inherit;
@@ -24,6 +32,7 @@ const ThemedPlainExternalLink = styled.a`
 
 export {
     ThemedLink as Link,
+    ThemedPlainLink as PlainLink,
     ThemedExternalLink as ExternalLink,
     ThemedPlainExternalLink as PlainExternalLink
 }

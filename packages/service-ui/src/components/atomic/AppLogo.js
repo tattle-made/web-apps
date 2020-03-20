@@ -1,6 +1,7 @@
 import React from 'react'
-import { ResponsiveContext, Box, Heading } from 'grommet'
-import { Link } from './TattleLinks'
+import { ResponsiveContext, Box, Heading, Text } from 'grommet'
+import { Link, PlainLink } from './TattleLinks'
+import { Home } from 'react-feather'
 
 const Logo = () => (
     <Box
@@ -16,7 +17,7 @@ const Logo = () => (
 * @function Logo
 **/
 
-const AppLogo = ({name}) => {
+const AppLogo = ({name, target}) => {
     return (
         <ResponsiveContext.Consumer>
         {(size) => (
@@ -24,7 +25,9 @@ const AppLogo = ({name}) => {
                 <Link to={'/'}>
                     <Logo/>
                 </Link>
-                { <Heading level={4} margin={'none'}> {name} </Heading>}
+                <PlainLink to={target}>
+                    { <Heading level={4} margin={'none'}> {name} </Heading>}
+                </PlainLink>
             </Box>
         )}
         </ResponsiveContext.Consumer>

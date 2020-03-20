@@ -4,6 +4,7 @@ import AppLogo from './AppLogo';
 import {Link} from 'gatsby'
 import styled from 'styled-components';
 import { primaryNav } from '../../config/options';
+import {Home} from 'react-feather'
 
 const ThemedLink = styled(Link)`
     text-decoration: none;
@@ -18,9 +19,12 @@ const ThemedLink = styled(Link)`
 * @function SimpleHeader
 **/
 
-const SimpleHeader = ({label, primaryNav}) => (
+const SimpleHeader = ({label, target, primaryNav}) => (
     <Box direction={'row'} wrap={true}>
-        <AppLogo name={label}/>
+        <AppLogo 
+            name={label}
+            target={target}
+        />
 
         <Box margin={{left: 'large'}} pad={'small'} direction={'row'} align={'center'} gap={'medium'}>
             {   
