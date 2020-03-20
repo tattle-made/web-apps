@@ -2,7 +2,7 @@ module.exports = {
     siteMetadata: {
       title: `Tattle Services`,
       description: `Open Source and Publically Available tools to fight misinformation.`,
-      author: `@tattle-made`,
+      author: `@tattlemade`,
     },
     plugins: [
       `gatsby-plugin-react-helmet`,
