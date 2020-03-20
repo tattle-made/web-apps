@@ -28,10 +28,10 @@ const FactCheckSearch = () => {
             expandCenter={true}
         >
             <Heading level={1}>
-                Tattle Khoj Helps you Find Fact Checked Stories About an Image.
+                Tattle Khoj tells you if an image has appeared in a fact-checking article.
             </Heading>
             <Heading level={3}>
-                We Scrape IFCN Certified Indian Fact Checking Sites Periodically so That They May be Searchable Via Images.
+                We periodically scrape articles from IFCN certified fact-checking sites and maintain them in a searchable database.
             </Heading> 
 
             <Box direction={'row'} gap={'small'} margin={{top:'large'}} flex={false}>
