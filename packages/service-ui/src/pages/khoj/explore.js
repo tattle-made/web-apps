@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Grid, Box, Heading, Text} from 'grommet'
+import { Grid, Box, Heading, Text, Paragraph} from 'grommet'
 import AppShell from '../../components/atomic/AppShell';
 import styled from 'styled-components'
 import DataFeed from '../../components/fact-check-search/components/DataFeed';
@@ -45,10 +45,13 @@ return (
     {/* <Box width={'horizontal'} height={'350px'} border>
     </Box> */}
     <Box direction={'column'} gap={'medium'} flex={false}>
-      <Box direction={'row'} gap={'small'} margin={{top:'medium'}}>
+        <Paragraph fill>
+          This section shows all the images scraped from fact checking sites so far. Currently we have 11K articles and 36K images from 6 IFCN certified fact checking websites
+        </Paragraph>
+      {/* <Box direction={'row'} gap={'small'} margin={{top:'medium'}}>
         <Box width={'50%'} border pad={'medium'} flex={false} >
           <DataVizOverview>
-            <h1> 25K articles </h1>
+            <h1> Overview </h1>
             <Grid
               columns={{
                 count:3,
@@ -56,9 +59,9 @@ return (
               }}
               gap={'small'}
             >
-              <Box> <p> texts </p> </Box>
+              <Box> <p> stories </p> </Box>
               <Box> <p> images </p> </Box>
-              <Box> <p> videos </p> </Box>
+              <Box> <p> websites </p> </Box>
             </Grid>
           
             <Grid
@@ -68,16 +71,17 @@ return (
                 }}
                 gap={'small'}
               >
-              <Box> <h2> 40K </h2> </Box>
-              <Box> <h2> 32K </h2> </Box>
-              <Box> <h2> 18K </h2> </Box>
+              <Box> <h2> 11K </h2> </Box>
+              <Box> <h2> 36K </h2> </Box>
+              <Box> <h2> 6 </h2> </Box>
             </Grid>
           </DataVizOverview>
         </Box>
+        
         <Box width={'50%'}>
         
         </Box>
-      </Box>
+      </Box> */}
       <DataFeed />
     </Box>  
   

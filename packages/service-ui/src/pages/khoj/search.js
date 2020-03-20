@@ -190,6 +190,7 @@ const Search = () => {
             primaryNav={primaryNav}
             expandCenter={true}
         >
+            
             <SearchInput />
         </AppShell>
     )

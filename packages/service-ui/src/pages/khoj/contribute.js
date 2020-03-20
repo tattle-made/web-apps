@@ -27,10 +27,29 @@ const Contribute = () => {
                 Contribute
             </Heading>
             <Paragraph fill={'true'}>
-                Lorems ipsum dolor sit amet, consectetur adipiscing elit. Fusce ultrices nibh magna, vel sodales leo malesuada ut. Suspendisse bibendum porttitor ante, at consequat lorem. Vestibulum nibh quam, euismod a bibendum eu, faucibus sit amet dolor. Duis odio ante, dignissim quis pharetra ac, ornare non lacus. Ut sagittis neque dolor, id consectetur justo bibendum sit amet. Sed dignissim dui sed purus ultrices fringilla. Aenean et velit blandit, vestibulum tortor nec, semper felis. Maecenas lorem metus, cursus et massa convallis, pretium interdum arcu. Pellentesque iaculis nisi sit amet eros pharetra, et mollis lacus congue. Fusce lacinia at eros sodales eleifend. Morbi ut ullamcorper enim. Maecenas posuere nulla nec eros ullamcorper, quis ultrices lorem interdum. Praesent mauris velit, vestibulum ut imperdiet ac, efficitur in metus.
+                Tattle Khoj is a fast evolving project. Future iterations of this service will allow for:
             </Paragraph>
+            <ul>
+                <li> Searching for fact checking sites using text in Indian languages (English, Hindi, Gujarati is coming up soon). </li>
+                <li> Searching for memes by the text embedded in them. </li>
+                <li> Searching by videos </li>
+                <li> Searching by tags </li>
+            </ul>
+
             <Paragraph fill={'true'}>
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer ac molestie nisi. Phasellus in sem vel massa efficitur elementum et sit amet ex. Maecenas felis sapien, aliquet vitae luctus at, luctus et ex. Sed feugiat ac diam ut tempus. Integer vestibulum, lacus ac convallis venenatis, purus arcu efficitur risus, sed vulputate ex tellus quis ligula. Ut venenatis pellentesque mi sit amet placerat. Mauris viverra egestas diam a aliquam. Vivamus hendrerit, justo ullamcorper sodales bibendum, felis lacus congue nulla, eu dignissim turpis urna vel quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed tempus magna ut dui interdum, et tincidunt est vestibulum. Nulla id sem at tellus molestie finibus non ut arcu.
+                Simultaneously, the site can also be adapted in other forms such as a mobile app or a web browser plugin that allows for more people to access it.
+            </Paragraph>
+
+            <Heading level={3}>
+                It Takes a Village...
+            </Heading>
+
+            <Paragraph fill={'true'}>
+                There are multiple ways to contribute to Tattle Khoj. On the technical front, you can help out in building any of the above mentioned features.  If you speak an Indian language, help expand the search functionality to your native tongue. If you have a few hours to spare, help us annotate the data so that people may be able to search this repository via tags. 
+            </Paragraph>
+
+            <Paragraph fill={'true'}>
+                You can reach out to us with questions and suggestion on admin@tattle.co.in
             </Paragraph>
         </AppShell>
     )
