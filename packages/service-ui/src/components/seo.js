@@ -29,6 +29,7 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
+            base_url
           }
         }
       }
@@ -38,6 +39,7 @@ function SEO({ description, lang, meta, title }) {
   const metaDescription = description || site.siteMetadata.description
   const author = site.siteMetadata.author
   const socialImageURL = allFile.edges[0].node.publicURL;
+  const baseURL = site.siteMetadata.base_url;
 
 
   return (
@@ -58,7 +60,7 @@ function SEO({ description, lang, meta, title }) {
       <meta property="twitter:creator" content={site.siteMetadata.author} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={metaDescription} />
-      <meta property="twitter:image" content={socialImageURL} />
+      <meta property="twitter:image" content={`${baseURL}${socialImageURL}`} />
     </Helmet>
   )
 }

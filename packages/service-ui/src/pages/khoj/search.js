@@ -22,9 +22,6 @@ const InvisibleFileUploadButton = styled.input`
     display: none;
 `
 
-
-  
-
 function SearchInput() {
     const [searchQuery, setSearchQuery] = React.useState('');
     const fileUploader = useRef(null);

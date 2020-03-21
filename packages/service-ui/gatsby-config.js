@@ -1,8 +1,9 @@
 module.exports = {
     siteMetadata: {
       title: `Tattle Services`,
-      description: `Open Source and Publically Available tools to fight misinformation.`,
+      description: `Open Source and Publically Available tools to fight misinformation`,
       author: `@tattlemade`,
+      base_url: 'http://localhost:8000',
     },
     plugins: [
       `gatsby-plugin-react-helmet`,
@@ -48,7 +49,7 @@ module.exports = {
         options: {
             bucketName: 'services-dev.tattle.co.in'
         },
-      }
+      },
       // this (optional) plugin enables Progressive Web App + Offline functionality
       // To learn more, visit: https://gatsby.dev/offline
       // `gatsby-plugin-offline`,

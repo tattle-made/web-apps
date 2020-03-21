@@ -3,6 +3,7 @@ module.exports = {
       title: `Tattle Services`,
       description: `Open Source and Publically Available tools to fight misinformation.`,
       author: `@tattlemade`,
+      base_url: 'https://services-dev.tattle.co.in',
     },
     plugins: [
       `gatsby-plugin-react-helmet`,
