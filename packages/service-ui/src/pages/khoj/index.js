@@ -28,7 +28,7 @@ const FactCheckSearch = () => {
             expandCenter={true}
         >
             <Heading level={1}>
-                Tattle Khoj tells you if an image has appeared in a fact-checking article.
+                Tattle Khoj tells you if an image has appeared in a fact-check article.
             </Heading>
             <Heading level={3}>
                 We periodically scrape articles from IFCN certified fact-checking sites and maintain them in a searchable database.
