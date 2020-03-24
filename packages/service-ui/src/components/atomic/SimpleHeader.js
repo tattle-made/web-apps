@@ -1,10 +1,8 @@
 import React from 'react'
-import { Box, Heading, Text, Button} from 'grommet';
+import { Box, Heading, Button} from 'grommet';
 import AppLogo from './AppLogo';
 import {Link} from 'gatsby'
 import styled from 'styled-components';
-import { primaryNav } from '../../config/options';
-import {Home} from 'react-feather'
 
 const ThemedLink = styled(Link)`
     text-decoration: none;
