@@ -5,6 +5,7 @@ import {Slack, Twitter, GitHub} from 'react-feather';
 import SimpleHeader from '../src/components/atoms/Header/SimpleHeader';
 import { ToastHeader } from 'react-bootstrap';
 import { Edit } from "grommet-icons";
+import EditableText from '../src/components/molecules/EditableText';
 
 export default {
   title: 'Metadata',
@@ -27,78 +28,9 @@ const enumData = {'id':7, 'type':'text', 'label':'Selection', 'value':'Photo', '
 
 export const TextMetadata = () => (
     <Grommet theme={TattleTheme} full>
-        <Box fill={'vertical'} as={'main'}>
-            <ContentGrid>
-                <Heading level={2} margin={'none'}>
-                    Metadata
-                </Heading>
-                <Box direction="row-responsive">
-                	<TextMetaView data={textData}></TextMetaView>
-            		<TextMetaEdit data={textData}></TextMetaEdit>
-            	</Box>           		
-
-            </ContentGrid>
-        </Box>
-
+      <EditableText data={textData} />
     </Grommet>
-
 );
-
-const TextMetaView = (props) => {
-	return (
-		<Box
-	        pad="medium"
-	        margin="medium"
-	        background={{ color: "light-2", opacity: "strong" }}
-	        gap="small"
-	        width="medium"
-	      	height="150px"
-	      >
-	      	
-	      	  	<Grid
-			      fill
-			      areas={[
-			        { name: "nav", start: [0, 0], end: [2, 0] },
-			        { name: "main", start: [2, 0], end: [2, 0] }
-			      ]}
-			      columns={["small", "flex"]}
-			      rows={["flex"]}
-			      gap="small"
-			      margin="none"
-			    >
-			      <Box gridArea="nav">
-				    <Heading level={3} margin={{'top':'xsmall', 'bottom': 'none'}}>
-	                    {props.data.label}
-	                </Heading>
-	              </Box>
-			      <Box gridArea="main">
-			      	<Button size="small" focusIndicator={false} icon={<Edit/>} onClick={() => {}} />
-			      </Box>
-			    </Grid>
-
-	        <Text>{props.data.value}</Text>
-	      </Box>
-	      )
-}
-
-const TextMetaEdit = (props) => {
-	return (
-		<Box
-	        pad="medium"
-	        margin="medium"
-	        background={{ color: "light-2", opacity: "strong" }}
-	        gap="small"
-	        width="medium"
-	      	height={{'min':'150px'}}
-	      >
-            <TextInput value={props.data.label} />
-            <TextInput value={props.data.value} />
-            <Box align="center" pad="none">
-		      <Button primary label="Update" onClick={() => {}} />
-		    </Box>
-	    </Box>
-	      )
-}
 
 // End: Text Metadata
 
