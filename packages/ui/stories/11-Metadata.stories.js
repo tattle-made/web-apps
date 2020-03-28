@@ -5,7 +5,8 @@ import {Slack, Twitter, GitHub} from 'react-feather';
 import SimpleHeader from '../src/components/atoms/Header/SimpleHeader';
 import { ToastHeader } from 'react-bootstrap';
 import { Edit } from "grommet-icons";
-import EditableText from '../src/components/molecules/EditableText';
+import {EditableText, EditableEnum, EditableDate, EditableDateRange, EditableNumber, EditableLocationCoord} from '../src/components/molecules';
+
 
 export default {
   title: 'Metadata',
@@ -15,16 +16,14 @@ const enumOptions = ['Photo', 'Video', 'Other Media'];
 
 const textData = {'id':1, 'type':'text', 'label':'Text', 'value':'Lorem ipsum.', 'author':100, 'mode':'view'};
 const numberData = {'id':2, 'type':'number', 'label':'Number', 'value': 15, 'author':101, 'mode':'view'};
-const dateData = {'id':3, 'type':'date', 'label':'Date', 'value':'2020-03-22T00:00:00.000Z', 'author':102, 'mode':'view'};
+const dateData = {'id':3, 'type':'date', 'label':'Date', 'value':'2020-03-22', 'author':102, 'mode':'view'};
 const locationTextData = {'id':4, 'type':'location_text', 'label':'Location Text', 'value':'Punjab', 'author':103, 'mode':'view'};
-const locationCoordData = {'id':5, 'type':'location_lat_lon', 'label':'Location Coordinates', 'value':'59.69512,20.51566', 'author':102, 'mode':'view'};
-const dateRangeData = {'id':6, 'type':'dateRange', 'label':'Date Range', 'value':'2020-03-10T00:00:00.000Z,2020-03-27T00:00:00.000Z', 'author':106, 'mode':'view'};
+const locationCoordData = {'id':5, 'type':'location_lat_lon', 'label':'Location Coordinates', 'value':[59.69512,20.51566], 'author':102, 'mode':'view'};
+const dateRangeData = {'id':6, 'type':'dateRange', 'label':'Date Range', 'value':['2020-03-10T00:00:00.000Z','2020-03-27T00:00:00.000Z'], 'author':106, 'mode':'view'};
 const enumData = {'id':7, 'type':'text', 'label':'Selection', 'value':'Photo', 'author':109, 'mode':'view'};
 
 
 // Components of different metadata types to be refactored into one component calling children components for displaying/populating different fields.
-
-// Begin: Text Metadata
 
 export const TextMetadata = () => (
     <Grommet theme={TattleTheme} full>
@@ -32,8 +31,41 @@ export const TextMetadata = () => (
     </Grommet>
 );
 
-// End: Text Metadata
+export const EnumMetadata = () => (
+    <Grommet theme={TattleTheme} full>
+        <EditableEnum data={enumData} options={enumOptions} />
+    </Grommet>
+);
 
+export const DateMetadata = () => (
+    <Grommet theme={TattleTheme} full>
+    	<EditableDate data={dateData} />
+    </Grommet>
+);
+
+export const DateRangeMetadata = () => (
+    <Grommet theme={TattleTheme} full>
+    	<EditableDateRange data={dateRangeData} />
+    </Grommet>
+);
+
+export const NumberMetadata = () => (
+    <Grommet theme={TattleTheme} full>
+    	<EditableNumber data={numberData} />
+    </Grommet>
+);
+
+export const LocationTextMetadata = () => (
+    <Grommet theme={TattleTheme} full>
+   		<EditableText data={locationTextData} />
+    </Grommet>
+);
+
+export const LocationCoordinateMetadata = () => (
+    <Grommet theme={TattleTheme} full>
+   		<EditableLocationCoord data={locationCoordData} />
+    </Grommet>
+);
 
 const LocationCoordMetaView = (props) => {
 	return (
@@ -89,126 +121,6 @@ const LocationCoordMetaEdit = (props) => {
 		      <Button primary label="Update" onClick={() => {}} />
 		    </Box>
 	    </Box>
-	      )
-}
-
-
-
-const NumberMetaView = (props) => {
-	return (
-		<Box
-	        pad="medium"
-	        margin="medium"
-	        background={{ color: "light-2", opacity: "strong" }}
-	        gap="small"
-	        width="medium"
-	      	height={{'min':'150px', 'max':'150px'}}
-	      >
-	      	
-	      	  	<Grid
-			      fill
-			      areas={[
-			        { name: "nav", start: [0, 0], end: [2, 0] },
-			        { name: "main", start: [2, 0], end: [2, 0] }
-			      ]}
-			      columns={["small", "flex"]}
-			      rows={["flex"]}
-			      gap="small"
-			      margin="none"
-			    >
-			      <Box gridArea="nav">
-				    <Heading level={3} margin={{'top':'xsmall', 'bottom': 'none'}}>
-	                    {props.data.label}
-	                </Heading>
-	              </Box>
-			      <Box gridArea="main">
-			      	<Button size="small" focusIndicator={false} icon={<Edit/>} onClick={() => {}} />
-			      </Box>
-			    </Grid>
-
-	        <Text>{props.data.value}</Text>
-	      </Box>
-	      )
-}
-
-const NumberMetaEdit = (props) => {
-	return (
-		<Box
-	        pad="medium"
-	        margin="medium"
-	        background={{ color: "light-2", opacity: "strong" }}
-	        gap="small"
-	        width="medium"
-	      	height={{'min':'150px'}}
-	      >
-            <TextInput value={props.data.label} />
-            <TextInput value={props.data.value} />
-            <Box align="center" pad="none">
-		      <Button primary label="Update" onClick={() => {}} />
-		    </Box>
-	    </Box>
-	      )
-}
-
-
-const DateMetaView = (props) => {
-	return (
-		<Box
-	        pad="medium"
-	        margin="medium"
-	        background={{ color: "light-2", opacity: "strong" }}
-	        gap="small"
-	        width="medium"
-	      	height={{'min':'150px', 'max':'150px'}}
-	      >
-	      	  	<Grid
-			      fill
-			      areas={[
-			        { name: "nav", start: [0, 0], end: [2, 0] },
-			        { name: "main", start: [2, 0], end: [2, 0] }
-			      ]}
-			      columns={["small", "flex"]}
-			      rows={["flex"]}
-			      gap="small"
-			      margin="none"
-			    >
-			      <Box gridArea="nav">
-				    <Heading level={3} margin={{'top':'xsmall', 'bottom': 'none'}}>
-	                    {props.data.label}
-	                </Heading>
-	              </Box>
-			      <Box gridArea="main">
-			      	<Button size="small" focusIndicator={false} icon={<Edit/>} onClick={() => {}} />
-			      </Box>
-			    </Grid>
-
-	        <Text>{props.data.value.split("T")[0]}</Text>
-	      </Box>
-	      )
-}
-
-const DateMetaEdit = (props) => {
-	return (
-		<Box
-	        pad="medium"
-	        margin="medium"
-	        background={{ color: "light-2", opacity: "strong" }}
-	        gap="small"
-	        width="medium"
-	      	height={{'min':'150px'}}
-	      	align="center"
-	      >
-            <TextInput value={props.data.label} />
-        	<Calendar
-			  size="small"
-			  date={props.data.value}
-			  onSelect={(date) => {}}
-			/>
-
-			<Box align="center" pad="none">
-		      <Button primary label="Update" onClick={() => {}} />
-		    </Box>
-        </Box>
 	      )
 }
 
@@ -276,68 +188,6 @@ const DateRangeMetaEdit = (props) => {
 }
 
 
-const EnumMetaView = (props) => {
-	return (
-		<Box
-	        pad="medium"
-	        margin="medium"
-	        background={{ color: "light-2", opacity: "strong" }}
-	        gap="small"
-	        width="medium"
-	      	height="150px"
-	      >
-	      	
-	      	  	<Grid
-			      fill
-			      areas={[
-			        { name: "nav", start: [0, 0], end: [2, 0] },
-			        { name: "main", start: [2, 0], end: [2, 0] }
-			      ]}
-			      columns={["small", "flex"]}
-			      rows={["flex"]}
-			      gap="small"
-			      margin="none"
-			    >
-			      <Box gridArea="nav">
-				    <Heading level={3} margin={{'top':'xsmall', 'bottom': 'none'}}>
-	                    {props.data.label}
-	                </Heading>
-	              </Box>
-			      <Box gridArea="main">
-			      	<Button size="small" focusIndicator={false} icon={<Edit/>} onClick={() => {}} />
-			      </Box>
-			    </Grid>
-
-	        <Text>{props.data.value}</Text>
-	      </Box>
-	      )
-}
-
-const EnumMetaEdit = (props) => {
-	return (
-		<Box
-	        pad="medium"
-	        margin="medium"
-	        background={{ color: "light-2", opacity: "strong" }}
-	        gap="small"
-	        width="medium"
-	      	height={{'min':'150px'}}
-	      >
-            <TextInput value={props.data.label} />
-            <Select
-		      options={enumOptions}
-		      value={props.data.value}
-		      onChange={({ option }) => {}}
-		    />
-            <Box align="center" pad="none">
-		      <Button primary label="Update" onClick={() => {}} />
-		    </Box>
-	    </Box>
-	      )
-}
-
-
-
 const ContentGrid = ({children}) => {
     const size = React.useContext(ResponsiveContext);
     console.log(size);
@@ -362,124 +212,3 @@ const ContentGrid = ({children}) => {
     )
 }
 
-export const EnumMetadata = () => (
-    <Grommet theme={TattleTheme} full>
-        <Box fill={'vertical'} as={'main'}>
-            <ContentGrid>
-                <Heading level={2} margin={'none'}>
-                    Metadata
-                </Heading>
-                <Box direction="row-responsive">
-                	<EnumMetaView data={enumData}></EnumMetaView>
-            		<EnumMetaEdit data={enumData}></EnumMetaEdit>
-            	</Box>           		
-
-            </ContentGrid>
-        </Box>
-
-    </Grommet>
-
-);
-
-
-
-export const DateRangeMetadata = () => (
-    <Grommet theme={TattleTheme} full>
-        <Box fill={'vertical'} as={'main'}>
-            <ContentGrid>
-                <Heading level={2} margin={'none'}>
-                    Metadata
-                </Heading>
-                <Box direction="row-responsive">
-	            	<DateRangeMetaView data={dateRangeData}></DateRangeMetaView>
-	            	<DateRangeMetaEdit data={dateRangeData}></DateRangeMetaEdit>
-
-            	</Box>
-            </ContentGrid>
-        </Box>
-
-    </Grommet>
-
-);
-
-
-export const DateMetadata = () => (
-    <Grommet theme={TattleTheme} full>
-        <Box fill={'vertical'} as={'main'}>
-            <ContentGrid>
-                <Heading level={2} margin={'none'}>
-                    Metadata
-                </Heading>
-                <Box direction="row-responsive">
-	            	<DateMetaView data={dateData}></DateMetaView>
-	            	<DateMetaEdit data={dateData}></DateMetaEdit>
-
-            	</Box>
-
-            		
-
-            </ContentGrid>
-        </Box>
-
-    </Grommet>
-
-);
-
-
-export const NumberMetadata = () => (
-    <Grommet theme={TattleTheme} full>
-        <Box fill={'vertical'} as={'main'}>
-            <ContentGrid>
-                <Heading level={2} margin={'none'}>
-                    Metadata
-                </Heading>
-                <Box direction="row-responsive">
-                	<NumberMetaView data={numberData}></NumberMetaView>
-            		<NumberMetaEdit data={numberData}></NumberMetaEdit>
-            	</Box>           		
-
-            </ContentGrid>
-        </Box>
-
-    </Grommet>
-
-);
-
-
-export const LocationTextMetadata = () => (
-    <Grommet theme={TattleTheme} full>
-        <Box fill={'vertical'} as={'main'}>
-            <ContentGrid>
-                <Heading level={2} margin={'none'}>
-                    Metadata
-                </Heading>
-                <Box direction="row-responsive">
-                	<TextMetaView data={locationTextData}></TextMetaView>
-            		<TextMetaEdit data={locationTextData}></TextMetaEdit>
-            	</Box>           		
-
-            </ContentGrid>
-        </Box>
-
-    </Grommet>
-
-);
-
-export const LocationCoordinateMetadata = () => (
-    <Grommet theme={TattleTheme} full>
-        <Box fill={'vertical'} as={'main'}>
-            <ContentGrid>
-                <Heading level={2} margin={'none'}>
-                    Metadata
-                </Heading>
-                <Box direction="row-responsive">
-                	<LocationCoordMetaView data={locationCoordData}></LocationCoordMetaView>
-            		<LocationCoordMetaEdit data={locationCoordData}></LocationCoordMetaEdit>
-            	</Box>           		
-
-            </ContentGrid>
-        </Box>
-
-    </Grommet>
-
-);
