@@ -2,7 +2,7 @@ import React from 'react'
 import {Grid, Box, Heading, Button, Text} from 'grommet'
 import { Edit } from "grommet-icons";
 
-const EditableDateReadView = ({data, onEdit}) => {
+const EditableDateReadView = ({data, onEdit, isEditable}) => {
 	return (
         <Box
             pad="medium"
@@ -28,9 +28,12 @@ const EditableDateReadView = ({data, onEdit}) => {
                             {data.label}
                         </Heading>
                     </Box>
-                    <Box gridArea="main">
-                        <Button size="small" focusIndicator={false} icon={<Edit/>} onClick={onEdit} />
-                    </Box>
+                    {
+                        isEditable &&
+                        <Box gridArea="main">
+                            <Button size="small" focusIndicator={false} icon={<Edit/>} onClick={onEdit} />
+                        </Box>
+                    }
                 </Grid>
 
             <Text>{data.value.split("T")[0]}</Text>

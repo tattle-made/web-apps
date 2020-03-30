@@ -7,7 +7,7 @@ import EditableLocationCoordReadView from './EditableLocationCoordReadView';
 /*
     available modes : 'view' or 'edit'. default is 'view'
 */
-const EditableLocationCoord = ({data}) => {
+const EditableLocationCoord = ({data, isEditable = true}) => {
     const [mode, setMode] = useState('view')
     const [currentData, setCurrentData] = useState(data)
 
@@ -21,7 +21,7 @@ const EditableLocationCoord = ({data}) => {
         <Box>
             {
                 mode == 'view' ?
-                    <EditableLocationCoordReadView data={currentData} onEdit={onEditClick}/>
+                    <EditableLocationCoordReadView data={currentData} onEdit={onEditClick} isEditable={isEditable}/>
                 :
                     <EditableLocationCoordEditView data={currentData} onUpdate={onUpdateClick}/>
             }
@@ -29,7 +29,7 @@ const EditableLocationCoord = ({data}) => {
     )
 }
 
-EditableLocationCoord.PropTypes = {
+EditableLocationCoord.propTypes = {
     data: PropTypes.shape({
         id : PropTypes.number,
         type: PropTypes.string,

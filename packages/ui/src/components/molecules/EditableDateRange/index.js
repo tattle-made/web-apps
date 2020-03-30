@@ -7,7 +7,7 @@ import EditableDateRangeReadView from './EditableDateRangeReadView';
 /*
     available modes : 'view' or 'edit'. default is 'view'
 */
-const EditableDateRange = ({data}) => {
+const EditableDateRange = ({data, isEditable = true}) => {
     const [mode, setMode] = useState('view')
     const [currentData, setCurrentData] = useState(data)
 
@@ -21,7 +21,7 @@ const EditableDateRange = ({data}) => {
         <Box>
             {
                 mode == 'view' ?
-                    <EditableDateRangeReadView data={currentData} onEdit={onEditClick}/>
+                    <EditableDateRangeReadView data={currentData} onEdit={onEditClick} isEditable={isEditable}/>
                 :
                     <EditableDateRangeEditView data={currentData} onUpdate={onUpdateClick}/>
             }
@@ -29,7 +29,7 @@ const EditableDateRange = ({data}) => {
     )
 }
 
-EditableDateRange.PropTypes = {
+EditableDateRange.propTypes = {
     data: PropTypes.shape({
         id : PropTypes.number,
         type: PropTypes.string,

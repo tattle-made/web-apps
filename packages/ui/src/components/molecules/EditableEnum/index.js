@@ -7,7 +7,7 @@ import EditableEnumReadView from './EditableEnumReadView';
 /*
     available modes : 'view' or 'edit'. default is 'view'
 */
-const EditableEnum = ({data, options}) => {
+const EditableEnum = ({data, options, isEditable = true}) => {
     const [mode, setMode] = useState('view')
     const [currentData, setCurrentData] = useState(data)
 
@@ -21,7 +21,7 @@ const EditableEnum = ({data, options}) => {
         <Box>
             {
                 mode == 'view' ?
-                    <EditableEnumReadView data={currentData} onEdit={onEditClick}/>
+                    <EditableEnumReadView data={currentData} onEdit={onEditClick} isEditable={isEditable}/>
                 :
                     <EditableEnumEditView data={currentData} options={options} onUpdate={onUpdateClick}/>
             }
@@ -29,7 +29,7 @@ const EditableEnum = ({data, options}) => {
     )
 }
 
-EditableEnum.PropTypes = {
+EditableEnum.propTypes = {
     data: PropTypes.shape({
         id : PropTypes.number,
         type: PropTypes.string,

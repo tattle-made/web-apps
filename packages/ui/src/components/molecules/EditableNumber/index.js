@@ -7,7 +7,7 @@ import EditableNumberReadView from './EditableNumberReadView';
 /*
     available modes : 'view' or 'edit'. default is 'view'
 */
-const EditableNumber = ({data}) => {
+const EditableNumber = ({data, isEditable = true}) => {
     const [mode, setMode] = useState('view')
     const [currentData, setCurrentData] = useState(data)
 
@@ -21,7 +21,7 @@ const EditableNumber = ({data}) => {
         <Box>
             {
                 mode == 'view' ?
-                    <EditableNumberReadView data={currentData} onEdit={onEditClick}/>
+                    <EditableNumberReadView data={currentData} onEdit={onEditClick} isEditable={isEditable}/>
                 :
                     <EditableNumberEditView data={currentData} onUpdate={onUpdateClick}/>
             }
@@ -29,7 +29,7 @@ const EditableNumber = ({data}) => {
     )
 }
 
-EditableNumber.PropTypes = {
+EditableNumber.propTypes = {
     data: PropTypes.shape({
         id : PropTypes.number,
         type: PropTypes.string,

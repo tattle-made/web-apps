@@ -2,7 +2,7 @@ import React from 'react'
 import {Grid, Box, Heading, Button, Text} from 'grommet'
 import { Edit } from "grommet-icons";
 
-const EditableNumberReadView = ({data, onEdit}) => {
+const EditableNumberReadView = ({data, onEdit, isEditable}) => {
 	return (
         <Box
             pad="medium"
@@ -29,9 +29,12 @@ const EditableNumberReadView = ({data, onEdit}) => {
                             {data.label}
                         </Heading>
                     </Box>
-                    <Box gridArea="main">
-                        <Button size="small" focusIndicator={false} icon={<Edit/>} onClick={onEdit} />
-                    </Box>
+                    {
+                        isEditable &&
+                        <Box gridArea="main">
+                            <Button size="small" focusIndicator={false} icon={<Edit/>} onClick={onEdit} />
+                        </Box>
+                    }
                 </Grid>
 
             <Text>{data.value}</Text>

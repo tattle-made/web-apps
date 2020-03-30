@@ -7,7 +7,7 @@ import EditableTextReadView from './EditableTextReadView';
 /*
     available modes : 'view' or 'edit'. default is 'view'
 */
-const EditableText = ({data}) => {
+const EditableText = ({data, isEditable = true}) => {
     const [mode, setMode] = useState('view')
     const [currentData, setCurrentData] = useState(data)
 
@@ -21,7 +21,7 @@ const EditableText = ({data}) => {
         <Box>
             {
                 mode == 'view' ?
-                    <EditableTextReadView data={currentData} onEdit={onEditClick}/>
+                    <EditableTextReadView data={currentData} onEdit={onEditClick} isEditable={isEditable}/>
                 :
                     <EditableTextEditView data={currentData} onUpdate={onUpdateClick}/>
             }
@@ -29,7 +29,7 @@ const EditableText = ({data}) => {
     )
 }
 
-EditableText.PropTypes = {
+EditableText.propTypes = {
     data: PropTypes.shape({
         id : PropTypes.number,
         type: PropTypes.string,
