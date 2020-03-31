@@ -7,23 +7,22 @@ import EditableEnumReadView from './EditableEnumReadView';
 /*
     available modes : 'view' or 'edit'. default is 'view'
 */
-const EditableEnum = ({data, options, isEditable = true}) => {
+const EditableEnum = ({data, options, isEditable = true, updateCallback}) => {
     const [mode, setMode] = useState('view')
-    const [currentData, setCurrentData] = useState(data)
 
     const onEditClick = () => setMode('edit')
     const onUpdateClick = (data) => {
         setMode('view')
-        setCurrentData(data)
+        updateCallback(data)
     }
 
     return(
         <Box>
             {
                 mode == 'view' ?
-                    <EditableEnumReadView data={currentData} onEdit={onEditClick} isEditable={isEditable}/>
+                    <EditableEnumReadView data={data} onEdit={onEditClick} isEditable={isEditable}/>
                 :
-                    <EditableEnumEditView data={currentData} options={options} onUpdate={onUpdateClick}/>
+                    <EditableEnumEditView data={data} options={options} onUpdate={onUpdateClick}/>
             }
         </Box>
     )

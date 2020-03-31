@@ -4,7 +4,7 @@ import {Checkmark} from 'grommet-icons'
 
 const EditableDateEditView = ({data, onUpdate}) => {
     const [currentValue, setCurrentValue] = useState(data.value)
-
+    
     const onDateChange = (nextDate) => {setCurrentValue(nextDate.split("T")[0])}
 
     const onUpdateClicked = () => {

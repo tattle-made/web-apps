@@ -7,23 +7,22 @@ import EditableTextReadView from './EditableTextReadView';
 /*
     available modes : 'view' or 'edit'. default is 'view'
 */
-const EditableText = ({data, isEditable = true}) => {
+const EditableText = ({data, isEditable = true, updateCallback}) => {
     const [mode, setMode] = useState('view')
-    const [currentData, setCurrentData] = useState(data)
 
     const onEditClick = () => setMode('edit')
     const onUpdateClick = (data) => {
         setMode('view')
-        setCurrentData(data)
+        updateCallback(data);
     }
 
     return(
         <Box>
             {
                 mode == 'view' ?
-                    <EditableTextReadView data={currentData} onEdit={onEditClick} isEditable={isEditable}/>
+                    <EditableTextReadView data={data} onEdit={onEditClick} isEditable={isEditable}/>
                 :
-                    <EditableTextEditView data={currentData} onUpdate={onUpdateClick}/>
+                    <EditableTextEditView data={data} onUpdate={onUpdateClick}/>
             }
         </Box>
     )

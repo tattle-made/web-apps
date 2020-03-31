@@ -7,23 +7,22 @@ import EditableDateRangeReadView from './EditableDateRangeReadView';
 /*
     available modes : 'view' or 'edit'. default is 'view'
 */
-const EditableDateRange = ({data, isEditable = true}) => {
+const EditableDateRange = ({data, isEditable = true, updateCallback}) => {
     const [mode, setMode] = useState('view')
-    const [currentData, setCurrentData] = useState(data)
 
     const onEditClick = () => setMode('edit')
     const onUpdateClick = (data) => {
         setMode('view')
-        setCurrentData(data)
+        updateCallback(data)
     }
 
     return(
         <Box>
             {
                 mode == 'view' ?
-                    <EditableDateRangeReadView data={currentData} onEdit={onEditClick} isEditable={isEditable}/>
+                    <EditableDateRangeReadView data={data} onEdit={onEditClick} isEditable={isEditable}/>
                 :
-                    <EditableDateRangeEditView data={currentData} onUpdate={onUpdateClick}/>
+                    <EditableDateRangeEditView data={data} onUpdate={onUpdateClick}/>
             }
         </Box>
     )
