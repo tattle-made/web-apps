@@ -22,6 +22,7 @@ import SimpleHeader from "../src/components/atoms/Header/SimpleHeader";
 import { ToastHeader } from "react-bootstrap";
 import { Edit } from "grommet-icons";
 import { Molecules } from "../src";
+import EditableRadioGroup from "../src/components/molecules/EditableRadioGroup";
 const {
   EditableText,
   EditableEnum,
@@ -146,15 +147,26 @@ export const MetadataTabs = () => {
   );
 };
 
-export const RadioGroupMetadata = ({ values }) => {
-  const [value, setValue] = React.useState("one");
+export const RadioGroupMetadata = () => {
+  const [data, setData] = React.useState({
+    value: "",
+    options: ["Yes", "No"],
+    label: "Has this been debunked before?",
+  });
+
+  const updateCallback = (data) => {
+    console.log("data", data);
+    setData(data);
+  };
+
   return (
-    <RadioButtonGroup
-      name="cta"
-      options={["on", "off"]}
-      value={value}
-      onChange={(event) => setValue(event.target.value)}
-    />
+    <Grommet theme={TattleTheme} full>
+      <EditableRadioGroup
+        data={data}
+        isEditable={true}
+        updateCallback={updateCallback}
+      />
+    </Grommet>
   );
 };
 
