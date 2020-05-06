@@ -181,7 +181,14 @@ export const TextMetadata = () => {
 };
 
 export const EnumMetadata = () => {
-  const [currentData, setCurrentData] = useState(enumData);
+  const [currentData, setCurrentData] = useState({
+    id: 7,
+    type: "text",
+    label: "What emotion",
+    value: "Joy",
+    options: ["Joy", "Fear", "Anger"],
+    author: 109,
+  });
   const updateData = (data) => setCurrentData(data);
   return (
     <Grommet theme={TattleTheme} full>
