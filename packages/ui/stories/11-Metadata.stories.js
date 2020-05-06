@@ -148,7 +148,7 @@ export const MetadataTabs = () => {
 };
 
 export const RadioGroupMetadata = () => {
-  const [data, setData] = React.useState({
+  const [currentData, setCurrentData] = React.useState({
     value: "",
     options: ["Yes", "No"],
     label: "Has this been debunked before?",
@@ -156,13 +156,13 @@ export const RadioGroupMetadata = () => {
 
   const updateCallback = (data) => {
     console.log("data", data);
-    setData(data);
+    setCurrentData(data);
   };
 
   return (
     <Grommet theme={TattleTheme} full>
       <EditableRadioGroup
-        data={data}
+        data={currentData}
         isEditable={true}
         updateCallback={updateCallback}
       />
