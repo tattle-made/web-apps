@@ -1,0 +1,194 @@
+[
+  {
+    "id": {
+      "scope": null,
+      "name": "editable-date"
+    },
+    "isSymlink": true,
+    "hash": "247cd883561c2134d0711441194df11ef05fb096"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "editable-date-range"
+    },
+    "isSymlink": true,
+    "hash": "053656180353aacb2ef54c2ac561dab57474c72f"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "editable-enum"
+    },
+    "isSymlink": true,
+    "hash": "694ea26855ff2e44bf1ba99ead70fe023e59c445"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "editable-location-coord"
+    },
+    "isSymlink": true,
+    "hash": "888423be8b3017e1d7005ee771856da2047901e2"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "editable-number"
+    },
+    "isSymlink": true,
+    "hash": "55183a9a7f66c50c8ce3fa8fedb6f9d9d414f481"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "editable-radio-group"
+    },
+    "isSymlink": true,
+    "hash": "ed040a8305de247934fa57d40866ed7357f5b731"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "editable-text"
+    },
+    "isSymlink": true,
+    "hash": "65aa0d08e31fe546cb8788ee55716b42b0fa5cd3"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-date"
+    },
+    "isSymlink": false,
+    "hash": "3511305ce24c2d72b2368e02844bb27b01ea3dd4"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-date-range"
+    },
+    "isSymlink": false,
+    "hash": "d4487da84eb2f54bee908eeb9ca7dc852f699230"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-enum"
+    },
+    "isSymlink": false,
+    "hash": "03c67219a54ebf7eff9e1962824a840181004205"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-location-coord"
+    },
+    "isSymlink": false,
+    "hash": "bc3c3a27a689af830d4f194e7a2915e09e559520"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-number"
+    },
+    "isSymlink": false,
+    "hash": "5f43a0151737d83f47ca908ed21ed356f29a1ea7"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-radio-group"
+    },
+    "isSymlink": false,
+    "hash": "bae4c3ca756a04b46a24ac5f2aa69a1770390b7d"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-text"
+    },
+    "isSymlink": false,
+    "hash": "08ffef7d537a0463f2b330e911b331b3fd7838f4"
+  },
+  {
+    "id": {
+      "scope": "bit.envs",
+      "name": "compilers/babel"
+    },
+    "isSymlink": false,
+    "hash": "ac130f5e67d6ac0482ae46fde1a4805ef4d8c149"
+  },
+  {
+    "id": {
+      "scope": "bit.envs",
+      "name": "internal/get-babel-options"
+    },
+    "isSymlink": false,
+    "hash": "d4771e232e52a7a9ef391bf363d523bc932b014d"
+  },
+  {
+    "id": {
+      "scope": "bit.envs",
+      "name": "internal/babel-base-compiler"
+    },
+    "isSymlink": false,
+    "hash": "98f497a5e1cba818d2d5da02020ed566a572b936"
+  },
+  {
+    "id": {
+      "scope": "bit.utils",
+      "name": "object/has-own-property"
+    },
+    "isSymlink": false,
+    "hash": "68b489f0ac79f13787c77dc1fd6a7beb18a7b6ba"
+  },
+  {
+    "id": {
+      "scope": "bit.utils",
+      "name": "object/group-by"
+    },
+    "isSymlink": false,
+    "hash": "9155f60c15a0d4c1c0301f15ef2a09a99687ca77"
+  },
+  {
+    "id": {
+      "scope": "bit.envs",
+      "name": "compilers/react"
+    },
+    "isSymlink": false,
+    "hash": "acfc8a808ec3ad8abacd313c9c8b456c1fd7b0b3"
+  },
+  {
+    "id": {
+      "scope": "bit.envs",
+      "name": "common/compiler-types"
+    },
+    "isSymlink": false,
+    "hash": "9c86fadf101414c730daf20f3b3c0b3adcd84e79"
+  },
+  {
+    "id": {
+      "scope": "bit.envs",
+      "name": "common/create-workspace"
+    },
+    "isSymlink": false,
+    "hash": "6b4cdb50159308c72de7a4291fc551540ba4a390"
+  },
+  {
+    "id": {
+      "scope": "bit.envs",
+      "name": "common/get-capsule-name"
+    },
+    "isSymlink": false,
+    "hash": "26aefd5aeef44fe4baf09eb442719418744f2d7d"
+  },
+  {
+    "id": {
+      "scope": "bit.envs",
+      "name": "common/build-component"
+    },
+    "isSymlink": false,
+    "hash": "4046cf768d7527702d0d1393e876cf12efe18835"
+  }
+]
