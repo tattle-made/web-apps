@@ -57,62 +57,6 @@
   },
   {
     "id": {
-      "scope": "tattle-tech.core-ui",
-      "name": "editable-date"
-    },
-    "isSymlink": false,
-    "hash": "3511305ce24c2d72b2368e02844bb27b01ea3dd4"
-  },
-  {
-    "id": {
-      "scope": "tattle-tech.core-ui",
-      "name": "editable-date-range"
-    },
-    "isSymlink": false,
-    "hash": "d4487da84eb2f54bee908eeb9ca7dc852f699230"
-  },
-  {
-    "id": {
-      "scope": "tattle-tech.core-ui",
-      "name": "editable-enum"
-    },
-    "isSymlink": false,
-    "hash": "03c67219a54ebf7eff9e1962824a840181004205"
-  },
-  {
-    "id": {
-      "scope": "tattle-tech.core-ui",
-      "name": "editable-location-coord"
-    },
-    "isSymlink": false,
-    "hash": "bc3c3a27a689af830d4f194e7a2915e09e559520"
-  },
-  {
-    "id": {
-      "scope": "tattle-tech.core-ui",
-      "name": "editable-number"
-    },
-    "isSymlink": false,
-    "hash": "5f43a0151737d83f47ca908ed21ed356f29a1ea7"
-  },
-  {
-    "id": {
-      "scope": "tattle-tech.core-ui",
-      "name": "editable-radio-group"
-    },
-    "isSymlink": false,
-    "hash": "bae4c3ca756a04b46a24ac5f2aa69a1770390b7d"
-  },
-  {
-    "id": {
-      "scope": "tattle-tech.core-ui",
-      "name": "editable-text"
-    },
-    "isSymlink": false,
-    "hash": "08ffef7d537a0463f2b330e911b331b3fd7838f4"
-  },
-  {
-    "id": {
       "scope": "bit.envs",
       "name": "compilers/babel"
     },
@@ -190,5 +134,157 @@
     },
     "isSymlink": false,
     "hash": "4046cf768d7527702d0d1393e876cf12efe18835"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-date"
+    },
+    "isSymlink": false,
+    "hash": "3511305ce24c2d72b2368e02844bb27b01ea3dd4"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-date-range"
+    },
+    "isSymlink": false,
+    "hash": "d4487da84eb2f54bee908eeb9ca7dc852f699230"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-enum"
+    },
+    "isSymlink": false,
+    "hash": "03c67219a54ebf7eff9e1962824a840181004205"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-location-coord"
+    },
+    "isSymlink": false,
+    "hash": "bc3c3a27a689af830d4f194e7a2915e09e559520"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-number"
+    },
+    "isSymlink": false,
+    "hash": "5f43a0151737d83f47ca908ed21ed356f29a1ea7"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-radio-group"
+    },
+    "isSymlink": false,
+    "hash": "bae4c3ca756a04b46a24ac5f2aa69a1770390b7d"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "editable-text"
+    },
+    "isSymlink": false,
+    "hash": "08ffef7d537a0463f2b330e911b331b3fd7838f4"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "app-logo"
+    },
+    "isSymlink": true,
+    "hash": "1c2442ba7692e1b937081a07194d2213bb6de214"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "app-logo"
+    },
+    "isSymlink": false,
+    "hash": "1766de0c4d09672c19f0daedda1ee7fd48add91c"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "theme"
+    },
+    "isSymlink": true,
+    "hash": "dc151a5a2b81059b41f6ee78dbae34c114ce1528"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "links"
+    },
+    "isSymlink": true,
+    "hash": "379e75c850e1334ef7bece52694c2f26cebec78f"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "app-shell"
+    },
+    "isSymlink": true,
+    "hash": "a773c6167188af695b33c511f56cd4a1fcb6f6aa"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "footer"
+    },
+    "isSymlink": true,
+    "hash": "d7eb6b340a11a367a1bec55e4a421d949214759f"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "header"
+    },
+    "isSymlink": true,
+    "hash": "594fd1615a341c77829e83ed988f137e1ba96231"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "links"
+    },
+    "isSymlink": false,
+    "hash": "38913f27f2b6f71f96a74748d9d7a72f3b53b831"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "footer"
+    },
+    "isSymlink": false,
+    "hash": "c8138f2d322ac714749747a242ea9c115e7fd970"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "theme"
+    },
+    "isSymlink": false,
+    "hash": "1d49258c627fa15853b381bbb29cbc07376c6751"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "header"
+    },
+    "isSymlink": false,
+    "hash": "c6ddcfff3df630ef5782ac4043b17defc2aee13d"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "app-shell"
+    },
+    "isSymlink": false,
+    "hash": "7b880903be54cc8a5e7d66bbdf71f5bef566cf07"
   }
 ]

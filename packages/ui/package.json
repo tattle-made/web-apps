@@ -17,11 +17,15 @@
     "axios": "^0.19.0",
     "bluebird": "^3.7.2",
     "classnames": "^2.2.6",
+    "gatsby-link": "^2.4.11",
+    "grommet": "^2.14.0",
+    "grommet-icons": "^4.4.0",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-feather": "^2.0.4",
     "react-helmet": "^5.2.1",
+    "styled-components": "^5.1.1",
     "webpack": "^4.41.2"
   },
   "peerDependencies": {
@@ -30,7 +34,8 @@
     "@storybook/react": ">=5.2.0",
     "grommet": "^2.12.0",
     "grommet-icons": "4.4.0",
-    "styled-components": "5.1.0"
+    "styled-components": "5.1.0",
+    "gatsby": "^2.13.61"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.2.6",
@@ -52,7 +57,7 @@
     "env": {
       "compiler": "bit.envs/compilers/react@1.0.18"
     },
-    "componentsDefaultDirectory": "components/{name}",
+    "componentsDefaultDirectory": "components/library/{name}",
     "packageManager": "npm"
   }
 }
