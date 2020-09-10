@@ -19,7 +19,7 @@
         "origin": "AUTHORED",
         "exported": true
     },
-    "tattle-tech.core-ui/app-shell@0.0.16": {
+    "tattle-tech.core-ui/app-shell@0.0.17": {
         "files": [
             {
                 "relativePath": "src/components/library/AppShell/AppShell.js",
@@ -254,6 +254,47 @@
         ],
         "mainFile": "src/components/library/Links/index.js",
         "trackDir": "src/components/library/Links",
+        "origin": "AUTHORED",
+        "exported": true
+    },
+    "tattle-tech.core-ui/mediablock@0.0.2": {
+        "files": [
+            {
+                "relativePath": "src/components/library/MediaBlock/MultipleWithClickMoreButton.js",
+                "test": false,
+                "name": "MultipleWithClickMoreButton.js"
+            },
+            {
+                "relativePath": "src/components/library/MediaBlock/SinglePost.js",
+                "test": false,
+                "name": "SinglePost.js"
+            },
+            {
+                "relativePath": "src/components/library/MediaBlock/index.js",
+                "test": false,
+                "name": "index.js"
+            }
+        ],
+        "mainFile": "src/components/library/MediaBlock/index.js",
+        "trackDir": "src/components/library/MediaBlock",
+        "origin": "AUTHORED",
+        "exported": true
+    },
+    "tattle-tech.core-ui/seo@0.0.1": {
+        "files": [
+            {
+                "relativePath": "src/components/library/SEO/index.js",
+                "test": false,
+                "name": "index.js"
+            },
+            {
+                "relativePath": "src/components/library/SEO/seo.js",
+                "test": false,
+                "name": "seo.js"
+            }
+        ],
+        "mainFile": "src/components/library/SEO/index.js",
+        "trackDir": "src/components/library/SEO",
         "origin": "AUTHORED",
         "exported": true
     },

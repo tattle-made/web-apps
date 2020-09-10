@@ -281,10 +281,42 @@
   },
   {
     "id": {
+      "scope": null,
+      "name": "seo"
+    },
+    "isSymlink": true,
+    "hash": "6170ca2b023edf54ada0f81d18c7c2b3d6db9553"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "seo"
+    },
+    "isSymlink": false,
+    "hash": "9730fe4d710318e632518cf24ab79f642f21c53f"
+  },
+  {
+    "id": {
       "scope": "tattle-tech.core-ui",
       "name": "app-shell"
     },
     "isSymlink": false,
     "hash": "7b880903be54cc8a5e7d66bbdf71f5bef566cf07"
+  },
+  {
+    "id": {
+      "scope": null,
+      "name": "mediablock"
+    },
+    "isSymlink": true,
+    "hash": "57e81a17029555a2ffcb5265bd2e43f450bbbf0e"
+  },
+  {
+    "id": {
+      "scope": "tattle-tech.core-ui",
+      "name": "mediablock"
+    },
+    "isSymlink": false,
+    "hash": "4521436c8eaed7d9019bfa4557b257c26a9070c5"
   }
 ]

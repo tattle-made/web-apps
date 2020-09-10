@@ -3,6 +3,7 @@ import { Grommet, ResponsiveContext, Box } from "grommet";
 import { SimpleHeader } from "@bit/tattle-tech.core-ui.header";
 import { SimpleFooter } from "@bit/tattle-tech.core-ui.footer";
 import { Theme } from "@bit/tattle-tech.core-ui.theme";
+import { SEO } from "@bit/tattle-tech.core-ui.seo";
 // import SEO from "./s";
 
 /**
@@ -19,7 +20,7 @@ const AppShell = ({
   expandCenter,
 }) => (
   <Grommet theme={Theme} full>
-    {/* <SEO title={`Tattle - ${headerLabel}`} /> */}
+    <SEO title={`Tattle - ${headerLabel}`} />
     <Box fill>
       <Box flex={false} as={"header"}>
         <SimpleHeader

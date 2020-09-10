@@ -17,6 +17,8 @@ var _tattleTechCoreUi2 = require("@bit/tattle-tech.core-ui.footer");
 
 var _tattleTechCoreUi3 = require("@bit/tattle-tech.core-ui.theme");
 
+var _tattleTechCoreUi4 = require("@bit/tattle-tech.core-ui.seo");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -37,7 +39,9 @@ var AppShellUnauthenticated = function AppShellUnauthenticated(_ref) {
   return /*#__PURE__*/_react["default"].createElement(_grommet.Grommet, {
     theme: _tattleTechCoreUi3.Theme,
     full: true
-  }, /*#__PURE__*/_react["default"].createElement(_grommet.Box, {
+  }, /*#__PURE__*/_react["default"].createElement(_tattleTechCoreUi4.SEO, {
+    title: "Tattle - ".concat(headerLabel)
+  }), /*#__PURE__*/_react["default"].createElement(_grommet.Box, {
     fill: true
   }, /*#__PURE__*/_react["default"].createElement(_grommet.Box, {
     flex: false,
