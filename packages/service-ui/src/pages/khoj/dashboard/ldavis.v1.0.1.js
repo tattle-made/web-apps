@@ -6,7 +6,12 @@
 
 import * as d3 from "d3"
 
-export const LDAvis = function(to_select, data_or_file_name, to_select_name) {
+export const LDAvis = function(
+  to_select,
+  data_or_file_name,
+  to_select_name,
+  onClusterSelected
+) {
   console.log("called again for " + data_or_file_name)
   // This section sets up the logic for event handling
   var current_clicked = {
@@ -51,11 +56,11 @@ export const LDAvis = function(to_select, data_or_file_name, to_select_name) {
       bottom: 70,
       left: 30,
     },
-    mdswidth = 530,
-    mdsheight = 530,
-    barwidth = 530,
-    barheight = 300,
-    termwidth = 90, // width to add between two panels to display terms
+    mdswidth = 300, //
+    mdsheight = 300,
+    barwidth = 450,
+    barheight = 260,
+    termwidth = 210, // width to add between two panels to display terms
     mdsarea = mdsheight * mdswidth
   // controls how big the maximum circle can be
   // doesn't depend on data, only on mds width and height:
@@ -201,6 +206,7 @@ export const LDAvis = function(to_select, data_or_file_name, to_select_name) {
       topic_off(document.getElementById(topicID + value_old))
       topic_on(document.getElementById(topicID + value_new))
       vis_state.topic = value_new
+      onClusterSelected(value_new)
       // state_save(true)
     })
 
@@ -481,24 +487,6 @@ export const LDAvis = function(to_select, data_or_file_name, to_select_name) {
           topic_on(document.getElementById(topicID + vis_state.topic))
       })
 
-    svg
-      .append("text")
-      .text("Thematic Cluster Map")
-      .attr("x", mdswidth / 2 + margin.left)
-      .attr("y", 20)
-      .style("font-size", "16px")
-      .style("text-anchor", "middle")
-
-    svg
-      .append("text")
-      .text(
-        "(2D representation of mathematical 'distances' between the clusters)"
-      )
-      .attr("x", mdswidth / 2 + margin.left)
-      .attr("y", 40)
-      .style("font-size", "16px")
-      .style("text-anchor", "middle")
-
     // establish layout and vars for bar chart
     var barDefault2 = dat3.filter(function(d) {
       return d.Category == "Default"
@@ -569,49 +557,6 @@ export const LDAvis = function(to_select, data_or_file_name, to_select_name) {
       .style("dominant-baseline", "middle")
       .text("Estimated term frequency within the selected topic")
 
-    footnotes: d3.select("#" + barFreqsID)
-      // .append("a")
-      // .attr("xlink:href", "http://vis.stanford.edu/files/2012-Termite-AVI.pdf")
-      // .attr("target", "_blank")
-      .append("text")
-      .attr("x", 0)
-      .attr("y", mdsheight + 10 + (6 / 2) * barguide.height + 5)
-      .style("dominant-baseline", "middle")
-      .text("1. Number of Articles in this week: " + data["number_of_articles"])
-    d3.select("#" + barFreqsID)
-      .append("a")
-      .attr("xlink:href", "https://opendatacommons.org/licenses/odbl/")
-      .attr("target", "_blank")
-      .append("text")
-      .attr("x", 0)
-      .attr("y", mdsheight + 10 + (8 / 2) * barguide.height + 5)
-      .style("dominant-baseline", "middle")
-      .text(
-        "2. The factchecking site data scraped by Tattle is licensed under ODbL."
-      )
-    d3.select("#" + barFreqsID)
-      .append("a")
-      .attr("xlink:href", "https://tattle.co.in/contact/")
-      .attr("target", "_blank")
-      .append("text")
-      .attr("x", 0)
-      .attr("y", mdsheight + 10 + (10 / 2) * barguide.height + 5)
-      .style("dominant-baseline", "middle")
-      .text("3. Please contact us here to use this data")
-    d3.select("#" + barFreqsID)
-      .append("a")
-      .attr("xlink:href", "https://tattle.co.in/")
-      .attr("target", "_blank")
-      .append("image")
-      // .attr("xlink:href", "https://opendatacommons.org/licenses/odbl/")
-      // .attr("target", "_blank")
-      // .append("text")
-      .attr("x", 460)
-      .attr("y", mdsheight + 25)
-      .attr("height", 80)
-      .attr("width", 80)
-      .attr("xlink:href", "logo.svg")
-
     // Bind 'default' data to 'default' bar chart
     var basebars = chart
       .selectAll(to_select_name + " .bar-totals")
@@ -652,31 +597,11 @@ export const LDAvis = function(to_select, data_or_file_name, to_select_name) {
       .on("mouseover", function() {
         term_hover(this)
       })
-      // .on("click", function(d) {
-      //     var old_term = termID + vis_state.term;
-      //     if (vis_state.term != "" && old_term != this.id) {
-      //         term_off(document.getElementById(old_term));
-      //     }
-      //     vis_state.term = d.Term;
-      //     state_save(true);
-      //     term_on(this);
-      //     debugger;
-      // })
       .on("mouseout", function() {
         vis_state.term = ""
         term_off(this)
         // state_save(true)
       })
-
-    var title = chart
-      .append("text")
-      .attr("x", barwidth / 2)
-      .attr("y", -30)
-      .attr("class", "bubble-tool") //  set class so we can remove it when highlight_off is called
-      .style("text-anchor", "middle")
-      .style("font-size", "16px")
-      .text("Top-" + R + " Terms this week")
-
     // title.append("tspan")
     //     .attr("baseline-shift", "super")
     //     .attr("font-size", "12px")
@@ -1251,6 +1176,7 @@ export const LDAvis = function(to_select, data_or_file_name, to_select_name) {
       // grab data bound to this element
       var d = circle.__data__
       console.log(d)
+      onClusterSelected(d)
       var Freq = Math.round(d.Freq * 10) / 10,
         topics = d.topics
       // var labels = d.labels;
@@ -1265,15 +1191,6 @@ export const LDAvis = function(to_select, data_or_file_name, to_select_name) {
       text.remove()
 
       // append text with info relevant to topic of interest
-      d3.select("#" + barFreqsID)
-        .append("text")
-        .attr("x", barwidth / 2)
-        .attr("y", -30)
-        .attr("class", "bubble-tool") //  set class so we can remove it when highlight_off is called
-        .style("text-anchor", "middle")
-        .style("font-size", "16px")
-        // .text("Top-" + R + " Terms(Words) in cluster " + labels + " (" + Freq + "% of all words)")
-        .text("Top-" + R + " Terms(Words) in cluster " + labels)
 
       // grab the bar-chart data for this topic only:
       var dat2 = lamData.filter(function(d) {
@@ -1378,43 +1295,6 @@ export const LDAvis = function(to_select, data_or_file_name, to_select_name) {
         .call(xAxis)
 
       /////////////RISHABH Update links
-      var Y_coord = d3.scale
-        .ordinal()
-        .domain(data["per_cluster_headlines"][topics])
-        .rangePoints([0, 150])
-      linkbox
-        .append("text")
-        .attr("class", "link-texts")
-        .attr("x", 0)
-        .attr("y", 12)
-        // .text(function(d){
-        //     console.log(d);
-        //     return d;
-        // });
-        .attr("fill", color1)
-        .attr("font-weight", "bold")
-        .text("Related Articles")
-
-      var links = linkbox
-        .selectAll(to_select_name + " .link-texts")
-        .data(data["per_cluster_headlines"][topics].slice(0, 10))
-        .enter()
-        .append("a")
-        .attr("class", "link-texts")
-        .attr("xlink:href", function(d) {
-          return d
-        })
-        .attr("target", "_blank")
-        .append("text")
-        .attr("x", 0)
-        // .attr("y", Y_coord.rangeBand())
-        .attr("y", function(d, i) {
-          return i * 20 + 15
-        })
-        .style("dominant-baseline", "bottom")
-        .text(function(d) {
-          return d
-        })
     }
 
     function topic_off(circle) {
@@ -1423,9 +1303,9 @@ export const LDAvis = function(to_select, data_or_file_name, to_select_name) {
       circle.style.opacity = base_opacity
       circle.style.fill = color1
 
-      var title = d3
-        .selectAll(to_select_name + " .bubble-tool")
-        .text("Top-" + R + " Terms this week")
+      // var title = d3
+      // .selectAll(to_select_name + " .bubble-tool")
+      // .text("Top-" + R + " Terms this week")
       // title.append("tspan")
       //     .attr("baseline-shift", "super")
       //     .attr("font-size", 12)
@@ -1624,16 +1504,5 @@ export const LDAvis = function(to_select, data_or_file_name, to_select_name) {
     }
   }
 
-  if (typeof data_or_file_name === "string")
-    d3.json(data_or_file_name, function(error, data) {
-      visualize(data)
-    })
-  else visualize(data_or_file_name)
-
-  // var current_clicked = {
-  //     what: "nothing",
-  //     element: undefined
-  // },
-
-  //debugger;
+  visualize(data_or_file_name)
 }

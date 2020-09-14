@@ -1397,12 +1397,14 @@ const Dashboard = () => {
   const ldavisRef = useRef()
   const [value, setValue] = React.useState("Jul 27 - Aug 2")
   const [currentData, setCurrentData] = useState(data)
+  const [relatedArticles, setRelatedArticles] = useState([])
+  const [selectedTopicId, setSelectedTopicId] = useState(-1)
 
   useEffect(() => {
-    console.log("current data changed")
+    // console.log("current data changed")
     // console.log({ ldavisRef.current, data })
     ldavisRef.current.innerHTML = ""
-    LDAvis(ldavisRef.current, currentData, "#wk35")
+    LDAvis(ldavisRef.current, currentData, "#wk35", onClusterSelected)
   }, currentData)
 
   const onDateRangeChanged = option => {
@@ -1427,7 +1429,12 @@ const Dashboard = () => {
     }
     console.log({ newData })
 
-    setCurrentData(newData)
+    // setCurrentData(newData)
+  }
+
+  const onClusterSelected = clusterId => {
+    console.log("cluster selected : ", clusterId)
+    setSelectedTopicId(clusterId.topics)
   }
 
   return (
@@ -1438,40 +1445,90 @@ const Dashboard = () => {
       primaryNav={primaryNav}
       expandCenter={true}
     >
-      <Heading level={2}> Themes in Factchecking Articles</Heading>
-      <Box gap={"medium"} flex={true}>
-        <Text>
-          This interactive dashboard displays the themes in factchecking
-          articles we scraped in the selected week. Articles are grouped into
-          thematic clusters using an algorithm known as Gibbs Sampling Dirichlet
-          Multinomial Mixture (GSDMM), which clusters the article headlines
-          based on the similarity of their constituent words. The number of
-          clusters is decided by a human (a Tattle team member) after some
-          experimentation, with the aim of producing meaningful results. The
-          algorithm does not generate names for the clusters. We have chosen to
-          leave them unnamed to allow flexible interpretation, but they are
-          numbered for identification. Hovering over a cluster on the left
-          displays its constituent words on the right. Clicking on a cluster
-          displays links to the articles that comprise it. The dashboard design
-          is inspired by LDAvis, a visualisation technique for topic models.
-        </Text>
-        <Box width={"medium"}>
-          <Select
-            options={[
-              "Jul 27 - Aug 2",
-              "Aug 3 - Aug 9",
-              "Aug 10 - Aug 16",
-              "Aug 17 - Aug 23",
-              "Aug 24 - Aug 30",
-            ]}
-            value={value}
-            onChange={({ option }) => onDateRangeChanged(option)}
-          />
+      <Box direction={"column"} flex={false} gap={"medium"}>
+        <Heading level={2}> Themes in Factchecking Articles</Heading>
+        <Box gap={"medium"} flex={true}>
+          <Text>
+            This interactive dashboard displays the themes in factchecking
+            articles we scraped in the selected week. Articles are grouped into
+            thematic clusters using an algorithm known as Gibbs Sampling
+            Dirichlet Multinomial Mixture (GSDMM), which clusters the article
+            headlines based on the similarity of their constituent words. The
+            number of clusters is decided by a human (a Tattle team member)
+            after some experimentation, with the aim of producing meaningful
+            results. The algorithm does not generate names for the clusters. We
+            have chosen to leave them unnamed to allow flexible interpretation,
+            but they are numbered for identification. Hovering over a cluster on
+            the left displays its constituent words on the right. Clicking on a
+            cluster displays links to the articles that comprise it. The
+            dashboard design is inspired by LDAvis, a visualisation technique
+            for topic models.
+          </Text>
+          <Box width={"medium"} flex={true}>
+            <Select
+              options={[
+                "Jul 27 - Aug 2",
+                "Aug 3 - Aug 9",
+                "Aug 10 - Aug 16",
+                "Aug 17 - Aug 23",
+                "Aug 24 - Aug 30",
+              ]}
+              value={value}
+              onChange={({ option }) => onDateRangeChanged(option)}
+            />
+          </Box>
         </Box>
-      </Box>
+        <Box
+          direction={"row"}
+          margin={{ top: "medium" }}
+          flex={true}
+          overflow={"visible"}
+        >
+          <Box width={"600px"}>
+            <Text size={"medium"}>Thematic Cluster Map</Text>
+            <Text size={"small"}>
+              2D representation of mathematical 'distances' between the
+              clusters)
+            </Text>
+          </Box>
+          {/* <Box width={"90px"}></Box> */}
+          <Box width={"360px"}>
+            <Text size={"medium"}>Top-10 Words in cluster</Text>
+          </Box>
+        </Box>
 
-      <Box width={"xlarge"} flex={true}>
-        <div ref={ldavisRef} id="wk35"></div>
+        <Box flex={true}>
+          <div ref={ldavisRef} id="wk35"></div>
+        </Box>
+        <Box>
+          <Heading level={3}>Related Articles</Heading>
+          {selectedTopicId === -1 && (
+            <Text size={"medium"}>
+              {" "}
+              Clicking on a cluster will show articles linked to this
+            </Text>
+          )}
+          {selectedTopicId !== -1 &&
+            currentData["per_cluster_headlines"] &&
+            currentData["per_cluster_headlines"][selectedTopicId].map(
+              headline => {
+                console.log(headline)
+                return (
+                  <a href={headline} target={"_blank"}>
+                    {headline}
+                  </a>
+                )
+              }
+            )}
+        </Box>
+        <Box>
+          <Heading level={3}> Licence</Heading>
+          <Text>
+            {" "}
+            Please contact us at admin@tattle.co.in to access the underlying
+            data{" "}
+          </Text>
+        </Box>
       </Box>
     </AppShell>
   )
