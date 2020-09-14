@@ -78,21 +78,12 @@ const Dashboard = () => {
     >
       <Box direction={"column"} flex={false} gap={"medium"}>
         <Heading level={2}> Themes in Factchecking Articles</Heading>
-        <Box direction={"row"} alignContent={"center"}>
-          <Heading level={6} margin={{ right: "small", bottom: "none" }}>
-            {" "}
-            Share in your network
-          </Heading>
+        <Box direction={"row"} alignContent={"center"} gap={"xsmall"}>
           <TwitterShareButton
             url={"https://services.tattle.co.in/khoj/dashboard/"}
             title={"Fact Checking Topic Dashbaord"}
           >
-            <TwitterIcon
-              size={40}
-              round={true}
-              bgStyle={{ fill: "#FFFFFF" }}
-              iconFillColor={"#514e80"}
-            />
+            <TwitterIcon size={32} round={true} bgStyle={{ fill: "#514e80" }} />
           </TwitterShareButton>
           <WhatsappShareButton
             url={"https://services.tattle.co.in/khoj/dashboard/"}
@@ -101,30 +92,23 @@ const Dashboard = () => {
             <WhatsappIcon
               size={32}
               round={true}
-              bgStyle={{ fill: "#FFFFFF" }}
-              iconFillColor={"#514e80"}
+              bgStyle={{ fill: "#514e80" }}
             />
           </WhatsappShareButton>
           <RedditShareButton
             url={"https://services.tattle.co.in/khoj/dashboard/"}
             title={"Fact Checking Topic Dashbaord"}
           >
-            <RedditIcon
-              size={40}
-              round={true}
-              bgStyle={{ fill: "#FFFFFF" }}
-              iconFillColor={"#514e80"}
-            />
+            <RedditIcon size={32} round={true} bgStyle={{ fill: "#514e80" }} />
           </RedditShareButton>
           <LinkedinShareButton
             url={"https://services.tattle.co.in/khoj/dashboard/"}
             title={"Fact Checking Topic Dashbaord"}
           >
             <LinkedinIcon
-              size={40}
+              size={32}
               round={true}
-              bgStyle={{ fill: "#FFFFFF" }}
-              iconFillColor={"#514e80"}
+              bgStyle={{ fill: "#514e80" }}
             />
           </LinkedinShareButton>
         </Box>
