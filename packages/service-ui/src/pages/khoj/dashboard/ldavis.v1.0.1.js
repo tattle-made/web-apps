@@ -53,7 +53,7 @@ export const LDAvis = function(
   var margin = {
       top: 30,
       right: 30,
-      bottom: 70,
+      bottom: 0,
       left: 30,
     },
     mdswidth = 300, //

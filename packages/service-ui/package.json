@@ -5,6 +5,7 @@
   "version": "0.1.7",
   "author": "Denny George <denny@tattle.co.in>",
   "dependencies": {
+    "@bit/tattle-tech.core-ui.links": "0.0.3",
     "@emotion/babel-preset-css-prop": "^10.0.17",
     "@emotion/core": "^10.0.15",
     "@mdx-js/mdx": "^1.3.1",
@@ -42,6 +43,7 @@
     "react-helmet": "^5.2.1",
     "react-icons-kit": "^1.3.1",
     "react-redux": "^7.1.1",
+    "react-share": "^4.2.1",
     "react-typography": "^0.16.19",
     "redux": "^4.0.4",
     "styled-components": "^4.4.1",
