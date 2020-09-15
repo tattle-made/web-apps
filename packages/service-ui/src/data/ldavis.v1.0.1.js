@@ -487,6 +487,23 @@ export const LDAvis = function(
           topic_on(document.getElementById(topicID + vis_state.topic))
       })
 
+    // svg
+    // .append("text")
+    // .text("Thematic Cluster Map")
+    // .attr("x", mdswidth / 2 + margin.left)
+    // .attr("y", 20)
+    // .style("font-size", "16px")
+    // .style("text-anchor", "middle")
+    // svg
+    // .append("text")
+    // .text(
+    // "(2D representation of mathematical 'distances' between the clusters)"
+    // )
+    // .attr("x", mdswidth / 2 + margin.left)
+    // .attr("y", 40)
+    // .style("font-size", "16px")
+    // .style("text-anchor", "middle")
+
     // establish layout and vars for bar chart
     var barDefault2 = dat3.filter(function(d) {
       return d.Category == "Default"
@@ -1191,6 +1208,14 @@ export const LDAvis = function(
       text.remove()
 
       // append text with info relevant to topic of interest
+      // d3.select("#" + barFreqsID)
+      // .append("text")
+      // .attr("x", barwidth / 2)
+      // .attr("y", -30)
+      // .attr("class", "bubble-tool") //  set class so we can remove it when highlight_off is called
+      // .style("text-anchor", "middle")
+      // .style("font-size", "16px")
+      // .text("Top-" + R + " Terms(Words) in cluster " + labels)
 
       // grab the bar-chart data for this topic only:
       var dat2 = lamData.filter(function(d) {

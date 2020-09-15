@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react"
 import { Box, Heading, Text, Select } from "grommet"
 import * as d3 from "d3"
-import { LDAvis } from "./ldavis.v1.0.1"
+import { LDAvis } from "../../../data/ldavis.v1.0.1"
 import AppShell from "../../../components/atomic/AppShell"
 import { PlainExternalLink } from "@bit/tattle-tech.core-ui.links"
 import { footerItems, primaryNav } from "../../../config/options"
@@ -18,10 +18,10 @@ import {
 import styled from "styled-components"
 import { navigate } from "gatsby"
 import { parse } from "query-string"
-import { data as dataWeek37 } from "./data/wk37"
-import { data as dataWeek36 } from "./data/wk36"
-import { data as dataWeek35 } from "./data/wk35"
-import { data as dataWeek34 } from "./data/wk34"
+import { data as dataWeek37 } from "../../../data/wk37"
+import { data as dataWeek36 } from "../../../data/wk36"
+import { data as dataWeek35 } from "../../../data/wk35"
+import { data as dataWeek34 } from "../../../data/wk34"
 
 const D3Div = styled.div`
   path {
@@ -185,7 +185,7 @@ const Dashboard = ({ location }) => {
               clusters)
             </Text>
           </Box>
-          {/* <Box width={"90px"}></Box> */}
+
           <Box width={"360px"}>
             <Text size={"medium"}>Top-10 Words in cluster</Text>
           </Box>
@@ -225,11 +225,43 @@ const Dashboard = ({ location }) => {
             )}
         </Box>
         <Box>
-          <Heading level={3}> Licence</Heading>
+          <Heading level={3}> License</Heading>
           <Text>
             {" "}
-            Please contact us at admin@tattle.co.in to access the underlying
-            data{" "}
+            Contains information from Tattle Fact Checking Sites Database, which
+            is made available{" "}
+            <PlainExternalLink
+              href={"https://services.tattle.co.in/khoj/explore"}
+              target="_blank"
+            >
+              <Text color={"brand"} weight={"bold"}>
+                here{" "}
+              </Text>
+            </PlainExternalLink>
+            under the
+            <PlainExternalLink
+              href={"https://opendatacommons.org/licenses/odbl/1-0/"}
+              target="_blank"
+            >
+              <Text color={"brand"} weight={"bold"}>
+                {" "}
+                Open Database License
+              </Text>
+            </PlainExternalLink>
+            <Text>
+              {" "}
+              (ODbL). All the visualizations here are licensed under{" "}
+            </Text>
+            <PlainExternalLink
+              href={"https://creativecommons.org/licenses/by-sa/4.0/"}
+              target="_blank"
+            >
+              <Text color={"brand"} weight={"bold"}>
+                {" "}
+                CC BY-SA 4.0
+              </Text>
+            </PlainExternalLink>
+            .
           </Text>
         </Box>
       </Box>
