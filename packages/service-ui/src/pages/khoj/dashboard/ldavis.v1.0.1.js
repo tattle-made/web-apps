@@ -1175,7 +1175,7 @@ export const LDAvis = function(
 
       // grab data bound to this element
       var d = circle.__data__
-      console.log(d)
+      // console.log(d)
       onClusterSelected(d)
       var Freq = Math.round(d.Freq * 10) / 10,
         topics = d.topics

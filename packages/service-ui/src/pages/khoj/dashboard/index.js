@@ -15,56 +15,77 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from "react-share"
+import { navigate } from "gatsby"
+import { parse } from "query-string"
 import { data as dataWeek31 } from "./data/wk31"
 import { data as dataWeek32 } from "./data/wk32"
 import { data as dataWeek35 } from "./data/wk35"
+import { data as dataWeek34 } from "./data/wk34"
 
 /**
  * @author
  * @function Dashboard
  **/
+const getData = weekNumber => {
+  console.log("week number : ", weekNumber)
+  console.log(typeof weekNumber)
+  var data
+  switch (parseInt(weekNumber)) {
+    case 35:
+      data = dataWeek35
+      break
+    case 34:
+      data = dataWeek34
+      break
+    default:
+      data = dataWeek35
+      break
+  }
+  console.log({ headlines: data["per_cluster_headlines"]["1"][0]["headline"] })
+  return data
+}
 
-const Dashboard = () => {
+const Dashboard = ({ location }) => {
   const ldavisRef = useRef()
   const [value, setValue] = React.useState("Jul 27 - Aug 2")
-  const [currentData, setCurrentData] = useState(dataWeek35)
+  const [currentData, setCurrentData] = useState(
+    getData(parse(location.search).week)
+  )
   const [relatedArticles, setRelatedArticles] = useState([])
   const [selectedTopicId, setSelectedTopicId] = useState(-1)
 
   useEffect(() => {
+    // console.log({ location })
     // console.log("current data changed")
     // console.log({ ldavisRef.current, data })
     ldavisRef.current.innerHTML = ""
-    LDAvis(ldavisRef.current, currentData, "#wk35", onClusterSelected)
+    LDAvis(ldavisRef.current, currentData, "#visualization", onClusterSelected)
   }, currentData)
 
   const onDateRangeChanged = option => {
     setValue(option)
-    var newData
+    var weekNumber
     switch (option) {
-      case "Jul 27 - Aug 2":
-        newData = dataWeek31
+      case "September 7 - September 13, 2020":
+        weekNumber = 35
         break
-      case "Aug 3 - Aug 9":
-        newData = dataWeek32
+      case "August 31 - September 6, 2020":
+        weekNumber = 34
         break
-      case "":
+      case "August 24 - August 30, 2020":
         break
-      case "":
-        break
-      case "":
+      case "August 17 - August 23, 2020":
         break
       default:
-        newData = data
+        weekNumber = 35
         break
     }
-    console.log({ newData })
-
-    // setCurrentData(newData)
+    console.log("--weeknumber-- ", weekNumber)
+    navigate(`/khoj/dashboard?week=${weekNumber}`)
   }
 
   const onClusterSelected = clusterId => {
-    console.log("cluster selected : ", clusterId)
+    // console.log("cluster selected : ", clusterId)
     setSelectedTopicId(clusterId.topics)
   }
 
@@ -132,24 +153,18 @@ const Dashboard = () => {
           <Box width={"medium"} flex={true}>
             <Select
               options={[
-                "Jul 27 - Aug 2",
-                "Aug 3 - Aug 9",
-                "Aug 10 - Aug 16",
-                "Aug 17 - Aug 23",
-                "Aug 24 - Aug 30",
+                "September 7 - September 13, 2020",
+                "August 31 - September 6, 2020",
+                "August 24 - August 30, 2020",
+                "August 17 - August 23, 2020",
               ]}
               value={value}
               onChange={({ option }) => onDateRangeChanged(option)}
             />
           </Box>
         </Box>
-        <Box
-          direction={"row"}
-          margin={{ top: "medium" }}
-          flex={true}
-          overflow={"visible"}
-        >
-          <Box width={"600px"}>
+        <Box direction={"row"}>
+          <Box width={"540px"}>
             <Text size={"medium"}>Thematic Cluster Map</Text>
             <Text size={"small"}>
               2D representation of mathematical 'distances' between the
@@ -163,7 +178,7 @@ const Dashboard = () => {
         </Box>
 
         <Box flex={true}>
-          <div ref={ldavisRef} id="wk35"></div>
+          <div ref={ldavisRef} id="visualization"></div>
         </Box>
         <Box>
           <Heading level={3}>Articles in this Cluster</Heading>
@@ -177,7 +192,6 @@ const Dashboard = () => {
             currentData["per_cluster_headlines"] &&
             currentData["per_cluster_headlines"][selectedTopicId].map(
               headline => {
-                console.log(headline)
                 return (
                   <Box margin={{ bottom: "small" }}>
                     <PlainExternalLink
