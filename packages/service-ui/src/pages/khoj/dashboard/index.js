@@ -15,22 +15,33 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from "react-share"
+import styled from "styled-components"
 import { navigate } from "gatsby"
 import { parse } from "query-string"
-import { data as dataWeek31 } from "./data/wk31"
-import { data as dataWeek32 } from "./data/wk32"
+import { data as dataWeek37 } from "./data/wk37"
+import { data as dataWeek36 } from "./data/wk36"
 import { data as dataWeek35 } from "./data/wk35"
 import { data as dataWeek34 } from "./data/wk34"
+
+const D3Div = styled.div`
+  path {
+    fill: none;
+  }
+`
 
 /**
  * @author
  * @function Dashboard
  **/
 const getData = weekNumber => {
-  console.log("week number : ", weekNumber)
-  console.log(typeof weekNumber)
   var data
   switch (parseInt(weekNumber)) {
+    case 37:
+      data = dataWeek37
+      break
+    case 36:
+      data = dataWeek36
+      break
     case 35:
       data = dataWeek35
       break
@@ -38,16 +49,16 @@ const getData = weekNumber => {
       data = dataWeek34
       break
     default:
-      data = dataWeek35
+      data = dataWeek37
       break
   }
-  console.log({ headlines: data["per_cluster_headlines"]["1"][0]["headline"] })
+  //console.log({ headlines: data["per_cluster_headlines"]["1"][0]["headline"] })
   return data
 }
 
 const Dashboard = ({ location }) => {
   const ldavisRef = useRef()
-  const [value, setValue] = React.useState("Jul 27 - Aug 2")
+  const [value, setValue] = React.useState("September 7 - September 13, 2020")
   const [currentData, setCurrentData] = useState(
     getData(parse(location.search).week)
   )
@@ -55,37 +66,40 @@ const Dashboard = ({ location }) => {
   const [selectedTopicId, setSelectedTopicId] = useState(-1)
 
   useEffect(() => {
+    console.log("current location changed")
     // console.log({ location })
     // console.log("current data changed")
     // console.log({ ldavisRef.current, data })
     ldavisRef.current.innerHTML = ""
+    setCurrentData(getData(parse(location.search).week))
     LDAvis(ldavisRef.current, currentData, "#visualization", onClusterSelected)
-  }, currentData)
+  }, [location])
 
   const onDateRangeChanged = option => {
     setValue(option)
     var weekNumber
     switch (option) {
       case "September 7 - September 13, 2020":
-        weekNumber = 35
+        weekNumber = 37
         break
       case "August 31 - September 6, 2020":
-        weekNumber = 34
+        weekNumber = 36
         break
       case "August 24 - August 30, 2020":
-        break
-      case "August 17 - August 23, 2020":
-        break
-      default:
         weekNumber = 35
         break
+      case "August 17 - August 23, 2020":
+        weekNumber = 34
+        break
+      default:
+        weekNumber = 37
+        break
     }
-    console.log("--weeknumber-- ", weekNumber)
+
     navigate(`/khoj/dashboard?week=${weekNumber}`)
   }
 
   const onClusterSelected = clusterId => {
-    // console.log("cluster selected : ", clusterId)
     setSelectedTopicId(clusterId.topics)
   }
 
@@ -122,7 +136,7 @@ const Dashboard = ({ location }) => {
           >
             <RedditIcon size={32} round={true} bgStyle={{ fill: "#514e80" }} />
           </RedditShareButton>
-          <LinkedinShareButton
+          {/*<LinkedinShareButton
             url={"https://services.tattle.co.in/khoj/dashboard/"}
             title={"Fact Checking Topic Dashbaord"}
           >
@@ -131,7 +145,7 @@ const Dashboard = ({ location }) => {
               round={true}
               bgStyle={{ fill: "#514e80" }}
             />
-          </LinkedinShareButton>
+          </LinkedinShareButton>*/}
         </Box>
         <Box gap={"medium"} flex={true}>
           <Text>
@@ -178,7 +192,7 @@ const Dashboard = ({ location }) => {
         </Box>
 
         <Box flex={true}>
-          <div ref={ldavisRef} id="visualization"></div>
+          <D3Div ref={ldavisRef} id="visualization"></D3Div>
         </Box>
         <Box>
           <Heading level={3}>Articles in this Cluster</Heading>
@@ -193,15 +207,17 @@ const Dashboard = ({ location }) => {
             currentData["per_cluster_headlines"][selectedTopicId].map(
               headline => {
                 return (
-                  <Box margin={{ bottom: "small" }}>
+                  <Box margin={{ bottom: "medium" }}>
                     <PlainExternalLink
                       key={"abc"}
                       href={headline.url}
                       target="_blank"
                     >
                       {" "}
-                      <Text size={"medium"}> {headline.headline}</Text>
-                      <Text size={"small"}> {headline.url}</Text>
+                      <Box>
+                        <Text size={"medium"}> {headline.headline}</Text>
+                        <Text size={"small"}> {headline.url}</Text>
+                      </Box>
                     </PlainExternalLink>
                   </Box>
                 )
