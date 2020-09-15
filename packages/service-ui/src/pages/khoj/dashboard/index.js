@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react"
-import { Box, Heading, Text, Select } from "grommet"
+import { Box, Heading, Text, Select, Collapsible, Button } from "grommet"
 import * as d3 from "d3"
 import { LDAvis } from "../../../data/ldavis.v1.0.1"
 import AppShell from "../../../components/atomic/AppShell"
@@ -22,6 +22,7 @@ import { data as dataWeek37 } from "../../../data/wk37"
 import { data as dataWeek36 } from "../../../data/wk36"
 import { data as dataWeek35 } from "../../../data/wk35"
 import { data as dataWeek34 } from "../../../data/wk34"
+import { HelpCircle, XCircle } from "react-feather"
 
 const D3Div = styled.div`
   path {
@@ -64,6 +65,7 @@ const Dashboard = ({ location }) => {
   )
   const [relatedArticles, setRelatedArticles] = useState([])
   const [selectedTopicId, setSelectedTopicId] = useState(-1)
+  const [showInstructions, setShowInstructions] = useState(false)
 
   useEffect(() => {
     console.log("current location changed")
@@ -149,21 +151,51 @@ const Dashboard = ({ location }) => {
         </Box>
         <Box gap={"medium"} flex={true}>
           <Text>
-            This interactive dashboard displays the themes in factchecking
-            articles we scraped in the selected week. Articles are grouped into
-            thematic clusters using an algorithm known as Gibbs Sampling
-            Dirichlet Multinomial Mixture (GSDMM), which clusters the article
-            headlines based on the similarity of their constituent words. The
-            number of clusters is decided by a human (a Tattle team member)
-            after some experimentation, with the aim of producing meaningful
-            results. The algorithm does not generate names for the clusters. We
-            have chosen to leave them unnamed to allow flexible interpretation,
-            but they are numbered for identification. Hovering over a cluster on
-            the left displays its constituent words on the right. Clicking on a
-            cluster displays links to the articles that comprise it. The
-            dashboard design is inspired by LDAvis, a visualisation technique
-            for topic models.
+            This interactive dashboard displays the themes in fact-checking
+            articles we scraped from IFCN-certified websites in the selected
+            week. Articles are grouped into thematic clusters using an algorithm
+            known as Gibbs Sampling Dirichlet Multinomial Mixture (GSDMM), which
+            groups together article headlines based on the similarity of their
+            constituent words. The number of clusters is decided by a human (a
+            Tattle team member) after some experimentation, with the aim of
+            producing meaningful results. The algorithm does not generate names
+            for the clusters. We have chosen to leave them unnamed to allow
+            flexible interpretation, but they are numbered for identification.{" "}
           </Text>
+          <Box>
+            <Box
+              round={"xsmall"}
+              direction={"row"}
+              onClick={() => {
+                setShowInstructions(!showInstructions)
+              }}
+              align={"center"}
+              gap={"xsmall"}
+              margin={{ bottom: "small" }}
+              focusIndicator={false}
+            >
+              {showInstructions ? (
+                <XCircle size={16} />
+              ) : (
+                <HelpCircle size={16} />
+              )}
+              {!showInstructions && (
+                <Text size={"small"}> How to navigate this dashboard</Text>
+              )}
+            </Box>
+
+            <Collapsible open={showInstructions}>
+              <Text>
+                Hovering over a cluster circle on the left displays the
+                cluster's constituent words, along with their occurrence
+                frequencies, on the right. Clicking on a cluster circle displays
+                links to the fact-checking articles within it, below the
+                visualisation (scroll down to see the links). The dashboard
+                design is inspired by LDAvis, a visualisation technique for
+                topic models.
+              </Text>
+            </Collapsible>
+          </Box>
           <Box width={"medium"} flex={true}>
             <Select
               options={[

@@ -557,7 +557,7 @@ export const LDAvis = function(
       .attr("x", barguide.width + 5)
       .attr("y", mdsheight + 10 + barguide.height / 2)
       .style("dominant-baseline", "middle")
-      .text("Overall term frequency")
+      .text("Overall word frequency")
 
     d3.select("#" + barFreqsID)
       .append("rect")
@@ -572,7 +572,7 @@ export const LDAvis = function(
       .attr("x", barguide.width / 2 + 5)
       .attr("y", mdsheight + 10 + (3 / 2) * barguide.height + 5)
       .style("dominant-baseline", "middle")
-      .text("Estimated term frequency within the selected topic")
+      .text("Estimated word frequency within \nthe selected cluster")
 
     // Bind 'default' data to 'default' bar chart
     var basebars = chart
