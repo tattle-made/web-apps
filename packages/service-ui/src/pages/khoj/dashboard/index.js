@@ -35,6 +35,7 @@ const D3Div = styled.div`
  * @function Dashboard
  **/
 const getData = weekNumber => {
+  // console.log({ weeknumber: weekNumber })
   var data
   switch (parseInt(weekNumber)) {
     case 37:
@@ -175,8 +176,6 @@ const Dashboard = ({ location }) => {
               gap={"xsmall"}
               margin={{ bottom: "small" }}
               focusIndicator={false}
-              background={"light-1"}
-              flex={"shrink"}
             >
               {showInstructions ? (
                 <XCircle size={16} color={"#E56D67"} />
