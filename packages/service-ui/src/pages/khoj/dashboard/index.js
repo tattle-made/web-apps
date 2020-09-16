@@ -118,13 +118,15 @@ const Dashboard = ({ location }) => {
         <Box direction={"row"} alignContent={"center"} gap={"xsmall"}>
           <TwitterShareButton
             url={"https://services.tattle.co.in/khoj/dashboard/"}
-            title={"Fact Checking Topic Dashbaord"}
+            title={
+              "Explore weekly themes in Fact Checking Articles using Tattle's Topic Dashboard"
+            }
           >
             <TwitterIcon size={32} round={true} bgStyle={{ fill: "#514e80" }} />
           </TwitterShareButton>
           <WhatsappShareButton
             url={"https://services.tattle.co.in/khoj/dashboard/"}
-            title={"Fact Checking Topic Dashbaord"}
+            title={"Fact Checking Topic Dashboard"}
           >
             <WhatsappIcon
               size={32}
@@ -134,7 +136,7 @@ const Dashboard = ({ location }) => {
           </WhatsappShareButton>
           <RedditShareButton
             url={"https://services.tattle.co.in/khoj/dashboard/"}
-            title={"Fact Checking Topic Dashbaord"}
+            title={"Fact Checking Topic Dashboard"}
           >
             <RedditIcon size={32} round={true} bgStyle={{ fill: "#514e80" }} />
           </RedditShareButton>
@@ -173,14 +175,19 @@ const Dashboard = ({ location }) => {
               gap={"xsmall"}
               margin={{ bottom: "small" }}
               focusIndicator={false}
+              background={"light-1"}
+              flex={"shrink"}
             >
               {showInstructions ? (
-                <XCircle size={16} />
+                <XCircle size={16} color={"#E56D67"} />
               ) : (
-                <HelpCircle size={16} />
+                <HelpCircle size={16} color={"#E56D67"} />
               )}
               {!showInstructions && (
-                <Text size={"small"}> How to navigate this dashboard</Text>
+                <Text size={"small"} color={"#E56D67"}>
+                  {" "}
+                  How to navigate this dashboard
+                </Text>
               )}
             </Box>
 
