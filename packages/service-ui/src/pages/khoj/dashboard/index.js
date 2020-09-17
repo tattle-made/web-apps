@@ -58,9 +58,23 @@ const getData = weekNumber => {
   return data
 }
 
+const getSelectionStringFromWeekNumber = weekNum => {
+  return weekNum === 37
+    ? "September 7 - September 13, 2020"
+    : weekNum === 36
+    ? "August 31 - September 6, 2020"
+    : weekNum === 35
+    ? "August 24 - August 30, 2020"
+    : weekNum === 34
+    ? "August 17 - August 23, 2020"
+    : "September 7 - September 13, 2020"
+}
+
 const Dashboard = ({ location }) => {
   const ldavisRef = useRef()
-  const [value, setValue] = React.useState("September 7 - September 13, 2020")
+  const [value, setValue] = React.useState(
+    getSelectionStringFromWeekNumber(parseInt(parse(location.search).week))
+  )
   const [currentData, setCurrentData] = useState(
     getData(parse(location.search).week)
   )
@@ -73,10 +87,20 @@ const Dashboard = ({ location }) => {
     // console.log({ location })
     // console.log("current data changed")
     // console.log({ ldavisRef.current, data })
-    ldavisRef.current.innerHTML = ""
+
     setCurrentData(getData(parse(location.search).week))
+    ldavisRef.current.innerHTML = ""
     LDAvis(ldavisRef.current, currentData, "#visualization", onClusterSelected)
+    setValue(
+      getSelectionStringFromWeekNumber(parseInt(parse(location.search).week))
+    )
   }, [location])
+
+  useEffect(() => {
+    console.log("current data changed")
+    ldavisRef.current.innerHTML = ""
+    LDAvis(ldavisRef.current, currentData, "#visualization", onClusterSelected)
+  }, [currentData])
 
   const onDateRangeChanged = option => {
     setValue(option)
@@ -99,7 +123,8 @@ const Dashboard = ({ location }) => {
         break
     }
 
-    navigate(`/khoj/dashboard?week=${weekNumber}`)
+    //navigate(`/khoj/dashboard/?week=${weekNumber}`)
+    setCurrentData(getData(weekNumber))
   }
 
   const onClusterSelected = clusterId => {
@@ -156,14 +181,15 @@ const Dashboard = ({ location }) => {
           <Text>
             This interactive dashboard displays the themes in fact-checking
             articles we scraped from IFCN-certified websites in the selected
-            week. Articles are grouped into thematic clusters using an algorithm
-            known as Gibbs Sampling Dirichlet Multinomial Mixture (GSDMM), which
-            groups together article headlines based on the similarity of their
-            constituent words. The number of clusters is decided by a human (a
-            Tattle team member) after some experimentation, with the aim of
-            producing meaningful results. The algorithm does not generate names
-            for the clusters. We have chosen to leave them unnamed to allow
-            flexible interpretation, but they are numbered for identification.{" "}
+            week. Articles are grouped into thematic clusters based on their
+            headlines, using an algorithm called GSDMM (read more below). The
+            clusters are left unnamed to allow for flexible interpretation.
+            Selecting a week shows thematic clusters for the week. Clicking on a
+            circle in that week will show the fact checking articles grouped in
+            it and most prominent words in those articles. You can also hover
+            over the words in the graphs which will highlight all the clusters
+            the word features in. This allows for building some connections
+            across themes.
           </Text>
           <Box>
             <Box
@@ -185,20 +211,23 @@ const Dashboard = ({ location }) => {
               {!showInstructions && (
                 <Text size={"small"} color={"#E56D67"}>
                   {" "}
-                  How to navigate this dashboard
+                  Read More
                 </Text>
               )}
             </Box>
 
             <Collapsible open={showInstructions}>
               <Text>
-                Hovering over a cluster circle on the left displays the
-                cluster's constituent words, along with their occurrence
-                frequencies, on the right. Clicking on a cluster circle displays
-                links to the fact-checking articles within it, below the
-                visualisation (scroll down to see the links). The dashboard
-                design is inspired by LDAvis, a visualisation technique for
-                topic models.
+                Articles are grouped into thematic clusters using an algorithm
+                known as Gibbs Sampling Dirichlet Multinomial Mixture (GSDMM),
+                which groups together article headlines based on the similarity
+                of their constituent words. The number of clusters is decided by
+                a human (a Tattle team member) after some experimentation, with
+                the aim of producing meaningful results. The algorithm does not
+                generate names for the clusters. We have chosen to leave them
+                unnamed to allow flexible interpretation, but they are numbered
+                for identification. The dashboard design is inspired by LDAvis,
+                a visualisation technique for topic models.
               </Text>
             </Collapsible>
           </Box>
@@ -243,9 +272,9 @@ const Dashboard = ({ location }) => {
           {selectedTopicId !== -1 &&
             currentData["per_cluster_headlines"] &&
             currentData["per_cluster_headlines"][selectedTopicId].map(
-              headline => {
+              (headline, index) => {
                 return (
-                  <Box margin={{ bottom: "medium" }}>
+                  <Box margin={{ bottom: "medium" }} key={index}>
                     <PlainExternalLink
                       key={"abc"}
                       href={headline.url}
