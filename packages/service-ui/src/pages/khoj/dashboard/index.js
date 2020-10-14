@@ -18,6 +18,9 @@ import {
 import styled from "styled-components"
 import { navigate } from "gatsby"
 import { parse } from "query-string"
+import { data as dataWeek40 } from "../../../data/wk40"
+import { data as dataWeek39 } from "../../../data/wk39"
+import { data as dataWeek38 } from "../../../data/wk38"
 import { data as dataWeek37 } from "../../../data/wk37"
 import { data as dataWeek36 } from "../../../data/wk36"
 import { data as dataWeek35 } from "../../../data/wk35"
@@ -38,6 +41,15 @@ const getData = weekNumber => {
   // console.log({ weeknumber: weekNumber })
   var data
   switch (parseInt(weekNumber)) {
+    case 40:
+      data = dataWeek40
+      break
+    case 39:
+      data = dataWeek39
+      break
+    case 38:
+      data = dataWeek38
+      break
     case 37:
       data = dataWeek37
       break
@@ -51,7 +63,7 @@ const getData = weekNumber => {
       data = dataWeek34
       break
     default:
-      data = dataWeek37
+      data = dataWeek40
       break
   }
   //console.log({ headlines: data["per_cluster_headlines"]["1"][0]["headline"] })
@@ -59,7 +71,14 @@ const getData = weekNumber => {
 }
 
 const getSelectionStringFromWeekNumber = weekNum => {
-  return weekNum === 37
+  console.log(weekNum)
+  return weekNum === 40
+    ? "September 28 - October 4, 2020"
+    : weekNum === 39
+    ? "September 21 - September 27, 2020"
+    : weekNum === 38
+    ? "September 14 - September 20, 2020"
+    : weekNum === 37
     ? "September 7 - September 13, 2020"
     : weekNum === 36
     ? "August 31 - September 6, 2020"
@@ -67,7 +86,7 @@ const getSelectionStringFromWeekNumber = weekNum => {
     ? "August 24 - August 30, 2020"
     : weekNum === 34
     ? "August 17 - August 23, 2020"
-    : "September 7 - September 13, 2020"
+    : "September 28 - October 4, 2020"
 }
 
 const Dashboard = ({ location }) => {
@@ -106,6 +125,15 @@ const Dashboard = ({ location }) => {
     setValue(option)
     var weekNumber
     switch (option) {
+      case "September 28 - October 4, 2020":
+        weekNumber = 40
+        break
+      case "September 21 - September 27, 2020":
+        weekNumber = 39
+        break
+      case "September 14 - September 20, 2020":
+        weekNumber = 38
+        break
       case "September 7 - September 13, 2020":
         weekNumber = 37
         break
@@ -119,7 +147,7 @@ const Dashboard = ({ location }) => {
         weekNumber = 34
         break
       default:
-        weekNumber = 37
+        weekNumber = 40
         break
     }
 
@@ -234,6 +262,9 @@ const Dashboard = ({ location }) => {
           <Box width={"medium"} flex={true}>
             <Select
               options={[
+                "September 28 - October 4, 2020",
+                "September 21 - September 27, 2020",
+                "September 14 - September 20, 2020",
                 "September 7 - September 13, 2020",
                 "August 31 - September 6, 2020",
                 "August 24 - August 30, 2020",
