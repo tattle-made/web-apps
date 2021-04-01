@@ -3,7 +3,7 @@ import { Box, Heading, Text, Select, Collapsible, Button } from "grommet"
 import * as d3 from "d3"
 import { LDAvis } from "../../../data/ldavis.v1.0.1"
 import AppShell from "../../../components/atomic/AppShell"
-import { PlainExternalLink } from "@bit/tattle-tech.core-ui.links"
+import { PlainExternalLink } from "../../../components/atomic/TattleLinks"
 import { footerItems, primaryNav } from "../../../config/options"
 import {
   TwitterShareButton,
@@ -18,13 +18,11 @@ import {
 import styled from "styled-components"
 import { navigate } from "gatsby"
 import { parse } from "query-string"
-import { data as dataWeek40 } from "../../../data/wk40"
-import { data as dataWeek39 } from "../../../data/wk39"
-import { data as dataWeek38 } from "../../../data/wk38"
-import { data as dataWeek37 } from "../../../data/wk37"
-import { data as dataWeek36 } from "../../../data/wk36"
-import { data as dataWeek35 } from "../../../data/wk35"
-import { data as dataWeek34 } from "../../../data/wk34"
+import data from "../../../data"
+import {
+  getDateRangeStringAsArray,
+  weekNumDateRangeBiDirectionalMap,
+} from "../../../config/factcheck-dashboard"
 import { HelpCircle, XCircle } from "react-feather"
 
 const D3Div = styled.div`
@@ -38,55 +36,17 @@ const D3Div = styled.div`
  * @function Dashboard
  **/
 const getData = weekNumber => {
-  // console.log({ weeknumber: weekNumber })
-  var data
-  switch (parseInt(weekNumber)) {
-    case 40:
-      data = dataWeek40
-      break
-    case 39:
-      data = dataWeek39
-      break
-    case 38:
-      data = dataWeek38
-      break
-    case 37:
-      data = dataWeek37
-      break
-    case 36:
-      data = dataWeek36
-      break
-    case 35:
-      data = dataWeek35
-      break
-    case 34:
-      data = dataWeek34
-      break
-    default:
-      data = dataWeek40
-      break
+  if (data[weekNumber] !== undefined) {
+    return data[weekNumber]
+  } else {
+    return data.default
   }
-  //console.log({ headlines: data["per_cluster_headlines"]["1"][0]["headline"] })
-  return data
 }
 
 const getSelectionStringFromWeekNumber = weekNum => {
-  console.log(weekNum)
-  return weekNum === 40
-    ? "September 28 - October 4, 2020"
-    : weekNum === 39
-    ? "September 21 - September 27, 2020"
-    : weekNum === 38
-    ? "September 14 - September 20, 2020"
-    : weekNum === 37
-    ? "September 7 - September 13, 2020"
-    : weekNum === 36
-    ? "August 31 - September 6, 2020"
-    : weekNum === 35
-    ? "August 24 - August 30, 2020"
-    : weekNum === 34
-    ? "August 17 - August 23, 2020"
-    : "September 28 - October 4, 2020"
+  return weekNumDateRangeBiDirectionalMap[weekNum]
+    ? weekNumDateRangeBiDirectionalMap[weekNum]
+    : weekNumDateRangeBiDirectionalMap.default.string
 }
 
 const Dashboard = ({ location }) => {
@@ -122,37 +82,13 @@ const Dashboard = ({ location }) => {
   }, [currentData])
 
   const onDateRangeChanged = option => {
+    console.log({ option })
+    console.log({ str: weekNumDateRangeBiDirectionalMap[option] })
+    console.log({ data: getData(weekNumDateRangeBiDirectionalMap[option]) })
     setValue(option)
-    var weekNumber
-    switch (option) {
-      case "September 28 - October 4, 2020":
-        weekNumber = 40
-        break
-      case "September 21 - September 27, 2020":
-        weekNumber = 39
-        break
-      case "September 14 - September 20, 2020":
-        weekNumber = 38
-        break
-      case "September 7 - September 13, 2020":
-        weekNumber = 37
-        break
-      case "August 31 - September 6, 2020":
-        weekNumber = 36
-        break
-      case "August 24 - August 30, 2020":
-        weekNumber = 35
-        break
-      case "August 17 - August 23, 2020":
-        weekNumber = 34
-        break
-      default:
-        weekNumber = 40
-        break
-    }
 
-    //navigate(`/khoj/dashboard/?week=${weekNumber}`)
-    setCurrentData(getData(weekNumber))
+    var weekNumber = weekNumDateRangeBiDirectionalMap[option]
+    setCurrentData(getData(weekNumDateRangeBiDirectionalMap[option]))
   }
 
   const onClusterSelected = clusterId => {
@@ -261,15 +197,7 @@ const Dashboard = ({ location }) => {
           </Box>
           <Box width={"medium"} flex={true}>
             <Select
-              options={[
-                "September 28 - October 4, 2020",
-                "September 21 - September 27, 2020",
-                "September 14 - September 20, 2020",
-                "September 7 - September 13, 2020",
-                "August 31 - September 6, 2020",
-                "August 24 - August 30, 2020",
-                "August 17 - August 23, 2020",
-              ]}
+              options={getDateRangeStringAsArray()}
               value={value}
               onChange={({ option }) => onDateRangeChanged(option)}
             />
