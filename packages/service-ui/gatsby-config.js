@@ -1,20 +1,4 @@
 module.exports = {
-<<<<<<< HEAD
-    siteMetadata: {
-      title: `Tattle Services`,
-      description: `Open Source and Publically Available tools to fight misinformation.`,
-      author: `@tattlemade`,
-      base_url: 'https://services.tattle.co.in',
-    },
-    plugins: [
-      `gatsby-plugin-react-helmet`,
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: `images`,
-          path: `${__dirname}/src/images`,
-        },
-=======
   flags: { PRESERVE_WEBPACK_CACHE: true },
   siteMetadata: {
     title: `Tattle Services`,
@@ -29,7 +13,6 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
->>>>>>> development
       },
     },
     `gatsby-transformer-sharp`,

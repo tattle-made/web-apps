@@ -18,19 +18,12 @@ import {
 import styled from "styled-components"
 import { navigate } from "gatsby"
 import { parse } from "query-string"
-<<<<<<< HEAD
-import { data as dataWeek37 } from "./data/wk37"
-import { data as dataWeek36 } from "./data/wk36"
-import { data as dataWeek35 } from "./data/wk35"
-import { data as dataWeek34 } from "./data/wk34"
-=======
 import data from "../../../data"
 import {
   getDateRangeStringAsArray,
   weekNumDateRangeBiDirectionalMap,
 } from "../../../config/factcheck-dashboard"
 import { HelpCircle, XCircle } from "react-feather"
->>>>>>> development
 
 const D3Div = styled.div`
   path {
@@ -43,28 +36,6 @@ const D3Div = styled.div`
  * @function Dashboard
  **/
 const getData = weekNumber => {
-<<<<<<< HEAD
-  var data
-  switch (parseInt(weekNumber)) {
-    case 37:
-      data = dataWeek37
-      break
-    case 36:
-      data = dataWeek36
-      break
-    case 35:
-      data = dataWeek35
-      break
-    case 34:
-      data = dataWeek34
-      break
-    default:
-      data = dataWeek37
-      break
-  }
-  //console.log({ headlines: data["per_cluster_headlines"]["1"][0]["headline"] })
-  return data
-=======
   if (data[weekNumber] !== undefined) {
     return data[weekNumber]
   } else {
@@ -76,62 +47,25 @@ const getSelectionStringFromWeekNumber = weekNum => {
   return weekNumDateRangeBiDirectionalMap[weekNum]
     ? weekNumDateRangeBiDirectionalMap[weekNum]
     : weekNumDateRangeBiDirectionalMap.default.string
->>>>>>> development
 }
 
 const Dashboard = ({ location }) => {
   const ldavisRef = useRef()
-<<<<<<< HEAD
-  const [value, setValue] = React.useState("September 7 - September 13, 2020")
-=======
   const [value, setValue] = React.useState(
     getSelectionStringFromWeekNumber(parseInt(parse(location.search).week))
   )
->>>>>>> development
   const [currentData, setCurrentData] = useState(
     getData(parse(location.search).week)
   )
   const [relatedArticles, setRelatedArticles] = useState([])
   const [selectedTopicId, setSelectedTopicId] = useState(-1)
-<<<<<<< HEAD
-=======
   const [showInstructions, setShowInstructions] = useState(false)
->>>>>>> development
 
   useEffect(() => {
     console.log("current location changed")
     // console.log({ location })
     // console.log("current data changed")
     // console.log({ ldavisRef.current, data })
-<<<<<<< HEAD
-    ldavisRef.current.innerHTML = ""
-    setCurrentData(getData(parse(location.search).week))
-    LDAvis(ldavisRef.current, currentData, "#visualization", onClusterSelected)
-  }, [location])
-
-  const onDateRangeChanged = option => {
-    setValue(option)
-    var weekNumber
-    switch (option) {
-      case "September 7 - September 13, 2020":
-        weekNumber = 37
-        break
-      case "August 31 - September 6, 2020":
-        weekNumber = 36
-        break
-      case "August 24 - August 30, 2020":
-        weekNumber = 35
-        break
-      case "August 17 - August 23, 2020":
-        weekNumber = 34
-        break
-      default:
-        weekNumber = 37
-        break
-    }
-
-    navigate(`/khoj/dashboard?week=${weekNumber}`)
-=======
 
     setCurrentData(getData(parse(location.search).week))
     ldavisRef.current.innerHTML = ""
@@ -155,7 +89,6 @@ const Dashboard = ({ location }) => {
 
     var weekNumber = weekNumDateRangeBiDirectionalMap[option]
     setCurrentData(getData(weekNumDateRangeBiDirectionalMap[option]))
->>>>>>> development
   }
 
   const onClusterSelected = clusterId => {
@@ -175,23 +108,15 @@ const Dashboard = ({ location }) => {
         <Box direction={"row"} alignContent={"center"} gap={"xsmall"}>
           <TwitterShareButton
             url={"https://services.tattle.co.in/khoj/dashboard/"}
-<<<<<<< HEAD
-            title={"Fact Checking Topic Dashbaord"}
-=======
             title={
               "Explore weekly themes in Fact Checking Articles using Tattle's Topic Dashboard"
             }
->>>>>>> development
           >
             <TwitterIcon size={32} round={true} bgStyle={{ fill: "#514e80" }} />
           </TwitterShareButton>
           <WhatsappShareButton
             url={"https://services.tattle.co.in/khoj/dashboard/"}
-<<<<<<< HEAD
-            title={"Fact Checking Topic Dashbaord"}
-=======
             title={"Fact Checking Topic Dashboard"}
->>>>>>> development
           >
             <WhatsappIcon
               size={32}
@@ -201,11 +126,7 @@ const Dashboard = ({ location }) => {
           </WhatsappShareButton>
           <RedditShareButton
             url={"https://services.tattle.co.in/khoj/dashboard/"}
-<<<<<<< HEAD
-            title={"Fact Checking Topic Dashbaord"}
-=======
             title={"Fact Checking Topic Dashboard"}
->>>>>>> development
           >
             <RedditIcon size={32} round={true} bgStyle={{ fill: "#514e80" }} />
           </RedditShareButton>
@@ -222,31 +143,6 @@ const Dashboard = ({ location }) => {
         </Box>
         <Box gap={"medium"} flex={true}>
           <Text>
-<<<<<<< HEAD
-            This interactive dashboard displays the themes in factchecking
-            articles we scraped in the selected week. Articles are grouped into
-            thematic clusters using an algorithm known as Gibbs Sampling
-            Dirichlet Multinomial Mixture (GSDMM), which clusters the article
-            headlines based on the similarity of their constituent words. The
-            number of clusters is decided by a human (a Tattle team member)
-            after some experimentation, with the aim of producing meaningful
-            results. The algorithm does not generate names for the clusters. We
-            have chosen to leave them unnamed to allow flexible interpretation,
-            but they are numbered for identification. Hovering over a cluster on
-            the left displays its constituent words on the right. Clicking on a
-            cluster displays links to the articles that comprise it. The
-            dashboard design is inspired by LDAvis, a visualisation technique
-            for topic models.
-          </Text>
-          <Box width={"medium"} flex={true}>
-            <Select
-              options={[
-                "September 7 - September 13, 2020",
-                "August 31 - September 6, 2020",
-                "August 24 - August 30, 2020",
-                "August 17 - August 23, 2020",
-              ]}
-=======
             This interactive dashboard displays the themes in fact-checking
             articles we scraped from IFCN-certified websites in the selected
             week. Articles are grouped into thematic clusters based on their
@@ -302,7 +198,6 @@ const Dashboard = ({ location }) => {
           <Box width={"medium"} flex={true}>
             <Select
               options={getDateRangeStringAsArray()}
->>>>>>> development
               value={value}
               onChange={({ option }) => onDateRangeChanged(option)}
             />
@@ -316,11 +211,6 @@ const Dashboard = ({ location }) => {
               clusters)
             </Text>
           </Box>
-<<<<<<< HEAD
-          {/* <Box width={"90px"}></Box> */}
-=======
-
->>>>>>> development
           <Box width={"360px"}>
             <Text size={"medium"}>Top-10 Words in cluster</Text>
           </Box>
@@ -340,15 +230,9 @@ const Dashboard = ({ location }) => {
           {selectedTopicId !== -1 &&
             currentData["per_cluster_headlines"] &&
             currentData["per_cluster_headlines"][selectedTopicId].map(
-<<<<<<< HEAD
-              headline => {
-                return (
-                  <Box margin={{ bottom: "medium" }}>
-=======
               (headline, index) => {
                 return (
                   <Box margin={{ bottom: "medium" }} key={index}>
->>>>>>> development
                     <PlainExternalLink
                       key={"abc"}
                       href={headline.url}
@@ -366,13 +250,6 @@ const Dashboard = ({ location }) => {
             )}
         </Box>
         <Box>
-<<<<<<< HEAD
-          <Heading level={3}> Licence</Heading>
-          <Text>
-            {" "}
-            Please contact us at admin@tattle.co.in to access the underlying
-            data{" "}
-=======
           <Heading level={3}> License</Heading>
           <Text>
             {" "}
@@ -410,7 +287,6 @@ const Dashboard = ({ location }) => {
               </Text>
             </PlainExternalLink>
             .
->>>>>>> development
           </Text>
         </Box>
       </Box>
