@@ -44,7 +44,7 @@ const IndexPage = () => (
         <Text> Extract text automatically from memes </Text>
       </Box> */}
 
-      <Box direction={"row"} gap={"xsmall"}>
+      <Box direction={"row"} gap={"xsmall"} align={"center"}>
         <Link to="khoj">
           <Heading level={4}> Khoj </Heading>
         </Link>
