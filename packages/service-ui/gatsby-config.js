@@ -52,18 +52,6 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-transformer-json`,
-      options: {
-        typeName: "FactcheckDashboardJSON",
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/data/`,
-      },
-    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
