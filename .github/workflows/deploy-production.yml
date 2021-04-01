@@ -1,46 +1,40 @@
 name: deploy-production
 
-on: 
+on:
   push:
     branches:
       - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/service-ui
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: master
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Configure AWS Credentials 4
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ap-south-1
-    - name: Run a multi-line script
-      run: npm install lerna
-    - name: Lerna Bootstrap
-      run: node_modules/lerna/cli.js bootstrap
-    - name: Install Packages
-      run: node_modules/lerna/cli.js run deploy-install --parallel --stream
-    - name: Setup Config
-      run: node_modules/lerna/cli.js exec --scope @tattle/service-ui src/config/setup-config.sh PRODUCTION
-    - name: Build Site
-      run: node_modules/lerna/cli.js run build --parallel --stream
-    - name: Deploy Site
-      run: node_modules/lerna/cli.js run deploy --parallel --stream
-    
-    - name: Notify on Slack
-      uses: rtCamp/action-slack-notify@v2.0.0
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_MESSAGE: 'Deployed web-apps to production environment'
-        SLACK_TITLE: 'deploy-production workflow complete'
-        SLACK_COLOR: '#020637'
-        SLACK_ICON: https://tattle-media.s3.amazonaws.com/monogram-dark.svg
-        
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+      - name: Install Packages
+        run: npm install --legacy-peer-deps
+
+      - name: Build Site
+        run: npm run build
+      - name: Deploy Site
+        run: npm run deploy
+
+      - name: Notify on Slack
+        uses: rtCamp/action-slack-notify@v2.0.0
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: "Deployed Tattle Services Web App to production environment"
+          SLACK_TITLE: "deploy-production workflow complete"
+          SLACK_COLOR: "#020637"
+          SLACK_ICON: https://tattle-media.s3.amazonaws.com/monogram-dark.svg
