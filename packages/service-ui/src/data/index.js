@@ -1,3 +1,4 @@
+import { data as dataWeek20201Week12 } from "../data/2021_wk12"
 import { data as dataWeek20201Week11 } from "../data/2021_wk11"
 import { data as dataWeek20201Week10 } from "../data/2021_wk10"
 import { data as dataWeek20201Week9 } from "../data/2021_wk09"
@@ -62,5 +63,6 @@ export default {
   62: dataWeek20201Week9,
   63: dataWeek20201Week10,
   64: dataWeek20201Week11,
-  default: dataWeek20201Week11,
+  65: dataWeek20201Week12,
+  default: dataWeek20201Week12,
 }

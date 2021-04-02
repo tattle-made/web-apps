@@ -1,7 +1,7 @@
 export const weekNumDateRangeBiDirectionalMap = {
   default: {
-    num: 64,
-    string: "March 15, 2020 - March 21, 2021",
+    num: 65,
+    string: "March 22, 2021 - March 28, 2021",
   },
 
   34: "August 17 - August 23, 2020",
@@ -96,6 +96,9 @@ export const weekNumDateRangeBiDirectionalMap = {
 
   64: "March 15, 2020 - March 21, 2021",
   "March 15, 2020 - March 21, 2021": 64,
+
+  65: "March 22, 2021 - March 28, 2021",
+  "March 22, 2021 - March 28, 2021": 65,
 }
 
 export const getDateRangeStringAsArray = () => {
