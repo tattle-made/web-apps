@@ -15,3 +15,10 @@ use this s3 endpoint for more uptodate feedback - http://services-dev.tattle.co.
 * UI : https://services.tattle.co.in
 * Server URL : https://services-server.tattle.co.in
 
+
+### Instructions specific for Fact Checking Dashboard:
+
+Make changes to following:
+* packages/service-ui/src/data
+*  packages/service-ui/src/data/index.js
+* packages/service-ui/src/config/factcheck-dashboard.js
