@@ -44,6 +44,7 @@ const getData = weekNumber => {
 }
 
 const getSelectionStringFromWeekNumber = weekNum => {
+  console.log({ weekNum })
   return weekNumDateRangeBiDirectionalMap[weekNum]
     ? weekNumDateRangeBiDirectionalMap[weekNum]
     : weekNumDateRangeBiDirectionalMap.default.string
