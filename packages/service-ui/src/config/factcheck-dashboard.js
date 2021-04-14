@@ -1,7 +1,7 @@
 export const weekNumDateRangeBiDirectionalMap = {
   default: {
     num: 67,
-    string: "April 05, 2021 - April 12, 2021",
+    string: "April 05, 2021 - April 11, 2021",
   },
 
   34: "August 17 - August 23, 2020",
