@@ -1,3 +1,8 @@
+import { data as dataWeek20201Week19 } from "../data/2021_wk19"
+import { data as dataWeek20201Week18 } from "../data/2021_wk18"
+import { data as dataWeek20201Week17 } from "../data/2021_wk17"
+import { data as dataWeek20201Week16 } from "../data/2021_wk16"
+import { data as dataWeek20201Week15 } from "../data/2021_wk15"
 import { data as dataWeek20201Week14 } from "../data/2021_wk14"
 import { data as dataWeek20201Week13 } from "../data/2021_wk13"
 import { data as dataWeek20201Week12 } from "../data/2021_wk12"
@@ -68,5 +73,10 @@ export default {
   65: dataWeek20201Week12,
   66: dataWeek20201Week13,
   67: dataWeek20201Week14,
-  default: dataWeek20201Week14,
+  68: dataWeek20201Week15,
+  69: dataWeek20201Week16,
+  70: dataWeek20201Week17,
+  71: dataWeek20201Week18,
+  72: dataWeek20201Week19,
+  default: dataWeek20201Week19,
 }

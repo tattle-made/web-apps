@@ -1,9 +1,24 @@
 export const weekNumDateRangeBiDirectionalMap = {
   default: {
-    num: 67,
-    string: "April 5, 2021 - April 11, 2021",
+    num: 72,
+    string: "May 10, 2021 - May 16, 2021",
   },
   
+  72: "May 10, 2021 - May 16, 2021",
+  "May 10, 2021 - May 16, 2021": 72,
+  
+  71: "May 3, 2021 - May 9, 2021",
+  "May 3, 2021 - May 9, 2021": 72,
+  
+  70: "April 26, 2021 - May 2, 2021",
+  "April 26, 2021 - May 2, 2021": 70,
+  
+  69: "April 19, 2021 - April 25, 2021", 
+  "April 19, 2021 - April 25, 2021": 69,
+  
+  68: "April 12, 2021- April 18, 2021",
+  "April 12, 2021- April 18, 2021":68,
+
   67: "April 5, 2021 - April 11, 2021",
   "April 5, 2021 - April 11, 2021": 67,
 
