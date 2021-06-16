@@ -1,3 +1,4 @@
+import { data as dataWeek2021Week23 } from "../data/2021_wk23"
 import { data as dataWeek2021Week22 } from "../data/2021_wk22"
 import { data as dataWeek2021Week21 } from "../data/2021_wk21"
 import { data as dataWeek2021Week20 } from "../data/2021_wk20"
@@ -84,5 +85,6 @@ export default {
   73: dataWeek2021Week20,
   74: dataWeek2021Week21,
   75: dataWeek2021Week22,
-  default: dataWeek2021Week22,
+  76: dataWeek2021Week23,
+  default: dataWeek2021Week23,
 }
