@@ -1,3 +1,8 @@
+import { data as dataWeek2021Week28 } from "../data/2021_wk28"
+import { data as dataWeek2021Week27 } from "../data/2021_wk27"
+import { data as dataWeek2021Week26 } from "../data/2021_wk26"
+import { data as dataWeek2021Week25 } from "../data/2021_wk25"
+import { data as dataWeek2021Week24 } from "../data/2021_wk24"
 import { data as dataWeek2021Week23 } from "../data/2021_wk23"
 import { data as dataWeek2021Week22 } from "../data/2021_wk22"
 import { data as dataWeek2021Week21 } from "../data/2021_wk21"
@@ -86,5 +91,10 @@ export default {
   74: dataWeek2021Week21,
   75: dataWeek2021Week22,
   76: dataWeek2021Week23,
-  default: dataWeek2021Week23,
+  77: dataWeek2021Week24,
+  78: dataWeek2021Week25,
+  79: dataWeek2021Week26,
+  80: dataWeek2021Week27,
+  81: dataWeek2021Week28,
+  default: dataWeek2021Week28,
 }
