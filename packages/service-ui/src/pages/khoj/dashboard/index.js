@@ -62,6 +62,8 @@ const Dashboard = ({ location }) => {
   const [selectedTopicId, setSelectedTopicId] = useState(-1)
   const [showInstructions, setShowInstructions] = useState(false)
 
+  console.log("render again")
+
   useEffect(() => {
     console.log("current location changed")
     // console.log({ location })
