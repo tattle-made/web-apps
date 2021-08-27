@@ -206,11 +206,11 @@ const Dashboard = ({ location }) => {
             />
           </Box>
         </Box>
-        <Box background={"red"}>
-          <Text size={"small"}>
-            Number of Articles - {currentData["number_of_articles"]}
-          </Text>
-        </Box>
+
+        <Text size={"small"}>
+          Number of Articles - {currentData["number_of_articles"]}
+        </Text>
+
         <Box direction={"row"}>
           <Box width={"540px"}>
             <Text size={"medium"}>Thematic Cluster Map</Text>
