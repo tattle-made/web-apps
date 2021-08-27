@@ -15,7 +15,6 @@ export const footerItems = {
 export const primaryNav = {
   options: [
     { id: 1, label: "Explore", target: "/khoj/explore" },
-    { id: 2, label: "Search", target: "/khoj/search" },
     { id: 3, label: "Dashboard", target: "/khoj/dashboard" },
     { id: 4, label: "About", target: "/khoj/about" },
   ],
