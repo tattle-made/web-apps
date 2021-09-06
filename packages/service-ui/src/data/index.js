@@ -1,3 +1,7 @@
+import { data as dataWeek2021Week34 } from "../data/2021_wk34"
+import { data as dataWeek2021Week33 } from "../data/2021_wk33"
+import { data as dataWeek2021Week32 } from "../data/2021_wk32"
+import { data as dataWeek2021Week31 } from "../data/2021_wk31"
 import { data as dataWeek2021Week30 } from "../data/2021_wk30"
 import { data as dataWeek2021Week29 } from "../data/2021_wk29"
 import { data as dataWeek2021Week28 } from "../data/2021_wk28"
