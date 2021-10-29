@@ -15,7 +15,6 @@ const footerItems = {
       target: "http://blog.tattle.co.in",
       type: "external",
     },
-    { id: 4, label: "Contribute", target: "/contribute", type: "internal" },
   ],
 }
 
